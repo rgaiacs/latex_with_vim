@@ -1,0 +1,14 @@
+LaTeX with Vim Vers\~{a}o 1.0
+
+Copyright (C) 2010, 2011, 2012 Raniere Gaia Costa da Silva. Todos os direitos
+reservados.
+E-mail: <r.gaia.cs@gmail.com>.
+
+Este c\'{o}digo \'{e} parte do LaTeX with Vim.
+
+LaTeX with Vim \'{e} um livro gratuito: voc\^{e} pode redistribu\'{i}-lo e/ou
+modific\'{a}-lo de acordo com os termos da Licen\c{c}a Creative Commons
+Atribui\c{c}\~{a}o 3.0 N\~{a}o Modificada, ou (por sua escolha) qualquer 
+vers\~{a}o posterior.
+
+Este \'{e} diret\'{o}rio cont\'{e}m a vers\~{a}o em portugu\^{e}s.

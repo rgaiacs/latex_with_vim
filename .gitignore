@@ -1,0 +1,13 @@
+*.swp
+*~
+*.pdf
+*.aux
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.log
+*.lot
+*.out
+*.toc

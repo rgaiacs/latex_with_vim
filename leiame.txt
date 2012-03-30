@@ -1,0 +1,28 @@
+LaTeX with Vim Vers\~{a}o 1.0
+
+Copyright (C) 2010, 2011, 2012 Raniere Gaia Costa da Silva. Todos os direitos
+reservados.
+E-mail: <r.gaia.cs@gmail.com>.
+
+Este c\'{o}digo \'{e} parte do LaTeX with Vim.
+
+LaTeX with Vim \'{e} um livro gratuito: voc\^{e} pode redistribu\'{i}-lo e/ou
+modific\'{a}-lo de acordo com os termos da Licen\c{c}a Creative Commons
+Atribui\c{c}\~{a}o 3.0 N\~{a}o Modificada, ou (por sua escolha) qualquer 
+vers\~{a}o posterior.
+
+Este \'{e} o diret\'{o}rio raiz do LaTeX with Vim que \'{e} versionado
+por meio do git.
+
+Neste diret\'{o}rio voc\^{e} encontrad\'{a} cinco subdiret\'{o}rios:
+    - codes: contendo os c\'{o}digos de todos os exemplos;
+    - en: reservado para uma futura vers\~{a}o em ingl\^{e}s;
+    - figures: contendo todas as figuras em arquivos bin\'{a}rios;
+    - pt: reservado para a vers\~{a}o em portugu\^{e}s;
+    - tables: contendo os c\'{o}digos de todas as tabelas.
+E o arquivo reference.bib que cont\'{e}m a bibliografia.
+
+Todos os arquivos s\~{a}o nomeados utilizando '_' no lugar de ' '.
+
+Arquivos que s\~{a}o inclu\'{i}dos em outros possuem em seu nome, depois
+de '@', o nome do arquivo no qual foi incluido.
