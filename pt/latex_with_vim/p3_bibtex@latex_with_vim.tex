@@ -1,0 +1,121 @@
+% Filename: p3_bibtex@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:35:07 PM
+% Last Change: 30.03.12 12:09:28 AM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Bibliografias - BibTeX} \label{sch:latex:bibtex}
+Neste capítulo abordaremos como construir bibliográficas utilizando-se do BibTex.
+
+\section{Introdução}
+
+Para produzir a bibliografia deve-se adicionar as sequintes linhas de comando
+\begin{latexcode}
+    \bibliographystyle{estilo}
+    \bibliography{banco}
+\end{latexcode}
+onde \textsf{estilo} é o nome do estilo que será utilizado para criar a bibliografia e \textsf{banco} é o nome dos arquivos \textsf{.bib} com o banco de dados bibliográfico. Também é possível utilizar o pacote \textsf{biblatex}, mas este funciona um pouco diferente.
+
+Nas próximas seções trataremos de como incluir um item na bibliografia e posteriormente do arquivo \textsf{.bib}, dos \textsf{estilo}'s disponíveis para a bibliografia e de como compilar corretamente.
+
+\section{\textbackslash\textsf{cite}}
+
+A referência a uma obra bibliográfica ocorre pelo comando \textbackslash\textsf{cite} que funciona de forma muito semelhante ao comando \textbackslash\textsf{ref}, diferem apenas que o comando \textbackslash\textsf{ref} utiliza-se do comando \textbackslash\textsf{label} enquanto que o comando \textbackslash\textsf{cite} de uma referência existente em um arquivo \textsf{.bib}.
+
+Uma das características do comando \textbackslash\textsf{cite} é ele inserir a indicação da bibliografia. Quando desejar-se inserir um item na bibliografia sem fazer mensão deste ao longo do texto deve-se utilizar o comando \textbackslash\textsf{nocite}.
+
+Para inserir todos os items do arquivo \textsf{.bib} na bibliografia pode-se utilizar o comando \textbackslash\textsf{nocite\{\textasteriskcentered\}}.
+
+\section{\textsf{.bib}}
+
+A extensão \textsf{.bib} corresponde ao arquivo com o banco de dados a ser utilizado para a bibliografia.
+
+Cada item do banco de dados apresenta a seguinte sintaxe:
+\begin{latexcode}
+    @tipo{nome,
+    campo = "informacao",
+    }
+\end{latexcode}
+onde \textsf{tipo} indica o tipo do material da referência, \textsf{nome} é a sequencia de caracteres que o identificará ao longo do arquivo \textsf{.tex}, \textsf{campo} é alguma informação a respeito da referência e \textsf{informacao} é o texto a ser impresso para o referido \textsf{campo}. Para referenciar um item utiliza-se do comando
+\begin{latexcode}
+    \cite{nome}
+\end{latexcode}
+como foi apresentado na seção anterior.
+
+Para cada \textsf{tipo} disponível no BibTeX existem \textsf{campo}'s que são obrigatórios e outros opcionais. A impressão ou não de um campo também depende do \textsf{estilo} utilizado.
+
+\subsection{\textsf{tipo}}
+Uma lista com alguns dos \textsf{tipo}'s permitido pelo BibTeX é apresentada na Tabela \ref{tab:bibtex_entry_type}.
+\begin{table}[h!tb]
+    \centering
+    \caption{\textsf{tipo}'s disponíveis no BibTeX padrão.}
+    \label{tab:bibtex_entry_type}
+    \input{tables/bibtex_entry_type@latex_with_vim.tex}
+\end{table}
+
+\subsection{\textsf{campo}}
+
+Uma lista com alguns dos \textsf{campo}'s permitido pelo BibTeX é apresentada na Tabela \ref{tab:bibtex_entry_field}.
+\begin{table}[h!tb]
+    \centering
+    \caption{\textsf{campo}'s disponíveis no BibTeX padrão.}
+    \label{tab:bibtex_entry_field}
+    \input{tables/bibtex_entry_field@latex_with_vim.tex}
+\end{table}
+
+Para o \textsf{campo} \textsf{author} algumas regras deve ser seguidas:
+\begin{enumerate}
+    \item É permitido escrever o nome de duas maneiras:
+        \begin{enumerate}
+            \item normal;
+            \item começando pelo nome da família seguido de vírgula.
+        \end{enumerate}
+    \item Para dois ou mais autores deve-se separa cada um pelo comando \textsf{and}.
+\end{enumerate}
+
+Para os \textsf{campo}'s \textsf{title} e \textsf{subtitle} algumas regras deve ser seguidas:
+\begin{enumerate}
+    \item Não utilizar ponto final ao final do título.
+    \item Palavras importantes devem ter a primeira letra maiúscula.
+\end{enumerate}
+
+\subsection{Fontes da internet e URLs}
+
+Como pode ser observado na Tabela \ref{tab:bibtex_entry_field} não existe um \textsf{campo} adequado para incluir endereços da internet. Uma opção é preencher o \textsf{campo} \textsf{note} com o comando \textbackslash\textsf{url}.
+
+\subsection{Gerenciadores}
+
+Existem alguns softwares disponíveis que facilitam a criação do arquivo \textsf{.bib}, como por exemplo:
+\begin{enumerate}
+    \item KBibTeX: 
+    \item JabRef: 
+    \item Pybliographic: 
+\end{enumerate}
+
+
+\section{\textsf{estilo}}
+
+Alguns dos \textsf{estilo}'s mais utilizados são: \textsf{plain}, \textsf{alpha}, \textsf{amsplain}, \textsf{amsalpha}, \textsf{siam} e \textsf{ieeetr}. Exemplos destes e outros \textsf{estilo}'s pode ser visualizados em \url{http://www.cs.stir.ac.uk/~kjt/software/latex/showbst.html}.
+
+Para as normas da ABNT é possível utilizar o \textsf{estilo} encontrado em \url{http://www.if.ufrgs.br/hadrons/abnt/abnt.html}.
+
+\section{Compilando}
+
+Para que o arquivo de saída seja produzido corretamente é importante seguir os seguintes passos.
+\begin{enumerate}
+    \item Os arquivos \textsf{.tex} e \textsf{.bib} encontrarem-se no mesmo diretório.
+    \item Compilar o arquivo \textsf{.tex}.
+    \item Rodar o BibTeX.
+    \item Compilar duas vezes arquivo \textsf{.tex}.
+\end{enumerate}

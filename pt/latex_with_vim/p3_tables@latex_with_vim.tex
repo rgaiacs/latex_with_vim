@@ -1,0 +1,130 @@
+% Filename: p3_tables@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:45:34 PM
+% Last Change: 29.03.12 11:45:49 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Tabelas}
+Neste capítulos vamos iremos trabalhar com tabelas.
+
+\section{\textsf{tabular}}
+O ambiente \textsf{tabular} é utilizado para a construção de tabelas no LaTeX e sua síntaxe é
+\begin{lstlisting}[language=TeX]
+\begin{tabular}[colunas]
+    informacao
+\end{tabular}
+\end{lstlisting}
+onde \textsf{colunas} é uma sequência de caracteres, onde cara caractere corresponde a uma coluna e o respectivo alinhamento que são apresentados na Tabela \ref{tab:par_colunas}, e \textsf{informacao} é o conteudo de cada célula da tabela.
+\begin{table}[h!tb]
+    \centering
+    \caption{Opções disponíveis para \textsf{colunas}.}
+    \label{tab:par_colunas}
+    \begin{tabular}{lp{0.8\textwidth}}
+        \hline
+        Código & Descrição \\ \hline
+        \textsf{l} & Alinha com margem esquerda. \\
+        \textsf{r} & Alinha com a margem direita. \\
+        \textsf{c} & Centralizado. \\
+        \textsf{p} & Requer como parâmetro a largura da columa. \\
+        \textbar & Imprime uma linha separando as colunas. \\ \hline
+    \end{tabular}
+\end{table}
+
+Cada célula da tabela deve ser separadas pelo comando \& e a mudança de linha ocorre pelo comando \textbackslash\textbackslash. Para imprimir uma linha horizontal separando duas linhas da tabela deve-se utilizar o comando \textbackslash\textsf{hline}.\\
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{-8pt}
+    \begin{lstlisting}[language=TeX]
+    \vspace{0pt}
+    \begin{lstlisting}[language=TeX]
+    \begin{tabular}{|c|c|c|c|}
+        \hline Corrente (A) & Tensao (V) \\ 
+        \hline 0,0260 & 14,8 \\
+        \hline 0,0246 & 14,0 \\
+        \hline 0,0240 & 13,0 \\
+        \hline 0,0214 & 12,0 \\
+        \hline 
+    \end{tabular}
+    \end{lstlisting}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    \begin{tabular}{|c|c|c|c|}
+        \hline Corrente (A) & Tensao (V) \\ 
+        \hline 0,0260 & 14,8 \\
+        \hline 0,0246 & 14,0 \\
+        \hline 0,0240 & 13,0 \\
+        \hline 0,0214 & 12,0 \\
+        \hline 
+    \end{tabular} 
+\end{minipage} 
+
+Outros comandos também são importantes para a construção mas não trataremos deles aqui.
+
+\section{\textsf{table}}
+O ambiente \textsf{table} possibilita a inclusão de uma legenda para a tabela e trabalha a mesma como um objeto flutuante. A síntaxe deste ambiente, muito semelhante com a do ambiente \textsf{figure}, é
+\begin{lstlisting}[language=TeX]
+\begin{table}[place]
+    tabela
+    \caption{legend}
+    \label{P:tebela}
+\end{table}
+\end{lstlisting}
+onde \textsf{place} é o parâmetro que indica onde a tabela deve ser preferencialmente inserida (as opções disponíveis são apresentadas na Tabela \ref{tab:par_place_tab} e a opção padrão é \textsf{tbp}), \textsf{tabela} corresponde ao código da tabela a ser inserida, \textbackslash\textsf{caption} é o comando correspondente a legenda e \textsf{legend} é o texto a ser apresentado como legenda, \textbackslash\textsf{label} é o comando para referência cruzada como já apresentado.
+\begin{table}[!htb]
+    \centering
+    \caption{Opções disponíveis para \textsf{place}.}
+    \label{tab:par_place_tab}
+    \begin{tabular}{lp{0.8\textwidth}}
+        \hline
+        Código & Descrição \\ \hline
+        \textsf{h} & Na posição onde o código se encontra. \\
+        \textsf{t} & No topo de uma página. \\
+        \textsf{b} & No fim de uma página. \\
+        \textsf{p} & Em uma página separada. \\
+        \textsf{!} & Modifica algumas configurações a respeito de boa posição para objeto flutuante. \\ \hline
+    \end{tabular}
+\end{table}
+
+O código a seguir
+\begin{lstlisting}[language=TeX]
+\begin{table}[h!tb] \label{T:tab_exemp} \centering
+    \caption{Relacao entre corrente e tensao para determinado circuito.}
+    \begin{tabular}{|c|c|c|c|}
+        \hline Corrente (A) & Tensao (V) \\ 
+        \hline 0,0260 & 14,8 \\
+        \hline 0,0246 & 14,0 \\
+        \hline 0,0240 & 13,0 \\
+        \hline 0,0214 & 12,0 \\
+        \hline 
+    \end{tabular}
+\end{table}
+\end{lstlisting}
+produz a tabela abaixo.
+\begin{table}[h!tb] \label{T:tab_exemp} \centering
+    \caption{Relacao entre corrente e tensao para determinado circuito.}
+    \begin{tabular}{|c|c|c|c|}
+        \hline Corrente (A) & Tensao (V) \\ 
+        \hline 0,0260 & 14,8 \\
+        \hline 0,0246 & 14,0 \\
+        \hline 0,0240 & 13,0 \\
+        \hline 0,0214 & 12,0 \\
+        \hline 
+    \end{tabular}
+\end{table}
+
+Uma dica útil é que o comando \textbackslash\textsf{clearpage} força as tabelas pendentes a serem inseridas.
+
+\section{\textsf{Openoffice}}
+
+Muitas vezes temos uma tabela no \textsf{Calc}\footnote{O Calc é um dos aplicativos do pacote \textsf{Openoffice} e corresponde ao popular \textsf{Excel} do pacote \textsf{Microsoft Office}.} e desejamos transportá-la para o LaTeX. Para essa tarefa a macro \textsf{Calc2LaTeX}, disponível gratuitamente em \url{http://extensions.services.openoffice.org/en/project/Calc2LaTeX}, é bastante eficiente.

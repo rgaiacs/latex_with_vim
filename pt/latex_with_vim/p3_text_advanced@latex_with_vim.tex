@@ -1,0 +1,119 @@
+% Filename: p3_text_advanced@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:46:50 PM
+% Last Change: 29.03.12 11:47:06 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Trabalhando um texto: Parte 2} \label{C:text2}
+Neste capítulo continuaremos apresentado algumas ferramentas do LaTeX disponíveis para organizar um texto, agora voltadas para textos matemáticos, e apresentaremos o ambeinte \textsf{minipage}.
+
+\section{Nota de rodapé}
+
+Para produzir notas de rodapé deve-se utilizar o comando \textbackslash\textsf{footnote} que deve ocorrer imediatamente depois da palavra ou texto a que se refere a nota de rodapé e como parâmetro do comando o texto a ser inserido na nota de rodapé.
+
+\section{Referência cruzada} \label{sse:cross_reference}
+
+Existem dois tipos de referência cruzada, a primeira para alguma parte do documento e a segunda para um outro documento. Nesta seção abordaremos o primeiro tipo e o segundo será trabalhado no Capítulo~\ref{sch:latex::bibtex}.
+
+Para alguns comandos e ambientes o LaTeX atribui um número que pode ser vinculado a um nome pelo comando \textbackslash\textsf{label} e referenciado pelo comando \textbackslash\textsf{ref} ou \textbackslash\textsf{pageref}, para a página onde encontra-se o item referenciado.
+
+O argumento do comando \textbackslash\textsf{label} é uma sequencia de caracteres\footnote{Recomenda-se escolher uma sequencia ``amigável''}, case sensitive, que será utilizada como argumento do comando \textbackslash\textsf{ref} ao efetuar a referência.
+
+Ao utilizar os comandos \textbackslash\textsf{ref} ou \textbackslash\textsf{pageref} é aconselhavel precedé-los por um \verb+~+.
+
+\section{Citações}
+
+No LaTeX encontramos dois ambientes dedicados a citações. O primeiro deles é o \textsf{quote} próprío para citações de uma única linha e o segundo é o \textsf{quotation} adequado para citações de vários parágrafos.
+
+\section{Poemas}
+
+O ambiente \textsf{verse} é apropriado para poemas uma vez que nestes a separação entre linhas é essencial. Os versos são divididos pelo comando \textbackslash\textbackslash \ e as estrofes com linhas em branco.
+
+\section{Listas}
+
+Para a construção de listas podemos utilizar um dos quatro ambientes: \textsf{itemize}, \textsf{enumerate}, \textsf{description} ou \textsf{list}. E para a criação de sublistas basta adicionar um dos ambientes dentro de um já existente.
+
+Cada item de uma lista é identificado, no LaTeX, pelo comando \textbackslash\textsf{item} que deve preceder o texto.
+
+\subsection{\textsf{itemize}}
+O ambiente \textsf{itemize} utiliza um símbolo para indicar cada item da lista. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{lstlisting}[language=TeX]
+    \begin{itemize}
+        \item Primeiro;
+            \begin{itemize}
+                \item Subitem;
+            \end{itemize}
+        \item Segundo.
+    \end{itemize}
+    \end{lstlisting}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{itemize}
+        \item Primeiro;
+            \begin{itemize}
+                \item Subitem;
+            \end{itemize}
+        \item Segundo.
+    \end{itemize}
+\end{minipage}
+
+\subsection{\textsf{enumerate}}
+O ambiente \textsf{enumerate} numera cada um dos itens da lista. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{lstlisting}[language=TeX]
+    \begin{enumerate}
+        \item Primeiro;
+            \begin{enumerate}
+                \item Subitem;
+            \end{enumerate}
+        \item Segundo.
+    \end{enumerate}
+    \end{lstlisting}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{enumerate}
+        \item Primeiro;
+            \begin{enumerate}
+                \item Subitem;
+            \end{enumerate}
+        \item Segundo.
+    \end{enumerate}
+\end{minipage}
+
+\subsection{\textsf{description}}
+O ambiente \textsf{desciption} é adequado para a descrição de item de uma lista uma vez que cada item da lista é identificado por uma sequencia de caracteres negritado. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{lstlisting}[language=TeX]
+    \begin{description}
+        \item[Um] Primeiro;
+            \begin{description}
+                \item[Um.Um] Subitem;
+            \end{description}
+        \item[Dois] Segundo.
+    \end{description}
+    \end{lstlisting}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{description}
+        \item[Um] Primeiro;
+            \begin{description}
+                \item[Um.Um] Subitem;
+            \end{description}
+        \item[Dois] Segundo.
+    \end{description}
+\end{minipage}
+
+\subsection{\textsf{list}}
+O ambiente \textsf{list} é normalmente utilizado em macros, mas pode ser utilizado em documentos também, e apropriado para a criação de uma lista na qual precisa-se de um espaçamento específico. Maiores informações podem ser encontradas em \url{http://www.troubleshooters.com/linux/lyx/ownlists.htm}.

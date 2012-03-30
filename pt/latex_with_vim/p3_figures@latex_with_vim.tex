@@ -1,0 +1,187 @@
+% Filename: p3_figures@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:36:31 PM
+% Last Change: 30.03.12 12:08:16 AM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Figuras}
+No LaTeX é possível inserir figuras contidas em um arquivo de imagem ou desenhar uma\footnote{Os leitores interessados em desenhar uma figura utilizado diretamente no LaTeX devem procurar informações sobre o ambiente \textsf{picture}.}. Também podemos adicionar uma legenda para a figura.
+
+\section{Arquivos de imagem}
+
+Para inserir arquivos de imagem é necessário o pacote \textsf{graphicx}. Quando o arquivo de saída for um \textsf{PDF} a imagem a ser inserida pode encontrar-se em um dos seguintes formatos: \textsf{jpg}, \textsf{png} ou \textsf{pdf}.
+
+O comando \textbackslash\textsf{includegraphics} é o responsável por indicar a figura que será inserida, sendo a figura inserida ao longo do texto.. A síntaxe deste comando é
+\begin{latexcode}
+    \includegraphics[parameter=length]{file}
+\end{latexcode}
+em que \textsf{parameter} é um comando disponíveis (algumas opções disponíveis são apresentadas na Tabela \ref{tab:figure_size}), \textsf{length} é uma medida para \textsf{parameter} e \textsf{file} é o nome do arquivo que contem a imagem.
+\begin{table}[!htb]
+    \centering
+    \caption{Opções disponíveis para \textsf{parameter}.}
+    \label{tab:figure_size}
+    \input{tables/figure_size@latex_with_vim.tex}
+\end{table}
+
+Uma dica é que para \textsf{lenfth} podemos utilizar medidas correspondente a folha escolhida como por exemplo \textbackslash\textsf{textwidth} ou \textbackslash\textsf{textheight}.\\
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{-8pt}
+    \begin{latexcode}
+        \vspace{0pt}
+        \includegraphics[height=2cm]{fractal} \\
+        Fonte: \url{http://egpjoinville.files.wordpress.com/2009/10/fractal-2.jpg}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    \includegraphics[height=2cm]{figures/fractal} \\
+    Fonte: \url{http://egpjoinville.files.wordpress.com/2009/10/fractal-2.jpg}
+\end{minipage}
+
+Maiores informações podem ser encontradas em  \url{http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics}
+
+\section{\textsf{figure}}
+
+O ambiente \textsf{figure} possibilita a inclusão de uma legenda para a figura e trabalha a mesma como um objeto flutuante. A síntaxe deste ambiente é
+\begin{latexcode}
+    \begin{figure}[place]
+        imagem
+        \caption{legend}
+        \label{P:imagem}
+    \end{figure}
+\end{latexcode}
+onde \textsf{place} é o parâmetro que indica onde a figura deve ser preferencialmente inserida (as opções disponíveis são apresentadas na Tabela \ref{tab:figure_place} e a opção padrão é \textsf{tbp}), \textsf{imagem} corresponde ao código da figura a ser inserida, \textbackslash\textsf{caption} é o comando correspondente a legenda e \textsf{legend} é o texto a ser apresentado como legenda, \textbackslash\textsf{label} é o comando para referência cruzada como já apresentado.
+\begin{table}[!htb]
+    \centering
+    \caption{Opções disponíveis para \textsf{place}.}
+    \label{tab:figure_place}
+    \input{tables/figure_place@latex_with_vim.tex}
+\end{table}
+
+O exemplo a seguir foi gerado pelo código
+\begin{latexcode}
+    \begin{figure}[h!]
+        \includegraphics[height=2cm]{fractal}
+        \caption{Um exemplo de fractal.}
+        \label{F:fractal}
+    \end{figure}
+\end{latexcode}
+\begin{figure}[h!]
+    \includegraphics[height=2cm]{figures/fractal}
+    \caption{Um exemplo de fractal.}
+    \label{F:fractal}
+\end{figure}
+
+Como podemos observar pelo exemplo anterior, a figura é alinhada, por padrão, com a margem esquerda. Quando deseja-se centralizá-la pode-se utilizar o comando \textbackslash\textsf{centering}, como exemplificado abaixo.
+\begin{latexcode}
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[height=2cm]{fractal}
+        \caption{Um exemplo de fractal.}
+        \label{F:fractal}
+    \end{figure}
+\end{latexcode}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[height=2cm]{figures/fractal}
+    \caption{Um exemplo de fractal.}
+    \label{F:fractal}
+\end{figure}
+
+Uma dica útil é que o comando \textbackslash\textsf{clearpage} força as figuras pendentes a serem inseridas.
+
+Outras informações podem ser encontradas em \url{http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}.
+
+\section{Figuras lado a lado}
+
+Algumas é preciso apresentar duas ou mais figuras lado a lado e para isso podemos utilizar o ambiente \textsf{minipage} ou o pacote \textsf{subfig}.
+
+\subsection{\textsf{minipage}}
+
+Como já vimos, o ambiente \textsf{minipage} permite construir duas ou mais colunas. Para inserir duas figuras lado a lado podemos utilizar o seguinte esquema:
+\begin{latexcode}
+    \begin{figure}[place]
+        \begin{minipage}[pos]{width}
+            imagem1
+            \caption{legend1}
+            \label{P:imagem1}
+        \end{minipage}\hfill
+        \begin{minipage}[pos]{width}
+            imagem2
+            \caption{legend2}
+            \label{P:imagem2}
+        \end{minipage}
+    \end{figure}
+\end{latexcode}
+
+Ao utilizar o esquema anterior, cada figura recebe sua própria legenda, como pode ser observado no exemplo a seguir, de modo que para que cada figura receba uma sublegenda deve-se utilizar o pacote \textsf{subfig}.
+\begin{latexcode}
+    \begin{figure}[h!]
+        \begin{minipage}[t]{0.47\linewidth}
+            \centering
+            \includegraphics[height=2cm]{fractal}
+            \caption{Um exemplo de fractal.}
+        \end{minipage} \hfill
+        \begin{minipage}[t]{0.47\linewidth}
+            \centering
+            \includegraphics[height=2cm]{fractal2}
+            \caption{Outro exemplo de fractal.}
+        \end{minipage}
+    \end{figure}
+\end{latexcode}
+\begin{figure}[h!]
+    \begin{minipage}[t]{0.47\linewidth}
+        \centering
+        \includegraphics[height=2cm]{figures/fractal}
+        \caption{Um exemplo de fractal.}
+    \end{minipage} \hfill
+    \begin{minipage}[t]{0.47\linewidth}
+        \centering
+        \includegraphics[height=2cm]{figures/fractal2}
+        \caption{Outro exemplo de fractal.}
+    \end{minipage}
+\end{figure}
+
+\subsection{\textsf{subfig}}
+
+Para inserir duas figuras lado a lado podemos utilizar o seguinte esquema:
+\begin{latexcode}
+    \begin{figure}[place]
+        \centering
+        \subfloat[legend1]{\label{P:imagem1}image1}
+        \subfloat[legend2]{\label{P:imagem2}imagem2}
+        \caption{legend}
+        \label{P:imagem}
+    \end{figure}
+\end{latexcode}
+
+A seguir apresentamos um exemplo.
+\begin{latexcode}
+    \begin{figure}[h!]
+        \centering
+        \subfloat[Fractal 1.]{\label{F:fractal1}\includegraphics[height=2cm]{fractal}} \hspace{0.5cm}
+        \subfloat[Fractal 2.]{\label{F:fractal2}\includegraphics[height=2cm]{fractal2}}
+        \caption{Exemplos de fractais.}
+        \label{F:fractais}
+    \end{figure}
+\end{latexcode}
+\begin{figure}[h!]
+    \centering
+    \subfloat[Fractal 1.]{\label{F:fractal1}\includegraphics[height=2cm]{figures/fractal}} \hspace{0.5cm}
+    \subfloat[Fractal 2.]{\label{F:fractal2}\includegraphics[height=2cm]{figures/fractal2}}
+    \caption{Exemplos de fractais.}
+    \label{F:fractais}
+\end{figure}
+
+Ao invés do pacote \textsf{subfig} pode-se utilizar o pacote \textsf{subfigure} que é muito semelhante ao primeiro.

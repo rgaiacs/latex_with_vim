@@ -1,0 +1,127 @@
+% Filename: p4_basic@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:51:26 PM
+% Last Change: 29.03.12 11:52:33 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{LaTeX-suite: Parte 1} \label{V:LaTeX1}
+Neste capítulo descreveremos alguns dos comandos possibilitados pela LaTeX-suite disponível em: \url{http://vim-latex.sourceforge.net/}.
+
+\section{Configuração de idioma e customização}
+o arquivo \textsf{tex.vim} localizado em \textsf{\textasciitilde/.vim/ftplugin} permite customizar algumas funções do LaTeX-Suite.
+
+Ao utilizar o LaTeX-Suite com idiomas latinos pode-se encontrar alguma dificuldade com acentuação. Adicionar as seguintes linhas de código ao arquivo \textsf{tex.vim} deve ser suficiente.
+\begin{code}
+    "To solve the propleme with vim-latexsuite has with ascent
+    imap <buffer> <silent> <M-C> <Plug>Tex_MathCal
+    imap <buffer> <silent> <M-B> <Plug>Tex_MathBF
+    "imap <buffer> <leader>it <Plug>Tex_InsertItemOnThisLine
+    "imap <buffer> <silent> <M-A>  <Plug>Tex_InsertItem
+    "imap <buffer> <silent> <M-E>  <Plug>Tex_InsertItem
+    "imap <buffer> <silent> <M-e>  <Plug>Tex_InsertItemOnThisLine
+    imap <buffer> <silent> \c <Plug>Traditional
+    map <buffer> <silent> é  é
+    map <buffer> <silent> á  á
+    map <buffer> <silent> ã  ã
+    "imap ã <Plug>Tex_MathCal
+    "imap é <Plug>Traditional
+    imap <C-l> <Plug>Tex_LeftRight
+    imap <C-i> <Plug>Tex_InsertItemOnThisLine
+\end{code}
+
+Para que o LaTeX-Suite, ao compilar o arquivo \textsf{MAIN.tex}, produza um arquivo PDF deve-se adicionar as seguintes linhas no arquivo \textsf{tex.vim}.
+\begin{code}
+    let g:Tex_DefaultTargetFormat='pdf'
+    let g:Tex_MultipleCompileFormats='pdf'
+    let g:Tex_UseMakefile=1
+    let g:Tex_Menus=0
+\end{code}
+
+Já as seguintes linhas são sugeridas pelo manual do LaTeX-Suite.
+\begin{code}
+    " this is mostly a matter of taste. but LaTeX looks good with just a bit
+    " of indentation.
+    "set sw=2
+    " TIP: if you write your \label's as \label{fig:something}, then if you
+    " type in \ref{fig: and press <C-n> you will automatically cycle through
+    " all the figure labels. Very useful!
+    set iskeyword+=:
+\end{code}
+
+\section{Múltiplos arquivos}
+Como apresentado no Capítulo \ref{sch:latex:tex}, podemos, através dos comandos \textbackslash\textsf{input} e \textbackslash\textsf{include}, incluir um arquivo dentro do \textsf{MAIN.tex} e trabalhar assim com múltiplos arquivos.
+
+Para que o LaTeX-Suite trabalhe adequadamente múltiplos arquivos deve criar um arquivo vazio com o nome \textsf{MAIN.tex.latexmain} e com isso ao tentar compilar um arquivo que foi incluido no \textsf{MAIN.tex} o LaTeX-Suite compila o \textsf{MAIN.tex}.
+
+Para compilar o documento utiliza-se o comando \textbackslash\textsf{ll} e para visualizar \textbackslash\textsf{lv}.
+
+\section{\textit{Template}'s e preâmbulo}
+O comando \textsf{:TTemplate} lista e permite a seleção de um \textit{template} para o documento.
+
+Para alterar ou criar novos \textit{template}'s deve-se procuar a pasta \textsf{\textasciitilde/.vim/ftplugin/latex-suite/templates} que contem os arquivos referentes aos \textit{template}'s.
+
+Via de regra, os \textit{template}'s apresentam todos os pacotes que podem ser utilizados. Para incluir algum outro pacote deve-se digitar o nome do mesmo e pressionar \textsf{F7} que automaticamente é incluido o comando \textbackslash\textsf{usepackage}.
+
+\section{Auto-completar}
+Uma das grandes vantagens da LaTeX-suite é a função auto-completar. Para auto-completar ambientes utiliza-se a tecla \textsf{F5} e para comandos a tecla \textsf{F7}. Destaca-se que ao utilizar a tecla \textsf{F5} na linha deve constar apenas o nome do ambiente.
+
+Ao utilizar a função auto-completar irá aparecer algumas vezes o texto \textless++\textgreater que é um marcador utilizado pela LaTeX-suite para saltos. O comando \textsf{Ctrl}+\textsf{j} suprime a próxima ocorrência do marcador e posiciona o cursor no lugar.
+
+Como exemplos, podemos apresentar \textsf{ref}+\textsf{F7} que resulta em
+\begin{code}
+    \ref{}<++>
+\end{code}
+e \textsf{figure}+\textsf{F5} que resulta em
+\begin{code}
+    \begin{figure}[<+htpb+>]
+        \begin{center}
+            \psfig{figure=<+eps file+>}
+        \end{center}
+        \caption{<+caption text+>}
+        \label{fig:<+label+>}
+    \end{figure}<++>
+\end{code}
+
+Para expressões matemáticas, pode-se pressionar \textsf{F5} que o LaTeX-Suite abre uma lista de opções, como a apresentada abaixo.
+\begin{code}
+    Choose which environment to insert:
+    (1) eqnarray*   (2) eqnarray
+    (3) equation    (4) equation*
+    (5) \[          (6) $$
+    (7) align       (8) align*
+\end{code}
+Ao selecionar a opção $7$, por exemplo, temos como resultado o texto
+\begin{code}
+    \begin{align}
+
+        \label{<++>}
+    \end{align}<++>
+\end{code}
+
+\section{Referências}
+Para referências, pode-se pressionar \textsf{F7} que o LaTeX-Suite abre uma lista de opções, como a apresentada abaixo.
+\begin{code}
+    Choose a command to insert:
+    (1) footnote    (2) cite
+    (3) pageref     (4) label
+\end{code}
+Ao selecionar a opção $4$, por exemplo, temos como resultado o texto
+\begin{code}
+    \label{}<++>
+\end{code}
+
+Ao posicionar o cursor sobre o parâmetro do comando \textbackslash\textsf{ref}, \textbackslash\textsf{eqref} ou \textbackslash\textsf{cite} e pressionar \textsf{F9} o LaTeX-suite lista todos os comandos \textbackslash\textsf{label} existentes e permite selecionar o desejado.
+
+\section{Blocos}
+O comando \textsf{za} oculta ou mostra um bloco.

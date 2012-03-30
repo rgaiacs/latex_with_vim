@@ -1,0 +1,180 @@
+% Filename: p3_math03@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:42:41 PM
+% Last Change: 29.03.12 11:43:48 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Expressões matemáticas: Parte 3} \label{sch:latex:math3}
+Neste último capítulo sobre fórmulas matemáticas apresentaremos algumas dicas e recursos avançados. Maiores informações podem ser encontradas em \cite{Graetzer:2007:MoreMath}.
+
+\section{Alinhamento}
+O ambiente \textsf{equation} foi projetado para trabalhar apenas com equações de uma única linha, nesta seção vamos apresentar algumas formas de trabalhar com equações com várias linhas.
+
+Para multiplas equações alinhadas utilizamos o ambiente \textsf{align}, sendo cada linha separada pelo comando \textbackslash\textbackslash e o alinhamento por \&. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{align}
+            a^2 =& b^2 + c^2 \\
+            a &= \sqrt{b^2 + c^2}
+        \end{align}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{align}
+        a^2 =& b^2 + c^2 \\
+        a &= \sqrt{b^2 + c^2}
+    \end{align}
+\end{minipage}
+
+Quando o alinhamento ocorrer adjacente a um sinal de $=$, $+$, \dots devemos utilizar o comando \& antes do sinal.
+
+O ambiente \textsf{align} numera todas as equações. Caso não queira numerar uma ou mais equações deve-se utilizar o comando \textbackslash\textsf{notag} em cada linha correspondente.
+
+O comando \textbackslash\textsf{label} deve estar presente em cada linha.
+
+Quando desejar adicionar a alguma linha alguma anotação utiliza-se o comando \&\& entre a equação e a anotação. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{align}
+            a^2 &= b^2 + c^2 && \text{(Teorema de Pitagoras)} \\
+            a &= \sqrt{b^2 + c^2}
+        \end{align}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{align}
+        a^2 &= b^2 + c^2 && \text{(Teorema de Pitagoras)} \\
+        a &= \sqrt{b^2 + c^2}
+    \end{align}
+\end{minipage}
+
+\section{Fórmulas longas}
+Para fórmulas muito longas que extrapolam a largura da caixa de texto deve-se utilizar o ambiente \textsf{multline}.
+
+No ambiente \textsf{multline} deve-se quebrar a fórmula manualmente com o uso do comando \textbackslash\textbackslash. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{multline}
+            (x_{1} x_{2} x_{3} x_{4} x_{5} x_{6})^{2}\\
+            + (y_{1} y_{2} y_{3} y_{4} y_{5}
+            + y_{1} y_{3} y_{4} y_{5} y_{6}
+            + y_{1} y_{2} y_{4} y_{5} y_{6})^{2}\\
+            + (z_{1} z_{2} z_{3} z_{4} z_{5}
+            + z_{1} z_{3} z_{4} z_{5} z_{6}
+            + z_{1} z_{2} z_{4} z_{5} z_{6})^{2}\\
+            + (u_{1} u_{2} u_{3} u_{4} + u_{1} u_{2} u_{3} u_{5}
+            + u_{1} u_{2} u_{4} u_{5})^{2}
+        \end{multline}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{multline}
+        (x_{1} x_{2} x_{3} x_{4} x_{5} x_{6})^{2}\\
+        + (y_{1} y_{2} y_{3} y_{4} y_{5}
+        + y_{1} y_{3} y_{4} y_{5} y_{6}
+        + y_{1} y_{2} y_{4} y_{5} y_{6})^{2}\\
+        + (z_{1} z_{2} z_{3} z_{4} z_{5}
+        + z_{1} z_{3} z_{4} z_{5} z_{6}
+        + z_{1} z_{2} z_{4} z_{5} z_{6})^{2}\\
+        + (u_{1} u_{2} u_{3} u_{4} + u_{1} u_{2} u_{3} u_{5}
+        + u_{1} u_{2} u_{4} u_{5})^{2}
+    \end{multline}
+\end{minipage}
+
+\subsection{Ocultando termos}
+Ao trabalhar com fórmulas muito longas tenta-se diminuir o tamanho utilizando sequências e muitas vezes é aconcelhável indicar o número de termos. Para isso podemos utilizar os comandos \textbackslash\textsf{overbrace} ou \textbackslash\textsf{underbrace}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \underbrace{x_1 + \dots + x_n}_n
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    $\underbrace{x_1 + \dots + x_n}_n$
+\end{minipage}
+
+\section{Funções definidas por partes}
+É relativamente comum definirmos uma equações por partes e o ambiente adequado para representar esta construção é o \textsf{cases}.
+
+O ambiente \textsf{cases} é bastante semelhante com os ambientes \textsf{matrix} e \textsf{align}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $|x - 1| = \begin{cases}
+            x-1, &\text{se $x\geq1$;} \\
+            -x+1, &\text{se $x<1$.}
+        \end{cases}$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $|x - 1| = \begin{cases}
+        x-1, &\text{se $x\geq1$;} \\
+        -x+1, &\text{se $x<1$.}
+    \end{cases}$
+\end{minipage}
+
+\section{Sistemas}
+Para escrever sistemas de equações pode-se utilizar o pacote \textsf{empheq}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{empheq}[left=\empheqlbrace]{align}
+            a + b = 2 \\
+            a - b = 1
+        \end{empheq}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{empheq}[left=\empheqlbrace]{align}
+        a + b = 2 \\
+        a - b = 1
+    \end{empheq}
+\end{minipage}
+
+\section{Subequações}
+Quando quisermos trabalhar com variantes de uma mesma equação podemos utilizar o ambiente \textsf{subequations}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{subequations}\label{E:TeoPitG}
+            \begin{equation}\label{E:TeoPitG1}
+                a^2 + b^2 = c^2
+            \end{equation}
+            \begin{equation}\label{E:TeoPitG2}
+                \sqrt{a^2 + b^2} = c
+            \end{equation}
+        \end{subequations}
+        \ref{E:TeoPitG1} e \ref{E:TeoPitG1} sao versoes do Teorema de Pitagoras.
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
+    \begin{subequations}\label{E:TeoPitG}
+        \begin{equation}\label{E:TeoPitG1}
+            a^2 + b^2 = c^2
+        \end{equation}
+        \begin{equation}\label{E:TeoPitG2}
+            \sqrt{a^2 + b^2} = c
+        \end{equation}
+    \end{subequations}
+    \ref{E:TeoPitG1} e \ref{E:TeoPitG1} sao versoes do Teorema de Pitagoras.
+\end{minipage}
+
+\section{Caixas}
+Para dar destaque a uma fórmula pode-se envolve-la em uma caixa e para isso utiliza-se o comando \textbackslash\textsf{boxed}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $$ \boxed{a^2 + b^2 = c^2} $$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    $$ \boxed{a^2 + b^2 = c^2} $$
+\end{minipage}

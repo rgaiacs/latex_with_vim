@@ -1,0 +1,98 @@
+% Filename: p4_advanced@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:50:16 PM
+% Last Change: 29.03.12 11:51:14 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{LaTeX-suite: Parte 2} \label{V:LaTeX2}
+Neste capítulo apresentaremos alguns atalhos disponíveis no LaTeX-Suite.
+
+\section{Fonte}
+Três letras maiúsculas, onde a primeira é \textsf{F} e as duas outras uma identificação da fonte, são expandidads pelo LaTeX-Suite para o comando de troca do fonte do LaTeX. Na Tabela \ref{tab:vimlatex_font_shortcuts} apresenta-se alguns exemplos. 
+
+\begin{table}[h!tb]
+    \centering
+    \caption{Atalhos disponíveis para fontes.}
+    \label{tab:vimlatex_font_shortcuts}
+    \input{tables/vimlatex_font_shortcuts@latex_with_vim.tex}
+\end{table}
+
+\section{Ambientes}
+Algum ambientes também podem ser acessados pela combinação de três letras. Na Tabela \ref{tab:vimlatex_environment_shortcuts} apresentamos alguns deles.
+\begin{table}[h!tb]
+    \centering
+    \caption{Atalhos disponíveis para ambientes.}
+    \label{tab:vimlatex_environment_shortcuts}
+    \input{tables/vimlatex_environment_shortcuts@latex_with_vim.tex}
+\end{table}
+
+\section{Divisão do texto}
+As divisões para o texto permitidas pelo LaTeX e apresentadas no Capítulo \ref{sch:latex:publi} também podem ser acessadas pela combinação de três letras como descrito na Tabela \ref{tab:vimlatex_sectioning_shortcuts}.
+\begin{table}[h!tb]
+    \centering
+    \caption{Atalhos disponíveis para divisão.}
+    \label{tab:vimlatex_sectioning_shortcuts}
+    \input{tables/vimlatex_sectioning_shortcuts@latex_with_vim.tex}
+\end{table}
+
+\section{Símbolos matemáticos}
+O LaTeX-Suite apresenta alguns atalhos para alguns símbolos matemáticos e estes são apresentados na Tabela \ref{tab:vimlatex_math_shortcuts}.
+\begin{table}[h!tb]
+    \centering
+    \caption{Atalhos para símbolos matemáticos.}
+    \label{tab:vimlatex_math_shortcuts}
+    \input{tables/vimlatex_math_shortcuts@latex_with_vim.tex}
+\end{table}
+
+E o atalho `, corresponde ao comando \textbackslash\textsf{nonumber}.
+
+%No modo visual, estão disponíveis os atalhos apresentados na Tabela \ref{tab:math_mv}.
+%\begin{table}[h!tb]
+%\centering
+%\caption{Atalhos disponíveis no modo visual.}
+%\label{tab:math_mv}
+%\begin{tabular}{cc|cc}
+%\hline
+%Atalho & Comando & Atalho & Comando \\ \hline
+%`( &  \textbackslash\textsf{left}(  \textbackslash\textsf{right}) & `[ &  \textbackslash\textsf{left}[  \textbackslash\textsf{right}] \\
+%`{ &  \textbackslash\textsf{left}\textbackslash\{  \textbackslash\textsf{right}\textbackslash\{ & `\$ &  \$\$ \$\$ \\
+% \hline
+%\end{tabular}
+%\end{table}
+
+\section{Alfabeto Grego}
+
+\begin{table}[h!tb]
+    \centering
+    \caption{Atalhos para o Alfabeto Grego, letras minúsculas}
+    \label{tab:vimlatex_greek_shortcuts}
+    \input{tables/vimlatex_greek_shortcuts@latex_with_vim.tex}
+\end{table}
+
+\begin{table}[h!tb]
+    \centering
+    \caption{Atalhos para o Alfabeto Grego, letras maiúsculo}
+    \label{tab:vimlatex_greek_capital_shortcuts}
+    \input{tables/vimlatex_greek_capital_shortcuts@latex_with_vim.tex}
+\end{table}
+
+\section{\textsf{Ctrl} \textit{key}}
+Para utilizar um limitador juntamente com os comandos \textbackslash\textsf{left} e \textbackslash\textsf{right} deve-se inserir o delimitador e em seguida pressionar \textsf{Ctrl}+\textsf{l}. São permitido os seguinte limitadores: (, [, \{, \textbar e \textless.
+
+Caso seja pressionado \textsf{Ctrl}+\textsf{l} na ausência de um limitador é inserido o comando \textbackslash\textsf{label}.
+
+Já quando estiver dentro do ambiente \textsf{itemize} ou \textsf{enumerate} ao pressionar \textsf{Ctrl}+\textsf{l} o comando \textbackslash\textsf{item} é inserido.
+
+\section{\textit{Smart key}}
+Ao pressionar "(aspas dublas) o LaTeX-Suite troca-as por `` seguido por '' e ...(três pontos) por \textbackslash\textsf{ldots}, quando fora do modo matemático, ou \textbackslash\textsf{cdotes}, quando no modo matemático.

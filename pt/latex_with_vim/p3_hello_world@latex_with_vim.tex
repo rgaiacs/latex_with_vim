@@ -1,0 +1,211 @@
+% Filename: p3_hello_world@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:37:53 PM
+% Last Change: 29.03.12 11:39:37 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Hello world} \label{sch:latex:hello_world}
+Nos capítulos anteriores foi apresentado quais os aplicativos necessários para trabalhar com LaTeX e como instalá-los, as duas partes principais do arquivo \lcode{.tex} e descrevemos o \textit{preâmbulo}. Apartir deste capítulo abordaremos a segunda parte do arquivo \lcode{.tex} denominada de \textit{informação} que corresponde ao texto a ser gerado e neste primeiro momento apresentaremos os mais básicos conhecimentos necessários.
+
+\section{O teclado}
+
+Em todos os teclados encontramos as 52 letras (26 letras minúsculas + 26 letras maiúsculas) do alfabeto americano, os dez dígitos indo-arábicos, seis sinais de pontuação (\verb+ , ; . ? ! : +) e quatro parenteses (\verb+ ( ) [ ] +). Todos estas teclas são interpretadas como elas mesmas pelo LaTeX.
+
+Na seção \ref{sss:latex:babel} abordaremos como o LaTeX interpreta o espaço e enter (mudança de linha).
+
+As teclas correspondentes a \verb+ ` +, acento grave, \verb+ ' +, apóstrofe, e \verb+ - +, hífen, são interpretadas pelo LaTeX de acordo com os caracteres adjacentes.
+
+Os seis símbolos matemáticos (\verb: * + = < > / :) são interpretados de maneira diferentes quando no modo texto e no modo matemático\footnote{O modo matemático é apresentado nos capítulos \ref{sch:latex:math1}, \ref{sch:latex:math2}, \ref{sch:latex:math3} e \ref{sch:latex:math4}}.
+
+Existem, também, 13 símbolos especiais (\verb+ # $ % & ~ _ ^ \ { } @ " |+) que são interpretados pelo LaTeX de acordo com os caractéres adjacentes.
+
+Os demais caracteres disponíveis no teclado, quando utilizados, costumam produzir erro.
+
+\section{Idioma} \label{sss:latex:babel}
+O LaTeX foi desenvolvido inicialmente para o idioma inglês e, por isso, sua utilização em outros idiomas, pode ser um pouco complicada. Para facilitar o uso do LaTeX em outros idiomas pode-se utilizar o pacote \lcode{babel} de Johannes L. Braams.
+
+Para que o pacote \lcode{babel} funcione adequadamente, deve-se configurar o LaTeX de uma forma especial de acordo com codificação utilizada pelo arquivo \lcode{.tex}. As codificações mais comuns são Latin1 e UFT-8\footnote{O pacote \lcode{listings} não funciona adequadamente com esta codificação e por isso é fortemente aconcelhável utilizar a codificação Latin1.} sendo que para arquivos codificados com Latin1 deve-se adicionar a seguinte linha no preâmbulo
+\begin{latexcode}
+    \usepackage[latin1]{inputenc}
+\end{latexcode}
+enquanto que para arquivos codificados com UFT-8
+\begin{latexcode}
+    \usepackage[utf8]{inputenc}
+\end{latexcode}
+
+É importante que o editor que esteja sendo usado também esteja configurado para trabalhar com a codificação especificada. Quando uma codificação errada estiver sendo usada, o editor pode trocar ou omitir alguns caracteres.
+
+Está disponível no pacote \lcode{babel} as seguintes opções para o idioma português: \lcode{portuges}, \lcode{portuguese}, \lcode{brazil}, \lcode{brazilian}. As opções definem alguns ajustes referentes a traduções de alguns termos e uso de caixa alta e maiores detalhes podem ser encontrados em \cite{Braams:2008:Babel}.
+
+Em resumo, para os usuários que trabalham no Windows as seguintes linhas de código devem ser adicionas ao preâmbulo
+\begin{latexcode}
+    \usepackage[latin1]{inputenc}
+    \usepackage[brazil]{babel}
+\end{latexcode}
+enquanto que os usuários do Linux
+\begin{latexcode}
+    \usepackage[utf8]{inputenc}
+    \usepackage[brazil]{babel}
+\end{latexcode}
+
+\section{Primeiro documento}
+
+Com o que foi apresentado agora é possível gerar a saída para um arquivo \lcode{.tex} bem simples. \\ 
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{-8pt}
+    \begin{latexcode}
+        \documentclass[10pt,a4paper]{article}
+        \begin{document}
+        Hello world.
+        \end{document}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    Hello world.
+\end{minipage}
+
+Os exemplos que serão apresentados aparecerão seguindo o modelo acima, isto é, em duas colunas sendo a coluna da esquerda contendo o código LaTeX e a coluna da direita contendo a saída obtida. Por simplicidade, nos demais exemplos iremos apresentar apenas a \textit{informação}.
+
+\section{Espaços, linhas, parágrafos e páginas} \label{sss:lates:space}
+
+No LaTeX o espaço entre palavras apresenta uma particularidade, ao compilar o \lcode{MAIN.tex}, ele ignora dois ou mais espaços seguidos, como podemos observar a seguir.. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        Hello  world.(2 spaces)
+        Hello   world.(3 spaces)
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    Hello  world.(2 spaces)
+    Hello   world.(3 spaces)
+\end{minipage}
+
+Quando for necessário gerar dois ou mais espaços seguidos deve-se utilizar a barra invertida entre os espaços como ilustrado a seguir. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        Hello \ world.(2 spaces)
+        Hello \ \ world.(3 spaces)
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    Hello \ world.(2 spaces)
+    Hello \ \ world.(3 spaces)
+\end{minipage}
+
+Nos dois exemplos anteriores é possível verificar que a mudança de linha no código não produz uma nova linha no documento gerado. A mudança de linha no LaTeX é representada pelos comandos \textbackslash\textbackslash \ ou \textbackslash\lcode{newline}, como ilustrada a seguir. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        Hello world.[1] \\
+        Hello world.[2] \newline
+        Hello world.[3]
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    Hello world.[1] \\
+    Hello world.[2] \newline
+    Hello world.[3]
+\end{minipage}
+
+Já a mudança de parágrafo é indicada por uma linha em branco. 
+
+Quando for necessário forçar uma mudança de página utiliza-se o comando \textbackslash\lcode{newpage}. Assim como o LaTeX ignora dois ou mais espaços seguidos a mudança de linha e de página também é ignorada.
+
+Por último é importante avisar que, uma regra tipográfica padrão, o primeiro parágrafo de  capítulo, seções, \dots, não é identado. Quando desejar-se identar o primeiro parágrago uma solução é utilizar o pacote \lcode{indentfirst}.
+
+\section{Hifenização}
+
+O LaTeX tenta balancear o tamanho das linhas a serem geradas e para isso utiliza-se de um banco de dados para hifenizar, quando necessário, alguma palavra.
+
+Algumas vezes a hifenização ocorre de maneira inadequada e para corrigir devemos utilizar o comando \textbackslash\lcode{hyphenation} cujo parâmetro é uma lista de palavras, separadas por espaço, onde o comando - é utilizado para indicar onde a palavra pode ser separada.
+
+\section{Acentos}
+Para a acentuação deve-se proceder como na Tabela \ref{tab:diacritic}. Quando utilizado o pacote \lcode{babel}, apresentado na seção \ref{sss:latex:babel}, pode-se também proceder normalmente.
+\begin{table}[!htb]
+    \centering
+    \caption{Acentuação (utilizando a vogal ``o'' para exemplo).} \label{tab:diacritic}
+    \input{../../tables/diacrict@latex_with_vim.tex}
+\end{table}
+
+\section{Caracteres especiais}
+No LaTeX alguns caracteres apresentam forma própria de representação. A seguir enunciaremos alguns.
+
+\subsection{Aspas}
+Para as aspas não deve-se usar o caracter de aspas. Para abrir as aspas deve-se utilizar o acento simples e para fechar a aspa simples. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        `Hello world.' (aspas simples) \\
+        ``Hello world.'' (aspas dupla) \\
+        "Hello world." (errado)
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    `Hello world.' (aspas simples) \\
+    ``Hello world.'' (aspas dupla) \\
+    "Hello world." (errado)
+\end{minipage}
+
+\subsection{Traço}
+LaTeX admite três tipos de traço. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        sem-terra \\
+        08--10 hours \\
+        Campinas --- SP
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    sem-terra \\
+    08--10 hours \\
+    Campinas --- SP
+\end{minipage}
+
+\subsection{Pontos sucessivos}
+Utiliza-se o comando \textbackslash\lcode{dots} ou \textbackslash\lcode{ldots} para pontos sucessivos. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        patatoes, carrots \ldots (correta) \\
+        patatoes, carrots \dots (correta) \\
+        patatoes, carrots ... (errada) \\
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    patatoes, carrots \ldots (correta) \\
+    patatoes, carrots \dots (correta) \\
+    patatoes, carrots ... (errada) \\
+\end{minipage}
+
+\subsection{Pontuação e demais símbolos}
+Para pontuação e demais símbolos especias deve-se proceder como na Tabela \ref{tab:symbols}.
+\begin{table}[h!tb]
+    \centering
+    \caption{Para pontuação e símbolos especias.}
+    \label{tab:symbols}
+    \input{../../tables/symbols@latex_with_vim.tex}
+\end{table}
+
+Destaca-se que para que o símbolo \euro \ seja impresso é necessário que o \textit{preâmbulo} contenha a seguinte linha de código
+\begin{latexcode}
+    \usepackage[official]{eurosym}
+\end{latexcode}
+
+\section{Comentários}
+Também é possível inserir comentários no arquivo \lcode{.tex}, utilizando-se para isso do caractere \% de forma que todo o texto posterior ao mesmo e na mesma linha é considerado comentário e não é processado. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        Hello world.%comentario
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    Hello world.%comentario
+\end{minipage}

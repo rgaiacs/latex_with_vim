@@ -1,0 +1,171 @@
+% Filename: latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:18:28 PM
+% Last Change: 29.03.12 11:21:52 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\documentclass[12pt,a4paper,openright,twoside]{book}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{pb-diagram}
+\usepackage{graphicx, color}
+\usepackage[top=3cm,left=2cm,right=2cm,bottom=3cm]{geometry}
+\usepackage{subfig}
+\usepackage{enumerate}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{indentfirst}
+\usepackage{multirow}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{latexsym}
+\usepackage{makeidx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{breakurl}
+\usepackage{multicol}
+\usepackage{parcolumns}
+\usepackage{empheq}
+\usepackage[official]{eurosym}
+\lstset{
+breaklines=true,
+literate={é}{{\'e}}1 {á}{{\'a}}1 {ã}{{\~a}}1,
+}
+
+% New commands and environment.
+% Inline codes.
+\newcommand{\lcode}[1]{\texttt{#1}}
+% Display codes.
+\lstnewenvironment{code}{ }{ }
+\lstnewenvironment{latexcode}{ }{ }
+% File codes.
+\newcommand{\fcode}[1]{\lstinputlisting[frame=single,]{#1}}
+
+\begin{document}
+% Informations
+\title{\LaTeX\ com Vim (e Git) \\ \vspace*{4pt} \small{Versão 1.0}}
+\author{\url{https://github.com/r-gaia-cs/latex_with_vim/}}
+\maketitle
+
+% Frontmatter
+\frontmatter 
+
+\input{licence@latex_with_vim}
+
+% Preface
+\input{preface@latex_with_vim} 
+
+\tableofcontents 
+\listoftables
+
+% Mainmatter
+\mainmatter 
+
+\part{Introdu\c{c}\~{a}o}
+% Vim
+\input{p1_vim@latex_with_vim}
+
+% LaTeX
+\input{p1_latex@latex_with_vim}
+
+% Git
+\input{p1_git@latex_with_vim}
+
+\part{Vim}
+% Introdução
+\input{p2_basic_of_vim@latex_with_vim}
+
+% Primeiros comandos
+\input{p2_start_with_vim@latex_with_vim}
+
+% Comandos avançados
+\input{p2_advanced_vim@latex_with_vim}
+
+\part{\LaTeX}
+% Instalação
+\input{p3_install@latex_with_vim}
+
+% Arquivo \textsf{.tex}
+\input{p3_tex_file@latex_with_vim}
+
+% Preâmbulo
+\input{p3_preamble@latex_with_vim}
+
+% Hello world
+\input{p3_hello_world@latex_with_vim}
+
+% Trabalhando um texto: Parte 1
+\input{p3_text_basic@latex_with_vim}
+
+% Trabalhando um texto: Parte 2
+\input{p3_text_advanced@latex_with_vim}
+
+% Expressões matemáticas: Parte 1
+\input{p3_math01@latex_with_vim}
+
+% Expressões matemáticas: Parte 2
+\input{p3_math02@latex_with_vim}
+
+% Expressões matemáticas: Parte 3
+\input{p3_math03@latex_with_vim}
+
+% Expressões matemáticas: Parte 4
+\input{p3_math04@latex_with_vim}
+
+% Tabelas
+\input{p3_tables@latex_with_vim}
+
+% Figuras
+\input{p3_figures@latex_with_vim}
+
+% Códigos e algoritmos
+\input{p3_algorithm@latex_with_vim}
+
+% Bibliografias _ BibTeX
+\input{p3_bibtex@latex_with_vim}
+
+% Trabalhando publicações
+\input{p3_book@latex_with_vim}
+
+\part{Vim-Latex ou Latex-Suite}
+% LaTeX_suite: Parte 1
+\input{p4_basic@latex_with_vim}
+
+% LaTeX_suite: Parte 2
+\input{p4_advanced@latex_with_vim}
+
+\part{Git}
+% Instala\c{c}\~{a}o
+\input{p5_install@latex_with_vim}
+
+% B\'{a}sico
+\input{p5_basic@latex_with_vim}
+
+% Branches
+\input{p5_branches@latex_with_vim}
+
+% Remote
+\input{p5_remote@latex_with_vim}
+% Backmatter
+\backmatter 
+
+% References
+\bibliographystyle{alpha}
+\bibliography{../../references}
+\end{document}

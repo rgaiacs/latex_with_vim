@@ -1,0 +1,144 @@
+% Filename: p3_math02@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:41:27 PM
+% Last Change: 29.03.12 11:42:24 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Expressões matemáticas: Parte 2} \label{sch:latex:math2}
+Neste capítulo continuaremos trabalhando com fórmulas matemáticas e nosso objetivo é apresentar alguns comandos úteis.
+
+\section{Relações binárias}
+\begin{table}[h!tbp]
+    \caption{Relações binárias} \centering
+    \label{tab:math_binary_relations}
+    \input{tables/math_binary_relations@latex_with_vim.tex}
+\end{table}
+
+\section{Operadores binários}
+\begin{table}[h!tb]
+    \centering
+    \caption{Operadores binários}
+    \label{tab:math_binary_operations}
+    \input{tables/math_binary_operations@latex_with_vim.tex}
+\end{table}
+
+\section{Outros operadores}
+
+No LaTeX encontramos três categorias de operadores: \textit{puros}, não precisam de parâmetro, \textit{com intervalos}, são definidos apenas em um intervalo e para indicá-lo utilizas-se underscore e caret, e \textit{limites}. Nas Tabelas \ref{tab:math_functions1}, \ref{tab:math_functions2} e \ref{tab:math_functions3} apresentamos os operadores disponíveis no LaTeX.
+
+\begin{table}[h!tb]
+    \centering
+    \caption{Operadores \textit{puros}.}
+    \label{tab:math_functions1}
+    \input{tables/math_functions1@latex_with_vim.tex}
+\end{table}
+
+\begin{table}[h!tb]
+    \centering
+    \caption{Operadores \textit{com intervalos}.}
+    \label{tab:math_functions2}
+    \input{tables/math_functions2@latex_with_vim.tex}
+\end{table}
+
+\begin{table}[!htb]
+    \centering
+    \caption{\textit{Limites}.}
+    \label{tab:math_functions3}
+    \input{tables/math_functions3@latex_with_vim.tex}
+\end{table}
+
+Além destes operadores ainda temos o comando \textbackslash\textsf{sqrt} para raízes.
+
+A seguir alguns exemplos. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $\sin \frac{\pi}{2} = 1$ \\
+        $\int_0^\pi \sin x \, dx = 2$ \\
+        $\lim_{x \to 0} x = 0$ \\
+        $\sqrt{4} = 2$ \\
+        $\sqrt[3]{8} = 2$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $\sin \frac{\pi}{2} = 1$ \\
+    $\int_0^\pi \sin x \, dx = 2$ \\
+    $\lim_{x \to 0} x = 0$ \\
+    $\sqrt{4} = 2$ \\
+    $\sqrt[3]{8} = 2$
+\end{minipage}
+
+O LaTeX também permite definirmos novos operadores \textit{puros} pelo comando
+\begin{latexcode}
+    \DeclareMathOperator{comando}{resultado}
+\end{latexcode}
+onde \textsf{comando} corresponde ao comando a ser utilizado para o novo operador e \textsf{resultado} é o texto apresentado como resultado. Este comando é muito utilizado para a tradução de alguns operadores, como por exemplo o seno.
+
+\subsection{Binomial}
+Utiliza-se o comando \textbackslash\textsf{binom} para os binomios. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $\binom{a}{b} + \binom{a+1}{b} = \binom{a+1}{b+1}$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $\binom{a}{b} + \binom{a+1}{b} = \binom{a+1}{b+1}$
+\end{minipage}
+
+\subsection{Congruências}
+A forma mais comum para congruências corresponde ao uso dos comandos \textbackslash\textsf{equiv} e \textbackslash\textsf{pmod}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $a \equiv b \pmod{v}$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $a \equiv b \pmod{v}$
+\end{minipage}
+
+\section{Setas}
+\begin{table}[h!tb]
+    \centering
+    \caption{Setas}
+    \label{tab:math_arrows}
+    \input{tables/math_arrows@latex_with_vim.tex}
+\end{table}
+
+\section{Outros símbolos}
+\begin{table}[!htb]
+    \centering
+    \caption{Outros símbolos matemáticos}
+    \label{tab:math_others}
+    \input{tables/math_others@latex_with_vim.tex}
+\end{table}
+
+\begin{table}[h!tb]
+    \centering
+    \caption{Alfabeto Hebreu}
+    \label{tab:math_hebrew}
+    \input{tables/math_hebrew@latex_with_vim.tex}
+\end{table}
+
+\begin{table}[h!tb]
+    \centering
+    \caption{Alfabeto Grego, letras minúsculas}
+    \label{tab:math_greek}
+    \input{tables/math_greek@latex_with_vim.tex}
+\end{table}
+
+\begin{table}[h!tb]
+    \centering
+    \caption{Alfabeto Grego, letras maiúsculo}
+    \label{tab:math_greek_capital}
+    \input{tables/math_greek_capital@latex_with_vim.tex}
+\end{table}

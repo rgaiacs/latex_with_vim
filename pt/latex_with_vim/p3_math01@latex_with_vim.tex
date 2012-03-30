@@ -1,0 +1,347 @@
+% Filename: p3_math01@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:40:38 PM
+% Last Change: 29.03.12 11:41:14 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Expressões matemáticas: Parte 1} \label{sch:latex:math1}
+Neste e nos próximos dois capítulos, abordaremos o modo matemático do LaTeX, tendo estes capítulos sido baseados em \cite{Graetzer:2007:MoreMath} e é necessário o uso dos pacotes \textsf{amsmath}, \textsf{amsfonts}, \textsf{amssymb} e \textsf{amsthm}.
+
+Neste capítulo iremos apresentar o modo matemático e os comandos básicos para escrita de fórmulas e expressões matemáticas. No capítulo \ref{sch:latex:math2} apresentamos algumas tabelas e algumas dicas enquanto no capítulo \ref{sch:latex:math3} abordaremos alguns tópicos mais avançados do modo matemático.
+
+\section{Modo matemático}
+Para que expressões matemáticas seja processadas corretamentes, deve-se mudar do modo texto para o modo matemático, o que pode ser feito de várias maneiras.
+
+A apresentação de expressões matemáticas pode ocorrer de duas maneiras: \textit{inline}, quando aparecem na mesma linha do texto, e \textit{displayed}, quando aparecem em uma linha própria e centralizada.
+
+A seguir, informaremos como proceder para produzir expressões matemáticas \textit{inline} ou \textit{displayed}.
+
+\subsection{\textit{Inline}}
+Expressões matemáticas \textit{inline} devem ser iniciadas por \texttt{\$} e fechadas por \texttt{\$} ou iniciadas por \textbackslash\texttt{)} e fechadas por \textbackslash\texttt{)}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $1 + 1 = 2$ \\
+        \(1 + 1 = 2\)
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $1 + 1 = 2$ \\
+    \(1 + 1 = 2\)
+\end{minipage}
+
+\subsection{\textit{Displayed}}
+Expressões matemáticas \textit{displayed} devem ser iniciadas por \texttt{\$\$} e fechadas por \texttt{\$\$} ou iniciadas por \textbackslash\texttt{[} e fechadas por \textbackslash\texttt{]}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $$1 + 1 = 2$$
+        \[1 + 1 = 2\]
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $$1 + 1 = 2$$
+    \[1 + 1 = 2\]
+\end{minipage}
+
+Alguns ambientes, como \textsf{equation}, \textsf{eqnarray} e \textsf{align}, também produzem expressões matemáticas \textit{displayed}.
+
+\section{Primeiros comandos no modo matemático}
+
+A seguir enunciaremos como proceder para produzir as primeiras equações, mas antes é importante saber que o modo matemático ignora os espaços, salvo quando este é indicado explicitamente, isto é, utiliza-se o comando \textbackslash.
+
+\subsection{Operações aritméticas básicas}
+As operações aritméticas básicas são escritas normalmente, exceto pela multiplicação que utiliza-se dos comandos \textbackslash\textsf{times} ou \textbackslash\textsf{cdot} e das frações representada pelo comando \textbackslash\textsf{frac}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $a + b$ \\
+        $a - b$ \\
+        $a b$ \text{ ou } $a \times b$  \text{ ou } $a \cdot b$ \\
+        $a / b$ \text{ ou } $\frac{a}{b}$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $a + b$ \\
+    $a - b$ \\
+    $a b$ \text{ ou } $a \times b$  \text{ ou } $a \cdot b$ \\
+    $a / b$ \text{ ou } $\frac{a}{b}$
+\end{minipage}
+
+\subsection{Índices e expoentes}
+Já indices e expoentes são indicados pelos respectivos comandos: underscore, \_, e caret,\textasciicircum. Por padrão apenas o primeiro símbolo depois do comando é alterado, quando for necessário mais de um símbolo deve-se utilizar chaves.
+
+O símbolo prime, muito utilizado para derivadas, já vem posicionado corretamente. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $a a = a^2$ \\
+        $a_1, a_2, \dots, a_11, a_{12}$ \\
+        $f'(x)$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $a a = a^2$ \\
+    $a_1, a_2, \dots, a_11, a_{12}$ \\
+    $f'(x)$
+\end{minipage}
+
+\subsection{Limitadores}
+Parênteses, colchetes e chaves são exemplos de limitadores. Pode-se utilizar parênteses e colchetes normalmente e para chaves os comandos \textbackslash\{ e \textbackslash\}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $(a + b) + c = a + (b + c)$ \\
+        $[a + b] + c = a + [b + c]$ \\
+        $\{a + b\} + c = a + \{b + c\}$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $(a + b) + c = a + (b + c)$ \\
+    $[a + b] + c = a + [b + c]$ \\
+    $\{a + b\} + c = a + \{b + c\}$
+\end{minipage}
+
+Para expressões matemáticas longas é aconselável utilizar os comandos \textbackslash\texttt{left} e \textbackslash\texttt{right} anteriormente ao limitador para ajustá-lo verticalmente. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $\left( \frac{a}{b} \right) = a \left( \frac{1}{b} \right)$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $\left( \frac{a}{b} \right) = a \left( \frac{1}{b} \right)$
+\end{minipage}
+
+A Tabela \ref{tab:math_delimiter} apresenta outros limitadores disponíveis no LaTeX.
+\begin{table}[h!tb]
+    \centering
+    \caption{Limitadores disponíveis no LaTeX.}
+    \label{tab:math_delimiter}
+\end{table}
+
+\subsection{Matrizes}
+Para a construção de matrizes utiliza-se o ambiente \textsf{matrix} onde as colunas são separadas por \& e as linhas por \textbackslash\textbackslash. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $\begin{matrix}
+            2 & a+b \\
+            \frac{a}{b} & a^2
+        \end{matrix}$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $\begin{matrix}
+        2 & a+b \\
+        \frac{a}{b} & a^2
+    \end{matrix}$
+\end{minipage}
+
+Destaca-se que o ambiente \textsf{matrix} só pode ser utilizado dentro do ambiente matemático e que na última linha não utiliza-se o comando \textbackslash\textbackslash, mudança de linha.
+
+Pode-se utilizar limitadores envolvendo o ambiente \textsf{matrix} ou utilizar uma variante: \textsf{pmatrix} ou \textsf{vmatrix}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $\begin{pmatrix}
+            2 & a+b \\
+            \frac{a}{b} & a^2
+        \end{pmatrix} \\
+        \begin{vmatrix}
+            2 & a+b \\
+            \frac{a}{b} & a^2
+        \end{vmatrix}$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $\begin{pmatrix}
+        2 & a+b \\
+        \frac{a}{b} & a^2
+    \end{pmatrix} \\
+    \begin{vmatrix}
+        2 & a+b \\
+        \frac{a}{b} & a^2
+    \end{vmatrix}$
+\end{minipage}
+
+\section{Acentos}
+Os acentos disponíveis no modo matemático são apresentados na Tabela \ref{tab:math_accents}.
+\begin{table}[h!tb]
+    \centering
+    \caption{Acentos disponíveis no modo matemático, utilizando como exemplo \textsf{a}.}
+    \label{tab:math_accents}
+\end{table}
+
+\section{Textos}
+
+Para a inclusão de textos dentro de expressões matemáticas utiliza-se o comando \textbackslash\textsf{text}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        $a = b,\text{por hipotese.} \\
+        a = b,\text{ por hipotese.}$
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    $a = b,\text{por hipotese.} \\
+    a = b,\text{ por hipotese.}$
+\end{minipage}
+Como podemos observar pelo exemplo, o comando \textbackslash\textsf{text} é sensivel a espaços.
+
+\section{Equações e referenciação} \label{sse:latex:equation}
+Para o uso de expressões matemáticas a serem referenciadas posteriormente, recomenda-se o ambiente \textsf{equation} em conjunto com o comando \textbackslash\textsf{label}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{equation}\label{E:TeoPit}
+            a^2 = b^2 + c^2
+        \end{equation}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{equation}\label{E:TeoPit}
+        a^2 = b^2 + c^2
+    \end{equation}
+\end{minipage}
+
+Sendo que \textsf{E:TeoPit} correspondente ao parâmetro do comando \textbackslash\textsf{label}, como apresentado na seção \ref{sse:cross_reference}. A referência a equação ocorre pelo comando \textbackslash\textsf{ref} ou \textbackslash\textsf{eqref}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        Na equacao (\ref{E:TeoPit}) $a$ corresponde a hipotenusa de um triangulo e os catetos sao $b$ e $c$. \\
+        A equacao \eqref{E:TeoPit} e conhecida como Teorema de Pitagoras.
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    Na equacao (\ref{E:TeoPit}) $a$ corresponde a hipotenusa de um triangulo e os catetos sao $b$ e $c$. \\
+    A equacao \eqref{E:TeoPit} e conhecida como Teorema de Pitagoras.
+\end{minipage}
+Como notamos pelo exemplo, ao utilizar o comando \textbackslash\textsf{eqref} não precisamos envolvé-lo com parênteses.
+
+\subsection{Tags}
+O comando \textsf{\textbackslash tag} do LaTeX nomeia uma equação e a referência passa a ser feito por este. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        Sem tag: \begin{equation}\label{E:TeoPit_st}
+            a^2 + b^2 = c^2
+        \end{equation} \\
+        Com tag: \begin{equation}\label{E:TeoPit_ct} 
+            \tag{Teorema de Pitagoras}
+            a^2 + b^2 = c^2
+        \end{equation} \\
+        \eqref{E:TeoPit_st} e \eqref{E:TeoPit_ct} sao equivalentes.
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    Sem tag: \begin{equation}\label{E:TeoPit_st}
+        a^2 + b^2 = c^2
+    \end{equation} \\
+    Com tag: \begin{equation}\label{E:TeoPit_ct} 
+        \tag{Teorema de Pitagoras}
+        a^2 + b^2 = c^2
+    \end{equation} \\
+    \eqref{E:TeoPit_st} e \eqref{E:TeoPit_ct} sao equivalentes.
+\end{minipage}
+
+No exemplo anterior nota-se que o nome atribuido pelo comando \textsf{\textbackslash tag} encontra-se entre parênteses, para excluir os parênteses pode-se utilizar o comando \textbackslash\textsf{tag}\textasteriskcentered . \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        Sem parenteses: \begin{equation}\label{E:TeoPit_ctp} 
+            \tag*{Teorema de Pitagoras}
+            a^2 + b^2 = c^2
+        \end{equation}
+    \end{latexcode}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    Sem parenteses: \begin{equation}\label{E:TeoPit_ctp} 
+        \tag*{Teorema de Pitagoras}
+        a^2 + b^2 = c^2
+    \end{equation}
+\end{minipage}
+
+Vale destacar que podemos utilizar o comando \textbackslash\textsf{label} como parâmetro do comando \textbackslash\textsf{tag}.
+
+\section{\textbackslash\textsf{newtheorem}}
+O comando \textbackslash\textsf{newtheorem} deve ser inserido no \textit{preâmbulo} e é responsável por criar um ambiente numerado para informações. Sua síntaxe é
+\begin{latexcode}
+    \newtheorem{nome}{texto}
+\end{latexcode}
+onde \textsf{nome} é o nome do ambiente a ser criado e \textsf{texto} é a sequência de caracteres que precede a numeração.
+
+É possível que o ambiente a ser criado utilize também uma outra numeração disponível. No seguinte exemplo
+\begin{latexcode}
+    \newtheorem{nome}{texto}[section]
+\end{latexcode}
+utiliza-se a numeração da seção.
+
+Quando desejar-se não numerar deve-se utilizar a síntaxe
+\begin{latexcode}
+    \newtheorem*{nome}{texto}
+\end{latexcode}
+
+Para fazer uso do novo ambiente deve-se utilizar a síntaxe padrão para um ambiente
+\begin{latexcode}
+    \begin{nome}
+        ...
+    \end{nome}
+\end{latexcode}
+ou ainda
+\begin{latexcode}
+    \begin{nome}[XXX]
+        ...
+    \end{nome}
+\end{latexcode}
+onde \textsf{XXX} é uma sequencia de caracteres que aparece entre parênteses logo após a numeração.
+
+\section{\textsf{proof}}
+
+O ambiente \textsf{proof} é destinada a demonstrações e caracterizado por terminar com o comando \textbackslash\textsf{qed}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{proof}
+            $a^2 + b^2 = c^2$
+        \end{proof}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{proof}
+        $a^2 + b^2 = c^2$
+    \end{proof}
+\end{minipage}
+
+Para trocar o nome \textsf{Demonstração} que precede o ambiente \textsf{proof} pode-se utilizar a sintaxe
+\begin{latexcode}
+    \begin{proof}[XXX]
+        ...
+    \end{proof}
+\end{latexcode}
+onde \textsf{XXX} é a sequencia de caracteres que vai aparecer no lugar de \textsf{Demonstração}.
+
+O ambiente \textsf{proof}, como podemos observar no exemplo abaixo, não trabalha adequadamente quando é finalizado com uma expressão matemática \textit{displayed}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{proof}
+            $$a^2 + b^2 = c^2$$
+        \end{proof}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{proof}
+        $$a^2 + b^2 = c^2$$
+    \end{proof}
+\end{minipage}
+
+Para corrigir essa falha deve-se proceder como a seguir. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{proof}
+            $$a^2 + b^2 = c^2 \qedhere$$
+        \end{proof}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{proof}
+        $$a^2 + b^2 = c^2 \qedhere$$
+    \end{proof}
+\end{minipage}

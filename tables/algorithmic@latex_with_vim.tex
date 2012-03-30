@@ -1,0 +1,42 @@
+% Filename: algorithmic@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 30.03.12 12:11:31 AM
+% Last Change: 30.03.12 12:11:38 AM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\begin{tabular}{p{0.57\linewidth}p{0.4\linewidth}}
+    \hline
+    Código & Descrição \\ \hline
+    \textbackslash\textsf{STATE} \textless\textsf{texto}\textgreater & Execução de um comando. \\
+    \textbackslash\textsf{IF}\{\textless\textsf{cond}\textgreater\} \textless\textsf{texto}\textgreater \ \textbackslash\textsf{ENDIF} & Condicional \textit{if}. \\
+    \textbackslash\textsf{IF}\{\textless\textsf{cond}\textgreater\} \textless\textsf{texto}\textgreater \ \textbackslash\textsf{ELSE} \textless\textsf{texto}\textgreater \ \textbackslash\textsf{ENDIF} & Condicional \textit{if-else}. \\
+    \textbackslash\textsf{IF}\{\textless\textsf{cond}\textgreater\} \textless\textsf{texto}\textgreater \ \textbackslash\textsf{ELSEIF}\{\textless\textsf{cond}\textgreater\} \textless\textsf{texto}\textgreater \ \textbackslash\textsf{ELSE} \textless\textsf{texto}\textgreater \ \textbackslash\textsf{ENDIF} & Condicional \textit{if-else}, o comando \textbackslash\textsf{ELSEIF} pode ser utilizado mais de uma vez. \\
+    \textbackslash\textsf{FOR}\{\textless\textsf{cond}\textgreater\} \textless\textsf{texto}\textgreater \ \textbackslash\textsf{ENDFOR} & Loop \textit{for}. \\
+    \textbackslash\textsf{FORALL}\{\textless\textsf{cond}\textgreater\} \textless\textsf{texto}\textgreater \ \textbackslash\textsf{ENDFOR} & Loop \textit{for all}. \\
+    \textbackslash\textsf{WHILE}\{\textless\textsf{cond}\textgreater\} \textless\textsf{texto}\textgreater \ \textbackslash\textsf{ENDWHILE} & Loop \textit{while}. \\
+    \textbackslash\textsf{REPEAT} \textless\textsf{texto}\textgreater \ \textbackslash\textsf{UNTIL}\{\textless\textsf{cond}\textgreater\}  & Loop \textit{repeat-until}. \\
+    \textbackslash\textsf{LOOP} \textless\textsf{texto}\textgreater \ \textbackslash\textsf{ENDLOOP} & Loop infinito. \\
+    \textbackslash\textsf{TO} & Equivalente a ``até'', para indicar intervalos. \\
+    \textbackslash\textsf{TRUE} & Variável booleana. \\
+    \textbackslash\textsf{FALSE} & Variável booleana. \\
+    \textbackslash\textsf{AND} & Operador lógico \textit{and}. \\
+    \textbackslash\textsf{OR} & Operador lógico \textit{or}. \\
+    \textbackslash\textsf{XOR} & Operador lógico \textit{xor}. \\
+    \textbackslash\textsf{NOT} & Operador lógico \textit{not}. \\
+    \textbackslash\textsf{REQUIRE} \textless\textsf{texto}\textgreater & Condicional. \\
+    \textbackslash\textsf{ENSURE} \textless\textsf{texto}\textgreater & Teste de resultado. \\
+    \textbackslash\textsf{RETURN} \textless\textsf{texto}\textgreater & Valor de retorno. \\
+    \textbackslash\textsf{PRINT} \textless\textsf{texto}\textgreater & Imprime um texto. \\
+    \textbackslash\textsf{COMMENT} \textless\textsf{texto}\textgreater & Comentário. \\ \hline
+\end{tabular}

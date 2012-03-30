@@ -1,0 +1,62 @@
+% Filename: p3_tex_file@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:46:11 PM
+% Last Change: 29.03.12 11:46:27 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Arquivo \lcode{.tex}} \label{sch:latex:tex}
+O LaTeX utiliza \lcode{.tex} como extensão padrão. O arquivo \lcode{MAIN.tex}, onde \lcode{MAIN} representa o nome do arquivo \lcode{.tex}, é um arquivo de texto, estruturado em duas partes:
+\begin{enumerate}
+    \item \textit{preâmbulo}
+    \item \textit{informação}
+\end{enumerate}
+sendo que a segunda parte deve-se encontrar disposta no lugar de \lcode{XXX} do código abaixo:
+\begin{latexcode}
+    \begin{document}
+    XXX
+    \end{document}
+\end{latexcode}
+
+LaTeX permite incluir um arquivo dentro do \lcode{MAIN.tex}, isto é, trabalhar com múltiplos arquivos. Os arquivos a serem incluídos também possuem a extensão \lcode{.tex} mas devem conter apenas a \textit{informação}.\footnote{Ao trabalhar com múltiplos arquivos apenas precisa-se compilar o arquivo \lcode{MAIN.tex}.}
+
+Nos próximos capítulos trataremos detalhadamente do \textit{preâmbulo} e da \textit{informação}. No momento, vamos tratar de como trabalhar com múltiplos arquivos.
+
+\section{\textbackslash\lcode{input}}
+
+A primeira forma de incluir um arquivo é com o comando \textbackslash\lcode{input}, como ilustrado a seguir:
+\begin{latexcode}
+    \input{aux}
+\end{latexcode}
+onde \lcode{aux} é o nome do arquivo a ser incluído.
+
+Quando o arquivo principal for compilado o arquivo \lcode{aux.tex} será lido e processado exatamente como se tive-se sido inserido na posição que o comando \textbackslash\lcode{input} ocupa.
+
+\section{\textbackslash\lcode{include}}
+
+A segunda forma de incluir um arquivo é com o comando \textbackslash\lcode{include}, como ilustrado a seguir:
+\begin{latexcode}
+    \include{aux}
+\end{latexcode}
+onde \lcode{aux} é o nome do arquivo a ser incluído. Pode-se utilizar o comando \textbackslash\lcode{include} em conjunto com o comando \textbackslash\lcode{includeonly} para uma inclusão seletiva de arquivos.
+
+Se o arquivo estiver listado no comando \textbackslash\lcode{includeonly} ou não existir tal comando, o comando \textbackslash\lcode{include} é equivalente a
+\begin{latexcode}
+    \clearpage \input{aux} \clearpage
+\end{latexcode}
+se o arquivo não estiver listado o comando \textbackslash\lcode{include} é equivalente a
+\begin{latexcode}
+    \clearpage
+\end{latexcode}
+
+Destaca-se que o comando \textbackslash\lcode{include} só pode ser utilizado no arquivo principal e nunca no \textit{preâmbulo}.

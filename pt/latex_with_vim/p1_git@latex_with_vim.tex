@@ -1,0 +1,168 @@
+% Filename: p1_git@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:29:02 PM
+% Last Change: 29.03.12 11:29:45 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Git}
+Alguns artigos muito interessantes s\~{a}o:
+\begin{enumerate}
+    \item \url{http://www.dribin.org/dave/blog/archives/2007/12/28/dvcs/}
+        \begin{quote}
+            Choosing a Distributed Version Control System
+            By Dave on December 28, 2007 4:17 PM | Permalink
+            Version control systems. If you’re a software developer, you’re (hopefully) using one. The most popular version control system (VCS) is no doubt Subversion. It’s what I currently use on every one of my projects, both personal and business. While Subversion is a great improvement over previous VCSs I’ve used (CVS, RCS, SCCS, ClearCase and home grown), it’s not without its warts. And unless you’ve been living under a rock, it’s starting to get some serious competition. I’ve decided to play the field and see what this competition has to offer.
+
+            The Rise of Distributed Version Control Systems
+
+            Within the last year, distributed version control systems (DVCSs) have really started to break into mainstream development. DVCSs are a different way of thinking about version control. They break the mold of a single, central repository that most VCSs have, like Subversion and CVS. A distributed VCS is different. Each user checks out their own full copy of the repository and commit locally to it. These changes may then be shared with others, often by syncing to a canonical repository.
+
+            I’m not going to talk much about how DVCSs work or the benefits of a distributed VCS versus a central VCS. That has already been much discussed elsewhere. I highly recommend watching Linus Torvalds’ YouTube video on Git and reading Wincent Colaiuta’s piece called Why Distributed Version Control.
+
+            The Options
+
+            My own personal desire came when I was without Internet access for a few days (shocking, I know), and realized that offline commits would be really useful. Also, I’ve many times thought it would be nice to be able to do local commits during a large feature. DVCSs solve both of these issues cleanly and elegantly. Commit to your local repository, and push out the changes when you have an Internet connection or when you’re confident the feature is stable enough.
+
+            So now that I’d bought into DVCS hype, I decided it was time to kick the tires and try them out. As a new user, I’ve found that choosing a DVCS is a bit overwhelming. The number of DVCSs to choose from is staggering: Git, Mercurial, Bazaar, darcs, Monotone, Codeville, arch. The big three I decided to look at are Git, Mercurial, and Bazaar. After spending a day look these, I’m still not fully decided, but here are my thoughts so far.
+
+            What’s Wrong with Subversion
+
+            Before going into the details, let me first cover what I think is wrong with Subversion. Subversion is a great step up from CVS, but here’s what bothers me:
+
+            The whole trunk/tags/branches convention
+            No offline commits
+            .svn files everywhere
+            svn:external is weak
+            I understand that copies are a cheap operation in Subversion, but that’s an implementation detail. Tags should be immutable. No, I’ve never accidentally checked out a branch and committed to one. But still, if it’s a convention and “best practice” to use trunk/tags/branches, Subversion should have the concept of a “project” built in. If a theoretical svn tag is implemented as a copy under the hood, then so be it. That’s an implementation detail.
+
+            Instead of svn:external, I use Piston. This makes it easy to lock an external to a tag, and then switch tags as you change versions. It works pretty well, if not a bit slow.
+
+            You’ll notice I don’t even mention branching and merging. I’ve never used it, mainly because I haven’t felt the need. Also, because it’s hard. Repeated merges from a branch are painful. This is one area that Linus harps on. He claims that maybe if Subversion branching and merging didn’t suck so much, people would actually use them. Quite possible, but as of now, it’s not something that bothers me.
+
+            Git
+
+            Git is the DVCS being used for Linux kernel development. It was started by Linus himself after the whole BitKeeper Debacle of ‘05. While it started off as very user-unfriendly, and something only Linus could love, in the last year it has grown much better. It has since gained a lot of traction and is arguably the most popular system.
+
+            The Mac blogosphere has been a buzz with developers switching or looking into Git over the last six months. Wincent Colaiuta has been actively blogging about his use of Git since his switch to July. Michael Tsai also switched to Git around July. Fraser Speirs has a couple posts about being intrigued by Git (1, 2). Bill Bumgarner claims Git will eat Subversion’s Lunch (though he’s really talking about DVCS eating Subversion’s lunch). Steve Dekorte switched to Git, after using darcs for a bit. Drew McCormack started using Git earlier this month.
+
+            I’ve also seen quite a few Ruby on Rails blogs talk about using Git, as well, so to me it’s the front-runner. Here’s my evaluation:
+
+            Pros:
+
+            Single top-level .git file
+            Mature
+            Most common DVCS
+            Decent documentation
+            Used by a large project (Linux kernel)
+            Easy to compile
+            Submodule support via git submodule
+            Can be shared read-only via static files over HTTP
+            Tracks content, not files
+            Cons:
+
+            Advanced branch features are not something I’d really use
+            Spews 146 files into my PATH:
+
+% ls /usr/local/bin/git* | wc -l
+            146
+            Poor Windows support
+
+            Directories are not versionable
+            Submodule support feels awkward. “Deliberately” minimal. Can’t lock to a specific tag?
+            Read-only static HTTP setup is a bit obtuse (--bare and update-server-info)
+            Tracks content, not files (yes, it’s both a pro and a con)
+            The hundreds of files in PATH is more of an annoyance than a real criticism, and it’s going to be fixed. As of version 1.5.4, the dashed form of commands (e.g. git-commit) is deprecated. Version 1.6.0 plans on moving the dashed support files out of PATH.
+
+            The biggest weakness for me is the poor Windows support. While I’m not currently working on any Windows projects, I’ve had client projects in the past that are either cross platform or use Windows as their development platform. If I’m going to be going through the trouble of learning a new version control system, it makes sense to learn something I can take with me on any project.
+
+            I’m also unsure of “tracks content, not files”. This means that Git can theoretically track a function moved from one file to another. Wincent praises Linus as a “frickin’ genius” because of this. Most likely Wincent is correct, but my little mind has problems giving up on the versioning of files.
+
+            Mercurial
+
+            Git isn’t getting all the love. Mercurial, sometimes known as “hg” (as Hg is the chemical symbol for mercury), was also started due to the BitKeeper Debacle of ‘05. It has since been embraced by large projects like OpenSolaris, OpenJDK, NetBeans, and Mozilla. Linus himself even praises Mercurial as the only other DVCS worthy as competition to Git. Here’s my evaluation:
+
+            Pros:
+
+            Single top-level .hg file
+            Used by large projects (OpenSolaris, OpenJDK, NetBeans, Mozilla)
+            Command usage is more similar to Subversion
+            Cross platform to Windows
+            Submodule support via the Forest extension
+            Simpler branch model (a clone is a branch)
+            IDE integration with Eclipse and NetBeans
+            TortoiseHG in the works
+            Excellent documentation
+            Can be shared read-only via static files over HTTP
+            Cons:
+
+            The use of hgmerge seems a little wonky
+            Still pre-1.0 (currently 0.9.5)
+            Forest extension is poorly documented
+            Static HTTP sharing is self-described as “much slower, less reliable”
+            Requires a CGI script for practical sharing over HTTP
+            Directories are not versionable
+            Tags are stored in .hgtags
+            The .hgtags file is a plain old text file that is versioned along with everything else. Because it’s not special in any way, it needs merging and can even get conflicts. This is probably not an issue in practice (sort of like Subversion’s use of tags), but it still seems wonky.
+
+            The hgmerge script handles merges, and there’s no standard way to say “this is a binary file, don’t merge it”. There’s more on the Wiki about this. Again, probably not a problem in practice, but it, too, seems wonky.
+
+            Probably the main weakness for me is that it’s less common than Git. I imagine Sun’s new usage of Mercurial will be changing that. Many in the Java community will probably follow. Also, for some reason, Subversion developers don’t hate Mercurial like they hate Git, either. Perhaps that has more to do with Linus calling Subversion developers “stupid” and telling them they should be locked up in a mental institution than basis in fact, though.
+
+            Bazaar
+
+            Bazaar, sometimes known as bzr, is a DVCS used by Ubununtu and funded by the same company, Mark Shuttleworth’s Canonical Ltd.
+
+            Pros:
+
+            Single top-level .bzr file
+            Directories are versionable
+            Recently hit 1.0 (December 14, 2007)
+            Excellent documentation
+            Fast (bad performance during OpenSolaris investigation has supposedly been fixed)
+            Cross platform to Windows
+            Merge architecture seems more sane than Mercurial
+            Can be served up read-only by static HTTP
+            Simpler branch model (a clone is a branch)
+            Cons:
+
+            No submodule support
+            Has been a minor pain to install on Mac OS X 10.5 and Centos 5.1
+            Not really used by large projects outside of Ubuntu
+            bzrweb is not as advanced as Git/Mercurial counterpart
+            Sharing over static HTTP is slow
+            A faster smart server is a major focus of the next version
+            Historically, the main complaint about Bazaar has been it’s performance. In fact, the main reason why OpenSolaris dismissed Bazaar was due to poor performance. But that eval was a year ago, which is essentially an eternity. Since then, Bazaar has hit 1.0 and those performance criticisms have supposedly been addressed.
+
+            Also, Bazaar has a history of changing the repository format. Again, now that Bazaar has hit 1.0, hopefully they won’t be doing this very often, any more.
+
+            The main weakness of Bazaar for me is that it’s even less popular than Mercurial. There’s something to be said about using a tool that other people know, especially when the whole point of a DVCS is to get collaboration.
+
+            Then again, the directory support is intriguing, and I do like the ability to publish repositories using without a CGI script. Also, as dbt said on Twitter:
+
+            [T]he general opinion I’ve had is that bzr went for correctness before speed, while hg went the other way.
+
+            The Golden Age of Version Control Systems
+
+            Confused yet? I know I am. There really is no run-away winner for me. While I could probably use any one of these and be happier than using Subversion, I keep teetering between Git and Mercurial. Which is more appealing, Git’s content tracking or Mercurial’s Windows support? Maybe I’ll toss a coin. Update: I’ve chosen Mercurial.
+
+            If I were more patient, I’d wait a year. The year of 2007 is looking to be the beginning of the Golden Age of Version Control Systems. The DVCs became more stable and got much better documentation. Over the next year, I think we’ll see a lot of activity in the VCS area. If the progress of Git, Mercurial, and Bazaar in the last twelve months is any indication, they’ll be even further ahead of Subversion in another twelve months.
+
+            Even the Subversion team is being forced to take notice, albeit a bit defensively at times. Subversion 1.5 is going to bring better merge support. Future versions may even have local commits and stop spewing .svn files everywhere. Unfortunately, by the time Subversion gets these features, the DVCS guys will have had plenty of time to spit and polish their offerings, too.
+
+            All in all, this competition is good for you and me, the end users of VCSs. I’m really excited to see where the DVCSs are in another year. In the meantime, I also want to be an early adopter.
+
+            Corrections 31-Dec-2007: I added some info about Mercurial’s static-http and more info on Bazaar’s sharing over HTTP and smart server.
+        \end{quote}
+    \item \url{http://www.smashingmagazine.com/2008/09/18/the-top-7-open-source-version-control-systems/}
+\end{enumerate}

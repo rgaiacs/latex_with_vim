@@ -1,0 +1,234 @@
+% Filename: p3_text_basic@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:47:22 PM
+% Last Change: 30.03.12 12:07:34 AM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Trabalhando um texto: Parte 1} \label{css:latex:text-basic}
+Neste capítulo apresentaremos as ferramentas do LaTeX disponíveis para organizar um texto. Começaremos pela modificação da fonte utilizada e como fazer citações.
+
+Ao fim do capítulo abordaremos a escrita de versos.
+
+\section{Fonte}
+No LaTeX estão disponíveis algumas fontes opcionais. Comandos da forma \textbackslash\lcode{textXX} são responsáveis por alterar a fonte sendo que \lcode{XX} corresponde ao código da fonte a serem utilizados. A Tabela \ref{tab:text} apresenta alguns das opções disponíveis.
+\begin{table}[!htb]
+    \centering
+    \caption{Opções disponíveis para \lcode{XX} da fonte.} \label{tab:text}
+    \input{tables/text@latex_with_vim.tex}
+\end{table}
+
+A seguir é ilustrado as opções apresentadas na Tabela \ref{tab:text}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        Italico: \textit{novo texto}. \\
+        Negrito: \textbf{novo texto}. \\
+        Romano: \textrm{novo texto}. \\
+        Sans serif: \textsf{novo texto}. \\
+        Maquina de escrever: \texttt{novo texto}. \\
+        Caixa alta: \textsc{novo texto}.
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    Italico: \textit{novo texto}. \\
+    Negrito: \textbf{novo texto}. \\
+    Romano: \textrm{novo texto}. \\
+    Sans serif: \textsf{novo texto}. \\
+    Maquina de escrever: \texttt{novo texto}. \\
+    Caixa alta: \textsc{novo texto}.
+\end{minipage}
+
+\subsection{Edição direta}
+Algumas vezes deseja-se inserir um texto que não deve ser interpretado. Isso é possível pelo ambiente \lcode{verbatim}, coloca o texto em uma nova linha, e pelo comando \textbackslash\lcode{verb}, coloca o texto no mesmo parágrafo.
+
+Tanto o ambiente \lcode{verbatim} como o comando \textbackslash\lcode{verb} apresentam uma fonte própria. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \textsc{texto interpretado.} \\
+        \verb+Texto nao interpretado.+
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \textsc{texto interpretado.} \\
+    \verb+Texto nao interpretado.+
+\end{minipage}
+
+Vale destacar que o comando \textbackslash\lcode{verb} é ``flexível'' quando ao delimitador, os caracteres \verb:+: e \verb+:+ normalmente exercem satisfatoriamente esta função.
+
+\section{Tamanho}
+Uma das maneiras de mudar o tamanho da fonte em uma parte do texto é utilizando um dos ambiente  ou comando de tamanho (a Tabela \ref{tab:op_tamanho_fonte} apresenta algumas opções disponíveis).
+\begin{table}[h!tb]
+    \centering
+    \caption{Opções disponíveis para o tamanho da fonte, em ordem crescente.}
+    \label{tab:op_tamanho_fonte}
+    \begin{tabular}{lp{0.7\textwidth}}
+        \hline
+        Código & Descrição \\ \hline
+        \lcode{tiny} & O menor tamanho possível. \\
+        \lcode{SMALL} ou \lcode{scriptsize} &  \\
+        \lcode{Small} ou \lcode{footnotesize} & Tamanho utilizado em notas de rodapé. \\
+        \lcode{small} &  \\
+        \lcode{normalsize} & Tamanho padrão. \\
+        \lcode{large} & \\
+        \lcode{Large} & \\
+        \lcode{LARGE} & \\
+        \lcode{huge} & \\
+        \lcode{Huge} & O maior tamanho disponível. \\ \hline
+    \end{tabular}
+\end{table}
+
+Destaca-se que os tamanhos são baseados no tamanho padrão. A seguir um exemplo. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        {\tiny muito pequeno} \\
+        {\small pequeno} \\
+        fonte padrao \\
+        {\Large grande} \\
+        {\Huge enorme}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    {\tiny muito pequeno} \\
+    {\small pequeno} \\
+    fonte padrao \\
+    {\Large grande} \\
+    {\Huge enorme}
+\end{minipage}
+
+\section{Cor}
+Para alterar a cor do texto é necessário os pacotes \lcode{graphicx} e \lcode{color} e pode-se utilizar um dos comandos: \textbackslash\lcode{textcolor} ou \textbackslash\lcode{color}.
+
+A seguir apresentamos um exemplo. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \textcolor{blue}{azul} \\
+        {\color{blue}azul}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \textcolor{blue}{azul} \\
+    {\color{blue}azul}
+\end{minipage}
+
+\section{Espaçamento}
+Nesta seção abordaremos como inserir espaços ao longo do texto no LaTeX, mas antes é importante destacar que podemos suprimir espaços ao utilizar medidas negativas.
+
+\subsection{Espaçamento horizontal}
+Para produzir um espaço horizontal utiliza-se o comando \textbackslash\lcode{hspace} que tem como parâmetro o tamanho do espaço a ser inserido. Se o comando ocorrer entre duas linhas ou no início de uma linha o LaTeX não produz o espaço e para este caso devemos utilizar  \textbackslash\lcode{hspace}\textasteriskcentered.
+
+Para modificar a identação característica de um novo parágrafo deve-se utilizar o comando
+\begin{latexcode}
+    \setlength{\parident}{tam}
+\end{latexcode} 
+onde \lcode{tam} é o novo tamanho para a identação dos parágrafos. No caso de desejar-se suprimir a identação deve-se utilizar o comando \textbackslash\lcode{noindent}.
+
+O comando \textbackslash\lcode{hfill} cria um espaço suficiente para dividir o texto de modo que o que estiver antes do comando é alinhado a esquerda e o que estiver depois é alinhado a direita. É permitido utilizar o comando mais de uma vez em uma linha. O comando é ignorado quando ocorrer entre duas linhas ou no início de uma linha, neste caso devemos utilizar  \textbackslash\lcode{hfill}\textasteriskcentered.
+
+\subsection{Linha horizontal}
+Os comandos \textbackslash\lcode{dotfill} e \textbackslash\lcode{hrulefill} funcionam de maneira semelhante ao comando \textbackslash\lcode{hfill}, mas ao invés de inserir um espaço em branco é introduzido, respectivamente uma linha pontilhada e uma linha contínua.
+
+\subsection{Espaçamento vertical}
+No capítulo anterior informamos como mudar de linha, nesta seção vamos trabalhar com o espaço entre as linhas.
+
+O comando \textbackslash\lcode{baselineskip[tam]} estabelece o tamanho do espaçamento entre linhas para o texto posterior ao comando. Para modificar o tamanho entre duas linhas específicas pode-se utilizar o comando \textbackslash\textbackslash\lcode{[tam]} inicia uma nova linha de maneira que \lcode{tam} é o espaçamento entre as linhas.
+
+Para aumentar o espaço entre parágrafos pode-se utilizar os comandos \textbackslash\lcode{smallskip}, \textbackslash\lcode{medskip} ou \textbackslash\lcode{bigskip}, sendo que o tamanho do espaço está relacionado com o tamanho da fonte padrão do documento.
+
+Os comandos \textbackslash\lcode{vspace} e \textbackslash\lcode{vfill} funcionam, respectivamente, de modo muito semelhante aos comandos \textbackslash\lcode{hspace} e \textbackslash\lcode{hfill} só que na vertical.
+
+\section{Alinhamento}
+Por padrão, o alinhamento ocorre com a margem esquerda e para alterá-lo pode-se utilizar um dos seguintes ambientes: \lcode{center} (para texto centralizado), \lcode{flushleft} (alinhamento a esquerda) e \lcode{flushright} (alinhamento a direita). \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{flushleft}esquerda
+        \end{flushleft} \\
+        \begin{center}centralizado
+        \end{center} \\
+        \begin{flushright}direita
+        \end{flushright}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth} \vspace{0pt}
+    \begin{flushleft}esquerda
+    \end{flushleft}
+    \begin{center}centralizado
+    \end{center}
+    \begin{flushright}direita
+    \end{flushright}
+\end{minipage}
+
+Também é permitido utilizar os comandos: \textbackslash\lcode{centering} (para texto centralizado), \textbackslash\lcode{raggedleft} (alinhamento a esquerda) e \textbackslash\lcode{raggedright} (alinhamento a direita).
+
+\section{Texto em colunas}
+Como vimos no Capítulo \ref{sch:latex:preamble}, podemos gerar um documento com duas colunas utilizando a opção \lcode{twocolumn} no comando \textbackslash\lcode{documentoclass}. Nesta seção abordaremos como introduzir duas ou mais colunas em um partes de um documento.
+
+Antes de começar é importante informar que os ambientes a seguir informados para trabalhar com colunas não são $100$\% compatíveis com os comandos e ambientes do LaTeX e apenas o método de tentativa e erro para saber o que funciona.
+
+\subsection{\textbackslash\lcode{twocolumn}}
+O comando \textbackslash\lcode{twocolumn[nome]} termina a página atual e inicia uma nova página com duas colunas por página. O argumento opcional \lcode{nome} é escrito no início da página em uma coluna com a largura da página. O comando \textbackslash\lcode{onecolumn} termina o modo de duas colunas.
+
+\subsection{\lcode{multicols}} \nocite{Mitttelbach:2009:Multicolumn}
+O ambiente \lcode{multicols}, definido no pacote \lcode{multicols}, apresenta a seguinte sintaxe:
+\begin{latexcode}
+    \begin{multicols}{number}
+        texto
+    \end{multicols}
+\end{latexcode}
+onde \lcode{number} é o número de colunas a serem criadas.
+
+\subsection{\lcode{parcolumns}} \nocite{Sauer:2004:Parcolumns}
+O ambiente \lcode{parcolumns}, definido no pacote \lcode{parcolumns}, apresenta sintaxe muito semelhante ao ambiente \lcode{multicols}:
+\begin{latexcode}
+    \begin{parcolumns}[options]{number}
+        texto
+    \end{parcolumns}
+\end{latexcode}
+onde \lcode{number} é o número de colunas a serem criadas e \lcode{options} algumas configurações opcionais (para maiores informações procurar \cite{Sauer:2004:Parcolumns}).
+
+\subsection{\lcode{parallel}}
+Ao trabalhar, principalmente, com documentos bilingues é interessante utilizar cada coluna para um idioma e deixar parágrafos correspondentes alinhados. Para isso pode-se utilizar o ambiente \lcode{parallel}, definido no pacote \lcode{parallel}, que apresenta a seguinte sintaxe:
+\begin{latexcode}
+    \begin{Parallel}{col1}{col2}
+        \ParallelLText{...}
+        \ParallelRText{...}
+        \ParallelPar
+    \end{Parallel}
+\end{latexcode}
+onde \lcode{col1} e \lcode{col2} é a largura das colunas.
+
+O comando \textbackslash\lcode{ParallelLText} tem como parâmetro o texto da coluna da esquerda enquanto que o comando \textbackslash\lcode{ParallelRText} o texto da coluna da direita e o comando \textbackslash\lcode{ParallelPar} indica o alinhamento dos parágrafos.
+
+\subsection{\lcode{minipage}}
+O ambiente \lcode{minipage} é responsável por criar pequenas páginas, caixas, ao longo do texto. A síntaxe do ambiente é
+\begin{latexcode}
+    \begin{minipage}[pos]{largura}
+    \end{minipage}
+\end{latexcode}
+onde \lcode{pos} é a posição do texto que está na minipágina e \lcode{largura} é a largura da minipágina.
+
+O ambiente \lcode{minipage} não apresenta borda, para incluí-la pode-se utilizar o ambiente \lcode{boxedminipage} definido no pacote \lcode{boxedminipage}.
+
+Para simular colunas utilizando-se do ambiente \lcode{minipage} precisa-se apenas utilizar duas ou mais vezes o ambiente em sequência como indicadono código abaixo
+\begin{latexcode}
+    \begin{minipage}[pos1]{largura1}
+        ...
+    \end{minipage} espaco
+    \begin{minipage}[pos1]{largura1}
+        ...
+    \end{minipage}
+\end{latexcode}
+onde \lcode{espaco} é um comando para distanciar uma coluna da outra.
+
+Ao tentar simular colunas com o ambiente \lcode{minipage} pode ocorrer que o texto de uma coluna inicie apenas ao fim do texto da outra coluna. Para resolver este problema deve-se adicionar o comando \textbackslash\lcode{vspace\{0pt\}} no início de cada \lcode{minipage}.
+
+O ambiente \lcode{minipage}, ao contrário dos apresentados anteriormente, é tratado como um objeto flutuante de modo que seu conteudo não pode ser dividido entre páginas requerendo um pouco mais de atenção.

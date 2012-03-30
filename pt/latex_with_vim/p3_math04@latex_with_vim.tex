@@ -1,0 +1,183 @@
+% Filename: p3_math04@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:44:03 PM
+% Last Change: 29.03.12 11:44:23 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Expressões matemáticas: Parte 4} \label{sch:latex:math4}
+\section{Espaço}
+No modo matemático do LaTeX, o espaço entre os caracteres é definido de acordo com o tipo a que cada caractere pertence pela própria classificação do LaTeX.
+
+Deve-se tomar cuidado com caracteres $+$, $-$ e $|$ por estes pertencerem a mais de uma classificação no LaTeX.
+
+\subsection{$+$ e $-$}
+$+$ e $-$ são operadores quando encontram-se entre símbolos ou um grupo vazio. Nos demais casos, são utilizados como um sinal \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{align*}
+            a &{}+{} 1 &= 2 \\
+            a &+ 1 &= 2
+        \end{align*}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    \begin{align*}
+        a &{}+{} 1 &= 2 \\
+        a &+ 1 &= 2
+    \end{align*}
+\end{minipage}
+
+\subsection{$|$}
+Primeiro apresentaremos um exemplo e depois faremos as explicações. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        \begin{align}
+            a|b \label{E:bar} \\
+            a \mid b \label{E:mid} \\
+            \left| a \right| \label{E:leftbar}
+        \end{align}
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    \begin{align}
+        a|b \label{E:bar} \\
+        a \mid b \label{E:mid} \\
+        \left| a \right| \label{E:leftbar}
+    \end{align}
+\end{minipage}
+
+Na equação \ref{E:bar}, observamos o símbolo matemático ``tal que'', em \ref{E:mid} o operador binário ``divisível'' e em \ref{E:leftbar} delimitadores.
+
+\section{Fonte}
+No modo matemático, o LaTeX classifica os caracteres em alfabeto matemático e símbolos matemáticos. Baseado nessa classificação escolhe uma fonte a ser usada.
+
+\subsection{Alfabeto matemático}
+Para alterar a fonte de caracteres do alfabeto matemático utiliza-se o comando \textsf{\textbackslash mathXX} sendo que \textsf{XX} corresponde ao código da fonte a ser utilizada. A Tabela \ref{tab:op_amfonte} apresenta alguns das opções disponíveis.
+\begin{table}[h!tb]
+    \centering
+    \caption{Opções disponíveis para \textsf{XX} da fonte para o alfabeto matemático.}
+    \label{tab:op_amfonte}
+    \begin{tabular}{lp{0.8\textwidth}}
+        \hline
+        Código & Descrição \\ \hline
+        \textsf{it} & Texto em itálico. \\
+        \textsf{bf} & Texto em negrito. \\
+        \textsf{rm} & Texto em romano. \\
+        \textsf{sf} & Texto em sans serif. \\
+        \textsf{tt} & Texto na tipografia de uma máquina de escrever.
+    \end{tabular}
+\end{table}
+
+A seguir é ilustrado as opções apresentadas na Tabela \ref{tab:op_amfonte}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        Normal: $a$. \\
+        Italico: $\mathit{a}$. \\
+        Negrito: $\mathbf{a}$. \\
+        Romano: $\mathrm{a}$. \\
+        Sans serif: $\mathsf{a}$. \\
+        Maquina de escrever: $\mathtt{a}$.
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    Normal: $a$. \\
+    Italico: $\mathit{a}$. \\
+    Negrito: $\mathbf{a}$. \\
+    Romano: $\mathrm{a}$. \\
+    Sans serif: $\mathsf{a}$. \\
+    Maquina de escrever: $\mathtt{a}$.
+\end{minipage}
+
+\subsection{Símbolos matemáticos}
+Para símbolos matemáticos apenas é possível apresentá-los em negrito e, para isso, utiliza-se o comando \textsf{\textbackslash boldsymbol}. \\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        Normal: $\alpha$. \\
+        Negrito: $\boldsymbol{\alpha}$.
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    Normal: $\alpha$. \\
+    Negrito: $\boldsymbol{\alpha}$.
+\end{minipage}
+
+No LaTeX também existe quatro alfabetos que são interpretados como símbolos. Um deles é o alfabeto grego, apresentado no capítulo anterior e os outros três são acessados com o comando \textsf{\textbackslash mathXX}, sendo que \textsf{XX} corresponde ao código da fonte a ser utilizada. A Tabela \ref{tab:op_asfonte} apresenta as opções disponíveis.
+\begin{table}[h!tb]
+    \centering
+    \caption{Opções disponíveis para \textsf{XX} da fonte para o alfabeto matemático interpretado como símbolo.}
+    \label{tab:op_asfonte}
+    \begin{tabular}{lp{0.8\textwidth}}
+        \hline
+        Código & Descrição \\ \hline
+        \textsf{cal} & Texto em caligráfico, apenas para caixa alta. \\
+        \textsf{frak} & Texto em Euler Fraktur. \\
+        \textsf{bb} & Texto em blackboard bold, apenas para caixa alta.
+    \end{tabular}
+\end{table}
+
+A seguir é ilustrado as opções apresentadas na Tabela \ref{tab:op_asfonte}. \\
+\begin{minipage}[t]{0.47\linewidth}\vspace{-8pt}
+    \begin{latexcode}
+        Normal: $R$. \\
+        Caligrafico: $\mathcal{R}$. \\
+        Euler Fraktur: $\mathfrak{R}$. \\
+        Blackboard bold: $\mathbb{R}$.
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    Normal: $A$. \\
+    Caligrafico: $\mathcal{A}$. \\
+    Euler Fraktur: $\mathfrak{A}$. \\
+    Blackboard bold: $\mathbb{A}$.
+\end{minipage}
+
+Destaca-se que a fonte blackboard bold é normalmente utilizada para representar os conjuntos dos números naturais ($\mathbb{N}$), inteiros ($\mathbb{Z}$), reais ($\mathbb{R}$) e complexos ($\mathbb{C}$).
+
+\section{Tamanho}
+Em expressões que envolvem frações, índices e expoentes o LaTeX utiliza um tamanho para cada parte da equação. Existem quatro comandos que alteram o tamanho das partes da equação e são apresentados na Tabela \ref{tab:op_mtamanho}
+\begin{table}[h!tb]
+    \centering
+    \caption{Opções disponíveis para o tamanho de partes da equação.}
+    \label{tab:op_mtamanho}
+    \begin{tabular}{lp{0.8\textwidth}}
+        \hline
+        Comando & Descrição \\ \hline
+        \textbackslash\textsf{displaystyle} & Tamanho padrão para fórmulas displayed. \\
+        \textbackslash\textsf{textstyle} & Tamanho padrão para fórmulas inline. \\
+        \textbackslash\textsf{scriptstyle} & Tamanho padrão para índices e expoentes. \\
+        \textbackslash\textsf{scriptscriptstyle} & Tamanho padrão para índices e expoentes referentes a índices ou expoentes.
+    \end{tabular}
+\end{table}
+
+Deve-se tomar cuidado ao modificar o tamanho de partes da equação principalmente para fórmulas inline.\\
+\begin{minipage}[t]{0.47\linewidth} \vspace{-8pt}
+    \begin{latexcode}
+        Normal: $\frac{1}{2^2+1}$. \\
+        Displaystyle: $\displaystyle \frac{1}{2^2+1}$. \\
+        Textstyle: $\textstyle \frac{1}{2^2+1}$. \\
+        Scriptstyle: $\scriptstyle \frac{1}{2^2+1}$.
+    \end{latexcode}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    Normal: $\frac{1}{2^2+1}$. \\
+    Displaystyle: $\displaystyle \frac{1}{2^2+1}$. \\
+    Textstyle: $\textstyle \frac{1}{2^2+1}$. \\
+    Scriptstyle: $\scriptstyle \frac{1}{2^2+1}$.
+\end{minipage}

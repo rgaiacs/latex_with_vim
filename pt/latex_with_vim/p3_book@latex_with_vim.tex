@@ -1,0 +1,91 @@
+% Filename: p3_book@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:35:59 PM
+% Last Change: 29.03.12 11:36:15 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Trabalhando publicações} \label{sch:latex:publi}
+Neste capítulo apresentaremos as ferramentas presentes no LaTeX para publicações (artigos, livros, \dots) de forma que a \textit{informação} é dividida em três partes principais: \textit{front matter}, \textit{main matter} e \textit{back matter}.
+
+\section{\textit{Front matter}}
+
+Está é a primeira parte da \textit{informação} e tradicionalmente contem a capa da publicação. O código abaixo apresenta um modelo para o \textit{front matter}.
+\begin{latexcode}
+    \frontmatter
+    \title{...}
+    \author{...}
+    \address{...}
+    \date{...}
+    \maketitle
+\end{latexcode}
+
+Quando existir resumo, dedicatória ou sumário estes também pertencem ao \textit{front matter}.
+
+\subsection{A capa}
+O comando \textbackslash\textsf{maketitle} é responsável por gerar a capa da publicação, baseiando-se nos quatro comandos: \textbackslash\textsf{title}\footnote{O único dos quatro comandos que é obrigatório}, \textbackslash\textsf{author}, \textbackslash\textsf{address} e \textbackslash\textsf{date}.
+
+O título, autor, endereço e data da publicação deve ser colocado como parâmetro dos comandos \textbackslash\textsf{maketitle}, \textbackslash\textsf{author}, \textbackslash\textsf{address} e \textbackslash\textsf{date}, respectivamente.
+
+Quando existir mais de um autor deve-se seprara para cada autor pelo comando \textbackslash\textsf{and}.
+
+Como padrão utiliza-se a data em que o arquivo \textsf{.tex} foi processado. Para outras  datas deve-se colocar a mesma como parâmetro do comando \textbackslash\textsf{date} e quando desejar omité-la deve-se deixar o parâmetro vazio.
+
+The article/book classes allow footnotes in the title matter, the ams classes do not. In article/book class, one can put footnotes to the author or title containing, for example, a grant acknowledgement, a subject classification, or the author's address. This causes problems in the ams classes; with the ams classes you have to use the commands thanks{...} (for acknowledgements), subjclass{...}, and address{...} to provide this information.
+
+\subsection{Resumo}
+
+Para o resumo podemos utilizar o ambiente \textsf{abstract} disponível na grande maioria das \textsf{class}'s, exceto para \textsf{letter} e \textsf{book}.
+
+Para \textsf{article} é importante que o ambiente \textsf{abstract} encontre-se antes do comando \textbackslash\textsf{maketitle}.
+
+\subsection{Dedicatória}
+
+Para a dedicatória podemos utilizar o ambiente \textsf{dedication}.
+
+\subsection{Sumário}
+
+O sumário é gerado automaticamente pelo comando \textbackslash\textsf{tableofcontents}.
+
+Quanto desejar-se produzir uma lista informando as tabelas, figuras, algorítmos e códigos presentes na publicação pode-se utilizar, respectivamente, os comandos \textbackslash\textsf{listoftables}, \textbackslash\textsf{listoffigures}, \textbackslash\textsf{listofalgorithms} e \textbackslash\textsf{lstlistoflistings}.
+
+\section{\textit{Main matter}}
+
+A segunda parte, como o nome diz, é a parte principal da publicação contendo os capítulos, seções, ... e é iniciada pelo comando \textbackslash\textsf{mainmatter}.
+
+\subsection{Divisão do texto} \label{sss:divisao_do_texto}
+
+A divisão permitida para um texto depende da \textsf{class} de documento adotada no preâmbulo. As divisões possíveis são apresentadas na Tabela \ref{tab:sectioning}.
+\begin{table}[h!tb]
+    \centering
+    \caption{Opções disponíveis para divisão de um texto, em ordem decrescente.}
+    \label{tab:sectioning}
+\end{table}
+
+Para que possa ser feita referência a uma alguma divisão da publicação, utilizando-se do comando \textbackslash\textsf{ref} apresentado na seção \ref{sse:cross_reference}, é necessário o uso do comando \textbackslash\textsf{label} logo após o comando de divisão da publicação.
+
+Quando desejar-se não numerar alguma divisão deve-se adicionar um \textasteriskcentered ao final do nome da divisão.
+
+In the ams classes, the abstract goes before the \textbackslash\textsf{maketitle} command; in the article/book classes, it goes after \textbackslash\textsf{maketitle}.
+
+\subsection{Prefácio e agradecimentos}
+
+O prefácio e agradecimentos são iniciados pelo comando \textbackslash\textsf{chapter}\textasteriskcentered .
+
+\subsection{Apêndices}
+
+Para marcar o início dos apêndices deve-se utilizar o comando \textbackslash\textsf{appendix} e para cada um dos apêndices deve-se utilizar a divisão mais alta disponível, exceto \textsf{part}.
+
+\section{\textit{Back matter}}
+
+A terceira e última parte inicia-se com o comando \textbackslash\textsf{backmatter} e é composta da bibliografia\footnote{No capítulo \ref{sch:bibtex} abordamos como produzir a bibliografia.} e, quando existir, do índice.

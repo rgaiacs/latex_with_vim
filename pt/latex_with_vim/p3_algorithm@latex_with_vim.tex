@@ -1,0 +1,125 @@
+% Filename: p3_algorithm@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:33:38 PM
+% Last Change: 30.03.12 12:08:42 AM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Códigos e algoritmos}
+Quando precisa-se incluir um algoritmo ou código o LaTeX fornece várias opções.
+
+\section{\textsf{algorithmic}}
+
+O pacote \textsf{algorithmic} contem alguns ambientes próprios para escrita de algoritmos.
+
+\subsection{Inserindo um algoritmo}
+
+O ambiente \textsf{algorithmic} é apropriado para escrever um algoritmo e os principais comandos são apresentados na Tabela \ref{tab:algorithmic}.
+\begin{table}[h!tb]
+    \centering
+    \caption{Comandos disponíveis no ambiente \textsf{algorithmic}.}
+    \label{tab:algorithmic}
+    \input{tables/algorithmic@latex_with_vim.tex}
+\end{table}
+
+O código abaixo
+\begin{latexcode}
+    \begin{algorithmic}
+        \STATE $a \leftarrow 1$
+        \IF{$a$ is even}
+        \PRINT ``$a$ is even''
+        \ELSE
+        \PRINT ``$a$ is odd''
+        \ENDIF
+    \end{algorithmic}
+\end{latexcode}
+produz o seguinte exemplo
+\begin{algorithmic}
+    \STATE $a \leftarrow 1$
+    \IF{$a$ is even}
+    \PRINT ``$a$ is even''
+    \ELSE
+    \PRINT ``$a$ is odd''
+    \ENDIF
+\end{algorithmic}
+
+Como podemos observar pelo exemplo a identação do algoritmo é feita de maneira automática.
+
+Para algoritmos muito extensos é recomendado numerar as linhas o que pode ser feito utilizando-se do comando
+\begin{latexcode}
+    \begin{algorithmic}[linha]
+\end{latexcode}
+onde \textsf{linha} é um inteiro de forma que as linhas que são múltiplas de \textsf{linha} serão numeradas.
+
+\subsection{\textsf{algorithm}}
+
+O pacote \textsf{algorithm} permite trabalhar algoritmos como um objeto flutuante quando utilizado o ambiente \textsf{algorithm}.
+
+O código abaixo
+\begin{latexcode}
+    \begin{algorithm}
+        \caption{Exemplo do ambiente \textsf{algorithm}.}
+        \label{alg:exem}
+        \begin{algorithmic}
+            \STATE $a \leftarrow 1$
+            \IF{$a$ is even}
+            \PRINT ``$a$ is even''
+            \ELSE
+            \PRINT ``$a$ is odd''
+            \ENDIF
+        \end{algorithmic}
+    \end{algorithm}
+\end{latexcode}
+produz o seguinte exemplo
+\begin{algorithm}
+    \caption{Exemplo do ambiente \textsf{algorithm}.}
+    \label{alg:exem}
+    \begin{algorithmic}
+        \STATE $a \leftarrow 1$
+        \IF{$a$ is even}
+        \PRINT ``$a$ is even''
+        \ELSE
+        \PRINT ``$a$ is odd''
+        \ENDIF
+    \end{algorithmic}
+\end{algorithm}
+
+\section{Códigos}
+
+Para inserir código recomenda-se o pacote \textsf{listings}\footnote{Este pacote não funciona adequadamente com a codificação UFT8 de modo que é recomendado utilizar a codificação Latin1. Aos que utilizarem a codificação UFT8 podem utilizar o comando \textsf{literate}(para maiores detalhes olhar \cite{Moses:2007:Listings}).} que contem o ambiente \textsf{lstlisting}, este funciona de maneira semelhante ao ambiente \textsf{verbatim} mas com suporte a \textit{highlighting}.
+
+A seguir apresentamos um exemplo do ambiente \textsf{lstlisting}.
+\begin{minipage}[t]{0.47\linewidth}
+    \textbackslash begin\{lstlisting\} \\
+    void main()\{ \\
+    print("Hello world!"); \\
+    \} \\
+    \textbackslash end\{lstlisting\}
+\end{minipage} \hfill
+\begin{minipage}[t]{0.47\linewidth}
+    \begin{lstlisting}
+    void main(){
+    print("Hello world!");
+    }
+    \end{lstlisting}
+\end{minipage}
+
+No pacote \textsf{listings} também é definido o comando \textbackslash\textsf{lstinputlisting} que tem como parâmetro o nome do arquivo com o código a ser inserido.
+
+Por último, o pacote \textsf{listings} defini algumas opções, apresentadas na Tabela \ref{tab:listings}, que podem ser utilizadas tanto no ambiente \textsf{lstlisting}, como no comando \textbackslash\textsf{lstinputlisting} ou definidas no comando \textbackslash\textsf{lstset}.
+
+\begin{table}[h!tb]
+    \centering
+    \caption{Opções disponibilizados pelo pacote \textsf{listings}.}
+    \label{tab:listings}
+\end{table}

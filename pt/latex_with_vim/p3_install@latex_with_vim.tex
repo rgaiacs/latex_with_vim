@@ -1,0 +1,47 @@
+% Filename: p3_install@latex_with_vim.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: LaTeX with Vim is free book about Vim, LaTeX and Git.
+% 
+% Created: 29.03.12 11:40:07 PM
+% Last Change: 29.03.12 11:40:22 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Instalação} \label{sch:latex:install}
+O LaTeX está disponível tanto no Windows, como nas distribuições Linux. A seguir, apresentaremos como proceder para instalar em ambos os sistemas operacionais.
+
+\section{Windows}
+
+A instalação no Windows ocorre em duas partes. Primeiramente deve-se instalar uma distribuição que possui as macros próprias do LaTex e, posteriormente, um editor ou IDE\footnote{Do inglês Integrated Development Environment ou Ambiente Integrado de Desenvolvimento, é um programa de computador que reúne características e ferramentas de apoio ao desenvolvimento de software, no nosso caso o texto, com o objetivo de agilizar este processo.} para LaTeX.
+
+Uma das distribuições mais comuns para o Windows é o MikTeX, que pode ser baixado gratuitamente no site do projeto: \url{http://miktex.org/}. Outra distribuição, muito utilizada nas distribuições Linux, mas também disponível para Windows, é a TeX Live, que também pode ser baixada gratuitamente no site: \url{http://www.tug.org/texlive/}.
+
+Quanto as IDE's para LaTeX, as opções são numerosas. Vamos apenas citar algumas e informar onde pode ser obtidas.
+\begin{enumerate}
+    \item Texmaker: \url{http://www.xm1math.net/texmaker/}
+    \item WinEdt: \url{http://www.winedt.com/}
+    \item TeXnicCenter: \url{http://www.texniccenter.org/}
+    \item LED: \url{http://www.latexeditor.org/}\footnote{Alguns colegas relataram problemas ao utilizar o LED. Infelizmente ainda não verifiquei.}
+    \item Winefish LaTeX Editor: \url{http://winefish.berlios.de/}
+\end{enumerate}
+Pessoalmente, gosto muito do Texmaker e alguns colegas gostam do WinEdt. De qualquer forma, a escolha da IDE é bastante pessoal e sugiro testar algumas antes de escolher uma.
+
+\section{Linux}
+
+A instalação em todas as distribuições Linux também passam pelas mesmas duas fases: instalação da distribuição e do editor/IDE. Felizmente, algumas distribuições já apresentam tanto uma distribuição instalada como um editor, caso contrário basta proceder com a instalação.
+
+A instalação da distribuição no Ubuntu pode ser feita via terminal com o seguinte comando:
+\begin{code}
+    sudo apt-get install texlive texlive-latex-extra texlive-lang-portuguese texlive-math-extra
+\end{code}
+e, quanto a IDE, algumas das citadas anteriormente possuem versão para Linux.
+
+Aos usuários que possuirem familiaridade com o Vim, sugiro darem uma olhada no VimLaTeX (\url{http://vim-latex.sourceforge.net/}), um conjunto de macros para o Vim voltadas para o LaTeX.
