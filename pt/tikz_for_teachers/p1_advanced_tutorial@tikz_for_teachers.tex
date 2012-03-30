@@ -1,0 +1,98 @@
+% Filename: p1_advanced_tutorial@tikz_for_teachers.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: TikZ for teachers is free book about TikZ and Sage.
+% 
+% Created: 30.03.12 08:18:37 PM
+% Last Change: 30.03.12 08:34:14 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Tutorial Avan\c{c}ado}
+\section{Estilo}\index{estilo|see{\lcode{style}}}
+Estilos s\~{a}o um conjunto de op\c{c}\~{o}es que s\~{a}o utilizadas para organizar como uma figura \'{e} desenhada. Para a defini\c{c}\~{a}o de um estilo dentro de um ambiente utiliza-se o comando \lcode{style}\index{style@\lcode{style}}.
+
+\example{codes/style01@tikz_for_teachers}
+
+O uso de estilos torna o c\'{o}digo mais flex\'{i}vel de modo que \'{e} poss\'{i}vel alter\'{a}-lo de uma maneira mais consistente.
+
+Para a defini\c{c}\~{a}o de estilos globais, i.e., que existem em todos os ambientes deve-se utilizar o comando \lcode{tikzset}\index{tikzset@\lcode{tikzset}} no in\'{i}cio do documento e, como par\^{a}metro, o estilo desejado utilizando o comando \lcode{style}.
+
+\section{Caminho}\index{caminho|see{\lcode{path}}}
+No cap\'{i}tulo anterior foi apresentado como construir linhas utilizando o comando \lcode{draw}. Na verdade o comando \lcode{draw} \'{e} apenas um caso especial do comando \lcode{path}\index{path@\lcode{path}}. A seguir apresentamos algumas das op\c{c}\~{o}es que podem ser utilizadas com o comando \lcode{path}.
+
+\subsection{Linha}
+Para construir uma linha utiliza-se a op\c{c}\~{a}o \lcode{draw}\index{path@\lcode{path}!draw@\lcode{draw}}.
+
+\example{codes/path_draw@tikz_for_teachers}
+
+Pelo exemplo acima observa-se que o resultado \'{e} o mesmo do comando \lcode{draw}.
+
+\subsection{Preenchimento}\index{preenchimento|see{\lcode{path fill}}}
+At\'{e} o momento apenas contruimos linhas e algumas figuras geom\'{e}tricas. Como devemos proceder para preencher uma figura? Para preencher uma figura utiliza-se a op\c{c}\~{a}o \lcode{fill}\index{path@\lcode{path}!fill@\lcode{fill}}.
+
+\example{codes/path_fill@tikz_for_teachers}
+
+Pelo exemplo acima verifica-se que a op\c{c}\~{a}o \lcode{fill} apenas preenche a figura sem tratar o contorno. Isso ocorre pois o contorno \'{e} determinado pela op\c{c}\~{a}o \lcode{draw} vista anteriormente. No exemplo a seguir utilizamos as op\c{c}\~{o}es \lcode{fill} e \lcode{draw} em conjunto. 
+
+\example{codes/path_filldraw@tikz_for_teachers}
+
+Ao inv\'{e}s de utilizar o comando \lcode{path} com a op\c{c}\~{a}o \lcode{fill} \'{e} poss\'{i}vel utilizar o comando \lcode{fill}\index{fill@\lcode{fill}} e o comando \lcode{filldraw}\index{filldraw@\lcode{filldraw}} no lugar do comando \lcode{path} com as op\c{c}\~{o}es \lcode{fill} e \lcode{draw}.
+
+De maneira geral, \'{e} permitido utilizar qualquer op\c{c}\~{a}o do comando \lcode{path} como uma op\c{c}\~{a}o de um comando correspondente a uma op\c{c}\~{a}o do comando \lcode{path}, portanto as seguintes constru\c{c}\~{o}es s\~{a}o v\'{a}lidas:
+\begin{code}
+    \fill[draw=red] (0,-1) rectangle (1,-3);
+\end{code}
+e
+\begin{code}
+    \draw[fill=blue] (2,-1) rectangle (3,-3);
+\end{code}
+e equivalentes a constru\c{c}\~{a}o utilizada no exemplo anterior.
+
+\subsection{Padr\~{a}o}
+No cap\'{i}tulo anterior foi apresentado alguns padr\~{o}es para linhas como pontilhado e tracejado. Agora vamos paresentar alguns padr\~{o}es de preenchimento que s\~{a}o definidos pela op\c{c}\~{a}o \lcode{pattern}\index{path@\lcode{path}!pattern@\lcode{pattern}}.
+
+Para utilizar os padr\~{o}es predefinidos \'{e} necess\'{a}rio carregar a biblioteca \lcode{patterns}\index{library@\textit{library}!\lcode{patterns}}, i.e, adicionar a seguinte linha.
+\begin{code}
+    \usetikzlibrary{patterns}
+\end{code}
+no pre\^{a}mbulo do documento.
+
+\example{codes/path_pattern@tikz_for_teachers}
+
+Para atribuir um cor ao padr\~{a}o a ser utilizado deve-se utilizar a op\c{c}\~{a}o \lcode{pattern color}\index{path@\lcode{path}!pattern color@\lcode{pattern color}}.
+
+\example{codes/path_pattern_color@tikz_for_teachers}
+
+\subsection{Sombra}\index{sombra|see{\lcode{shade}}}
+Para preencher uma figura com a impress\~{a}o de sombra utiliza-se a op\c{c}\~{a}o \lcode{shade}\index{path@\lcode{path}!shade@\lcode{shade}}.
+
+\example{codes/path_shade01@tikz_for_teachers}
+
+Al\'{e}m da op\c{c}\~{a}o \lcode{shade} tamb\'{e}m \'{e} poss\'{i}vel utilizar o comando \lcode{shade}\index{shade@\lcode{shade}} que produz o mesmo resultado.
+
+Existem alguns modelos de sombra predefinidos que podem ser acessados com a op\c{c}\~{a}o \lcode{shading}\index{shading@\lcode{shading}} que recebe um dos seguintes tipos: \lcode{axis}, \lcode{radial} e \lcode{ball}.
+
+\example{codes/path_shade02@tikz_for_teachers}
+
+Para o tipo \lcode{axis} \'{e} poss\'{i}vel rotacionar a sombra com a op\c{c}\~{a}o \lcode{shading angle}. Para o cado se sobras verticais \'{e} poss\'{i}vel definir as cores das sobras com as op\c{c}\~{o}es \lcode{left color} e \lcode{right color}.
+
+\example{codes/path_shade03@tikz_for_teachers}
+
+Outros tipos de sombras s\~{a}o definidos na biblioteca \lcode{shadings}\index{library@\textit{library}!shadings@\lcode{shadings}}.
+
+\subsection{Recortes}\index{recorte|see{\lcode{path clip}}}
+\'{E} poss\'{i}vel recortar uma figura guardando apenas a regi\c{c}\~{a}o interna ao recorte e para isso utiliza-se a op\c{c}\~{a}o \lcode{clip}\index{path@\lcode{path}!clip@\lcode{clip}}.
+
+\example{codes/path_clip01@tikz_for_teachers}
+
+Como \'{e} observado pelo exemploa acima a op\c{c}\~{a}o \lcode{clip} afeta apenas os comandos subsequentes.
+
+No lugar da op\c{c}\~{a}o \lcode{clip} para o comando \lcode{path} \'{e} poss\'{i}vel utilizar o comando \lcode{clip}\index{clip@\lcode{clip}}.

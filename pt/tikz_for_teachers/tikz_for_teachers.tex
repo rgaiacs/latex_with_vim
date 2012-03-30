@@ -1,0 +1,134 @@
+% Filename: tikz_for_teachers.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: TikZ for teachers is free book about TikZ and Sage.
+% 
+% Created: 30.03.12 08:26:57 PM
+% Last Change: 30.03.12 08:28:02 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\documentclass[12pt,a4paper,openright,twoside]{book}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{pb-diagram}
+\usepackage{graphicx, color}
+\usepackage[top=3cm,left=2cm,right=2cm,bottom=3cm]{geometry}
+\usepackage{subfig}
+\usepackage{enumerate}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{indentfirst}
+\usepackage{multirow}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}  % For index.
+\makeindex  % For index.
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{epsfig}
+\usepackage{latexsym}
+\usepackage{makeidx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{breakurl}
+\usepackage{multicol}
+\usepackage{parcolumns}
+\usepackage[official]{eurosym}
+\lstset{
+breaklines=true,
+literate={é}{{\'e}}1 {á}{{\'a}}1 {ã}{{\~a}}1,
+}
+
+\renewcommand{\lstlistingname}{C\'{o}digo}
+\lstset{
+language=TeX,                   % the language of the code
+basicstyle=\ttfamily\footnotesize,     % the size of the fonts that are used for the code
+%numbers=left,                   % where to put the line-numbers
+%numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+%stepnumber=5,                   % the step between two line-numbers. If it's 1, each line 
+%numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+tabsize=2,                      % sets default tabsize to 2 spaces
+%captionpos=t,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+%caption={\texttt{\lstname}},    % show the filename of files included with \lstinputlisting;
+}
+
+% New commands and enviromments
+\newcommand{\TikZ}{Ti\emph{k}Z }
+\newcommand{\PGF}{\textsc{PGF} }
+\newcommand{\lcode}[1]{\texttt{#1}}  % Code in the same line.
+\lstnewenvironment{code}{}{}  % Code in new line.
+\newcommand{\fcode}[1]{\lstinputlisting[firstline=18]{#1}}  % Code in a file.
+\newcommand{\example}[1]{  % For examples.
+\begin{minipage}[htb]{0.55\textwidth}
+    \fcode{#1}
+\end{minipage}
+\begin{minipage}[htb]{0.35\textwidth}
+    \include{#1}
+\end{minipage}
+}
+
+\begin{document}
+% Informations
+\title{Ti\emph{k}Z para professores \\ \vspace*{4pt} \small{Versão 1.0}}
+\author{\url{http://code.google.com/p/latex-with-vim/}}
+\maketitle
+
+% Frontmatter
+\frontmatter 
+
+\input{licence@tikz_for_teachers}
+
+% Preface
+\input{preface@tikz_for_teachers} 
+
+\tableofcontents 
+\listoftables
+
+% Mainmatter
+\mainmatter 
+
+\part{Ti\emph{k}Z e PGF}
+% Introdu\c{c}\~{a}o
+\input{p1_introduction@tikz_for_teachers}
+% Instala\c{c}\~{a}o
+\input{p1_instalation@tikz_for_teachers}
+% Tutorial B\'{a}sico
+\input{p1_basic_tutorial@tikz_for_teachers}
+% Tutorial Avan\c{c}ado
+\input{p1_advanced_tutorial@tikz_for_teachers}
+% Dicas
+\input{p1_tips@tikz_for_teachers}
+
+\part{Exemplos}
+% Fundamentos de Matem\'{a}tica Elementar 1: Conjuntos e Fun\c{c}\~{o}es
+\input{p2_set_and_functions@tikz_for_teachers}
+
+
+% Backmatter
+\backmatter 
+
+% References
+\bibliographystyle{alpha}
+\bibliography{../../references}
+
+% Show index.
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+\end{document}

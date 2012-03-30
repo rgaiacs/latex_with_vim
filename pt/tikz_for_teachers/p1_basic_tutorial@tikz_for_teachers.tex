@@ -1,0 +1,220 @@
+% Filename: p1_basic_tutorial@tikz_for_teachers.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: TikZ for teachers is free book about TikZ and Sage.
+% 
+% Created: 30.03.12 08:21:08 PM
+% Last Change: 30.03.12 08:24:03 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\chapter{Tutorial B\'{a}sico}
+Neste cap\'{i}tulo apresentamos os commandos mais b\'{a}sicos do \TikZ.
+
+\section{Ambiente \lcode{tikzpicture}}\index{ambiente|see{\textit{environment}}}
+Ao utilizar \TikZ para desenhar uma figura voc\^{e} precisa informar ao \LaTeX \ que deseja-se iniciar uma figura. Para isso utiliza-se o ambiente \lcode{tikzpicture}\index{environment@\textit{environment}!tikzpicture@\lcode{tikzpicture}}. A seguir encontra-se um pequeno exemplo do ambiente \lcode{tikzpicture}. 
+
+\example{codes/line01@tikz_for_teachers}
+
+No exemplo acima podemos notar que, dentro do ambiente \lcode{tikzpicture}, os comandos devem terminar com um ponto e v\'{i}rgula.
+
+Tamb\'{e}m no exemplo acima, observamos que o ambiente \lcode{tikzpicture} n\~{a}o \'{e} flutuante. Uma maneira de torn\'{a}-lo flutuante \'{e} envolvendo-o pelo ambiente \lcode{figure}\index{environment@\textit{environment}!figure@\lcode{figure}} como apresentado a seguir.
+
+\fcode{codes/line02@tikz_for_teachers}
+
+Uma outra caracter\'{i}stica do ambiente \lcode{tikzpicture} \'{e} que comandos recentes s\~{a}o sobrepostos aos comandos antigos. No exemplo a seguir observamos essa caracter\'{i}stica.
+
+\example{codes/overwrite@tikz_for_teachers}
+
+\section{Sistema de coordenadas}\index{sistema de coordenadas}
+A constru\c{c}\~{a}o de qualquer figura usando o \TikZ requer que seja informado coordenadas de acordo com algum sistema. O \TikZ aceita o sistema de coordenadas cartesianas, que corresponde a forma \lcode{(x, y)}, onde \lcode{x} corresponde a coordenada horizontal e \lcode{y} a vertical, e o sistema de coordenadas polares, que corresponde a forma \lcode{(a, r)}, onde \lcode{a} a dire\c{c}\~{a}o em graus e \lcode{r} corresponde ao comprimento do raio.
+
+\example{codes/coordinate_system@tikz_for_teachers}
+
+Al\'{e}m de coordenadas absolutas, o \TikZ tamb\'{e}m aceita coordenadas relativas. Coordenadas relativas devem ser precedidas por \lcode{+}, que significa ``adicionar as seguintes coordenadas \`{a} coordenada absoluta previamente informada'', ou \lcode{++}, que significa ``adicionar as seguintes coordenadas \`{a} coordenada absoluta previamente informada e tornar esta a nova coordenada absoluta previamente informada''.
+
+\example{codes/relative_coordinates@tikz_for_teachers}
+
+O \TikZ aceita uma vasta variedade de unidades de medida para as coordendas, por exemplo: \lcode{pt}, \lcode{cm}, \lcode{mm} \ldots
+
+\example{codes/measure_units@tikz_for_teachers}
+
+Pelo exemplo acima verifica-se que caso nenhuma unidade seja especificada \'{e} utilizada \lcode{cm}.
+
+Outra caracter\'{i}stica do \TikZ \'{e} que ele ajusta a figura criada para ocupar o espa\c{c}o m\'{i}nimo necess\'{a}rio. Essa caracter\'{i}stica \'{e} observada no exemplo a seguir que corresponde ao primeiro exemplo com um deslocamento de $5$ unidades horizontais e o resultado produzido \'{e} id\^{e}ntico ao do primeiro exemplo.
+
+\example{codes/line03@tikz_for_teachers}
+
+\section{Linhas}\index{linhas|see{\lcode{draw}}}
+Nesta se\c{c}\~{a}o iremos tratar da constru\c{c}\~{a}o de linhas com o \TikZ. Pelos exemplos anteriores o leitor j\'{a} deve ter inferido que o comando \lcode{draw} \'{e} respons\'{a}vel pela constru\c{c}\~{a}o de linhas.
+
+No primeiro exemplo, o comando \lcode{draw}\index{draw@\lcode{draw}} \'{e} seguido por um conjunto de op\c{c}\~{o}es envolvidas em colchetes, pelas coordenadas do ponto inicial, um operador (no caso \lcode{-{}-{}}) e pelas coordenadas do ponto final.
+
+\'{E} poss\'{i}vel utilizar o mesmo comando \lcode{draw} com pontos intermedi\'{a}rios, a seguir apresentamos um exemplo desste uso.
+
+\example{codes/line04@tikz_for_teachers}
+
+Al\'{e}m da op\c{c}\~{a}o \lcode{color} que corresponde a cor da linha e do operador \lcode{-{}-{}} que corresponde a uma linha entre dois pontos existem muitos outros. A seguir apresentamos algumas op\c{c}\~{o}es e depois alguns operadores.
+
+\section{Op\c{c}\~{o}es}
+A seguir abordamos algumas das op\c{c}\~{o}es dispon\'{i}veis no \TikZ.
+
+\subsection{Escala}\index{escala|see{\lcode{scale}}}
+Uma das grandes vantagens do \TikZ \'{e} a capacidade de reescalar uma figura sem perder qualidade no processo.
+
+A op\c{c}\~{a}o \lcode{scale}\index{scale@\lcode{scale}} \'{e} respons\'{a}vel por escalar a linha a ser desenhada e deve receber o fator de escala a ser utilizado.
+
+\example{codes/scale@tikz_for_teachers}
+
+\subsection{Rota\c{c}\~{a}o}\index{rotacao@rota\c{c}\~{a}o|see{\lcode{rotate}}}
+A op\c{c}\~{a}o \lcode{rotate}\index{rotate@\lcode{rotate}} \'{e} respons\'{a}vel por rotacionar a linha a ser desenhada e deve receber a medida em grau a ser utilizada.
+
+\example{codes/rotate@tikz_for_teachers}
+
+Como podemos observar pelo exemplo acima, o ponto fixo da rota\c{c}\~{a}o corresponde ao primeiro ponto do comando.
+
+\subsection{Cores}\index{cores|see{\lcode{color}}}
+A op\c{c}\~{a}o \lcode{color}\index{color@\lcode{color}} \'{e} respons\'{a}vel pela cor da linha a ser desenhada e deve receber o nome de uma cor previamente definida. No \LaTeX \, o nome das cores previamente definidas encontram-se dispon\'{i}veis no pacote \lcode{color} e a cria\c{c}\~{a}o de novas cores pode ser feita utilizando o pacote \lcode{xcolor} (um resumo deste pacote \'{e} encontrado em \url{http://en.wikibooks.org/wiki/LaTeX/Colors}).
+
+\example{codes/color01@tikz_for_teachers}
+
+\subsection{Padr\~{a}o}\index{padrao@padr\~{a}o|see{\textit{pattern}}}
+Para modificar o padr\~{a}o da linha utiliza-se as op\c{c}\~{o}es \lcode{dash pattern}\index{pattern@\textit{pattern}} e \lcode{dash phase}. A primeira delas corresponde ao padr\~{a}o a ser utilizado e a segunda a um deslocamento no pad\~{a}o.
+
+\example{codes/line_pattern01@tikz_for_teachers}
+
+Encontram-se predefinidos alguns estilos que fornecem uma maneira mais natural de informar o padr\~{a}o da linha, alguns deles s\~{a}o: \lcode{solid}, \lcode{dotted}\index{pontilhado|see{\lcode{dotted}}}\index{dotted@\lcode{dotted}}, \lcode{dashed}\index{tracejado|see{\lcode{dashed}}}\index{dashed@\lcode{dashed}}, \ldots
+
+\example{codes/line_pattern02@tikz_for_teachers}
+
+\subsection{Setas}\index{seta|see{\textit{arrow}}}
+Para a constru\c{c}\~{a}o de setas\index{arrow@\textit{arrow}} pode-se utilizar uma dentre as seguintes op\c{c}\~{o}es: \lcode{-}\textgreater, \textless\lcode{-} e \textless\lcode{-}\textgreater.
+
+\example{codes/arrow01@tikz_for_teachers}
+
+Tamb\'{e}m \'{e} poss\'{i}vel duplicar o indicador da seta utilizando uma dentre as seguintes op\c{c}\~{o}es: \lcode{-}\textgreater\textgreater, \textless\textless\lcode{-} e \textless\textless\lcode{-}\textgreater\textgreater.
+
+\example{codes/arrow02@tikz_for_teachers}
+
+\subsection{Espessura}\index{espessura|see{\lcode{line width}}}
+A op\c{c}\~{a}o \lcode{line width}\index{line width@\lcode{line width}} \'{e} respons\'{a}vel pela espessura da linha a ser desenhada e deve receber uma medida para a espessura da linha.
+
+Encontram-se predefinidos alguns estilos que fornecem uma maneira mais ``natural'' de informar a espessura da linha, alguns deles s\~{a}o: \lcode{ultra thin}, \lcode{thin}, \lcode{thick} \lcode{ultra thick}, \ldots
+
+\example{codes/line_width01@tikz_for_teachers}
+
+\subsection{\lcode{line cap}}
+A op\c{c}\~{a}o \lcode{line cap}\index{line cap@\lcode{line cap}} \'{e} respons\'{a}vel por como a linha termina. Existem apenas tr\^{e}s tipos dispon\'{i}veis: \lcode{round}, \lcode{rect} e \lcode{butt}.
+
+\example{codes/line_cap01@tikz_for_teachers}
+
+\subsection{\lcode{line join}}
+A op\c{c}\~{a}o \lcode{line join}\index{line join@\lcode{line join}} \'{e} respons\'{a}vel por como duas linhas s\~{a}o unidas. Existem apenas tr\^{e}s tipos dispon\'{i}veis: \lcode{round}, \lcode{bevel} e \lcode{miter}.
+
+\example{codes/line_join01@tikz_for_teachers}
+
+\section{Operadores}
+\subsection{Ret\^{a}ngulos}\index{retangulo@ret\^{a}ngulo|see{\lcode{rectangle}}}
+Para a constru\c{c}\~{a}o de ret\^{a}ngulos pode-se utilizar o operador \lcode{retangle}\index{rectangle@\lcode{rectangle}} sendo que as coordenadas correspondem dois v\'{e}rtices n\~{a}o adjacentes do ret\^{a}ngulo.
+
+\example{codes/rectangle01@tikz_for_teachers}
+
+No exemplo acima observamos a ocorr\^{e}ncia de um ret\^{a}ngulo degenerado em uma linha.
+
+\subsection{Malha retangular}
+Algumas vezes deseja-se incluir na figura uma malha retangular. Para isso pode-se utilizar o operador \lcode{grid} sendo que, de maneira an\'{a}loga ao operador \lcode{rectangle}, as coordenads correspondem a dois v\'{e}rtices n\~{a}o adjacentes do ret\^{a}ngulo maior.
+
+\example{codes/grid01@tikz_for_teachers}
+
+Para o operador \lcode{grid} est\~{a}o dispon\'{i}veis as tr\^{e}s op\c{c}\~{o}es a seguir:
+\begin{enumerate}
+    \item \lcode{step}: especifica a dist\^{a}ncia horizontal e vertical dos elementos da malha ret\^{a}ngular;
+    \item \lcode{xstep}: especifica a dist\^{a}ncia horizontal dos elementos da malha ret\^{a}ngular;
+    \item \lcode{ystep}: especifica a dist\^{a}ncia vertical dos elementos da malha ret\^{a}ngular.
+\end{enumerate}
+
+\example{codes/grid02@tikz_for_teachers}
+
+\subsection{Circunfer\^{e}ncias}\index{circunferencia@circunfer\^{e}ncia|see{\lcode{circle}}}
+Para a constru\c{c}\~{a}o de circunfer\^{e}ncias pode-se utilizar o operador \lcode{circle}\index{circle@\lcode{circle}} sendo que o operador \'{e} seguido pela medida do raio.
+
+\example{codes/circle@tikz_for_teachers}
+
+\subsection{Elipse}\index{elipse|see{\lcode{ellipse}}}
+Para a constru\c{c}\~{a}o de uma elipse pode-se utilizar o operador \lcode{ellipse}\index{ellipse@\lcode{ellipse}} sendo que o operador \'{e} seguido pela medida dos raios horizontais e verticais.
+
+\example{codes/ellipse@tikz_for_teachers}
+
+\subsection{Arcos}\index{arcos|see{\lcode{arc}}}
+Para a constru\c{c}\~{a}o de parte de circunfer\^{e}ncia ou de elipse, i.e., um arco pode-se utilizar o operador \lcode{arc}\index{arc@\lcode{arc}} que sendo que o operador \'{e} seguido por uma tripla separada por dois pontos referentes ao grau inicial, grau final e o raio.
+
+\example{codes/arc01@tikz_for_teachers}
+
+Para o caso de elipses deve-se especificar o raio horizontal e vertical.
+
+\example{codes/arc02@tikz_for_teachers}
+
+\section{Texto}\index{texto|see{n\'{o}}}\index{no@n\'{o}|see{\lcode{node}}}
+Na se\c{c}\~{a}o anterior apresentamos como construir linhas e algumas figuras geom\'{e}tricas como ret\^{a}ngulos e circunfer\^{e}ncias. Nesta se\c{c}\~{a}o iremos apresentar como adicionar um pequeno texto pr\'{o}ximo a uma linha.
+
+No \TikZ o comando \lcode{node}\index{node@\lcode{node}} \'{e} respons\'{a}vel por inserir um pequeno texto em uma posi\c{c}\~{a}o espec\'{i}fica. A seguir encontra-se um exemplo bastante simples.
+
+\example{codes/node01@tikz_for_teachers}
+
+Al\'{e}m do uso apresentado no exemplo acima, o comando \lcode{node} tamb\'{e}m pode ser utilizado em conjunto com o comando \lcode{draw} como apresentado a seguir.
+
+\example{codes/node02@tikz_for_teachers}
+
+Assim como o comando \lcode{draw}, o comando \lcode{node} permite algumas op\c{c}\~{o}es que possibilitam aprimorar o exemplo acima. Tais op\c{c}\~{o}es ser\~{a}o descritas a seguir.
+
+\subsection{Cores}\index{node@\lcode{node}!cores|see{\lcode{node text}}}
+A cor do texto de um n\'{o} \'{e} definido pela op\c{c}\~{a}o \lcode{text}\index{node@\lcode{node}!text@\lcode{text}} que recebe o nome de uma cor.
+
+\example{codes/node_color@tikz_for_teachers}
+
+Pelo exemplo acima verificamos que a op\c{c}\~{a}o \lcode{text} pode ser utilizada tanto como op\c{c}\~{a}o do comando \lcode{node} como do comando \lcode{draw}.
+
+\subsection{Ancoras}\index{ancoras|see{\lcode{anchor}}}
+Muitas vezes n\~{a}o deseja-se colocar o n\'{o} nas coordenadas indicada mas pr\'{o}ximo dela. Nestes casos deve-se utilizar a op\c{c}\~{a}o \lcode{node@\lcode{node}!anchor@\lcode{anchor}} que recebe uma das seguintes orienta\c{c}\~{o}es:
+\begin{enumerate}
+    \item \lcode{north},
+    \item \lcode{south},
+    \item \lcode{east},
+    \item \lcode{west}.
+\end{enumerate}
+
+\'{E} poss\'{i}vel combinar as orienta\c{c}\~{o}es tomando o cuidado da primeira orienta\c{c}\~{a}o sempre corresponder ao eixo vertical, e.g., \lcode{north east}.
+
+\example{codes/node_anchor01@tikz_for_teachers}
+
+Como o uso de \^{a}ncoras costuma ser pouco intuitivo existem algumas op\c{c}\~{o}es que s\~{a}o equivalente:
+\begin{enumerate}
+    \item \lcode{below} \'{e} equivalente a \lcode{anchor=north},
+    \item \lcode{above} \'{e} equivalente a \lcode{anchor=south},
+    \item \lcode{right} \'{e} equivalente a \lcode{anchor=east},
+    \item \lcode{left} \'{e} equivalente a \lcode{anchor=west}.
+\end{enumerate}
+
+Tamb\'{e}m \'{e} poss\'{i}vel combinar as op\c{c}\~{o}es enumeradas acima seguindo o mesmo cuidado do uso de \^{a}ncoras, i.e., a primeira orienta\c{c}\~{a}o sempre corresponde ao eixo vertical. Al\'{e}m disso, essas op\c{c}\~{o}es permitem atribuir uma medida para o deslocamento em cada uma das dire\c{c}\~{o}es.
+
+\example{codes/node_anchor02@tikz_for_teachers}
+
+\subsection{Nomea\c{c}\~{a}o}\index{node@\lcode{node}!name}
+Os n\'{o}s possuem uma caracter\'{i}stica muito \'{u}til que \'{e} a possibilidade de nome\'{a}-los. Para atribuir um nome a um n\'{o} utiliza-se par\^{e}nteses logo em seguida do comando \lcode{node}.
+
+\example{codes/node_name01@tikz_for_teachers}
+
+Ap\'{o}s nomear um n\'{o} podemos utilizar sua posi\c{c}\~{a}o a partir de seu nome.
+
+\example{codes/node_name02@tikz_for_teachers}
+
+No exemplo acima nota-se que a linha desenhada n\~{a}o inicia exatamente nas coordenadas correspondentes aos n\'{o}s mas na fronteira do n\'{o}, i.e., a linha inicia-se no contorno do n\'{o}.
+
+\example{codes/node_name03@tikz_for_teachers}

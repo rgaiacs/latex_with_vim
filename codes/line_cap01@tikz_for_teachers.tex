@@ -1,0 +1,23 @@
+% Filename: line_cap01@tikz_for_teachers.tex
+% This code is part of LaTeX with Vim.
+% 
+% Description: TikZ for teachers is free book about TikZ and Sage.
+% 
+% Created: 30.03.12 08:05:43 PM
+% Last Change: 30.03.12 08:05:52 PM
+% 
+% Author: Raniere Gaia Costa da Silva, r.gaia.cs@gmail.com
+% Organization:  
+% 
+% Copyright (c) 2010, 2011, 2012, Raniere Gaia Costa da Silva. All rights 
+% reserved.
+% 
+% This file is license under the terms of a Creative Commons Attribution 
+% 3.0 Unported License, or (at your option) any later version. More details
+% at <http://creativecommons.org/licenses/by/3.0/>.
+\begin{tikzpicture}[line width=10pt]
+    \draw (0,0) -- (4,0);
+    \draw[line cap=round] (0,-1) -- (4,-1);
+    \draw[line cap=rect] (0,-2) -- (4,-2);
+    \draw[line cap=butt] (0,-3) -- (4,-3);
+\end{tikzpicture}
