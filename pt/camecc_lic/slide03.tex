@@ -1,0 +1,54 @@
+% Filename: slide03.tex
+% This code is part of 'Cursos CAMECC: Introducao ao LaTeX para o Curso 29 - Licenciatura em Matematica'
+% 
+% Description: This file correspond to the slides of using for cap03@camecc_lic.tex of the course.
+% 
+% Created: 07.06.12 11:30:10 AM
+% Last Change: 07.06.12 11:30:30 AM
+% 
+% Authors:
+% - Raniere Silva, r.gaia.cs@gmail.com
+% 
+% Organization: CAMECC - Centro Academico dos Estudantes do IMECC
+% 
+% Copyright (c) 2012, Raniere Silva. All rights reserved.
+% 
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+%
+% This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+%
+\documentclass[12pt]{beamer}
+\usepackage[utf8]{inputenc} %Ser\'{a} utilizado a codifica\c{c}ao UTF8
+\let\Tiny=\tiny  % Redefine at least \Tiny for avoid warning
+%\usepackage[latin1]{inputenc} % Ser\'{a} utilizado a codifica\c{c}ao latin1
+\usepackage[brazil]{babel} %Ser\'{a} utilizado o idioma portugu\^{e}s
+\usepackage{indentfirst} %Identa\c{c}\~{a}o de linha
+\usepackage{amsmath, amsfonts, amssymb, amsthm} % Pacote matem\'{a}tico
+\usepackage{tikz} %Pacote para desenho de figuras
+
+\begin{document}
+\begin{frame}
+    \frametitle{Hist\'{o}ria}
+    \begin{tikzpicture}[xscale=0.15, yscale=0.7]
+        \draw[gray!70] (46, 0) grid (116, 9);
+        \foreach \y in {46, 56, ..., 96}{
+            \node[below] at (\y, 0) {\y};
+        }
+        \node[below] at (106, 0) {06};
+        \node[below] at (116, 0) {16};
+
+        \draw[fill=red!50] (46, 0) rectangle (55, 1) node[midway] {ENIAC}; \pause
+        \draw[fill=yellow] (84, 1) rectangle (112, 2) node[midway] {Mac OS};
+        \draw[fill=blue!50] (85, 2) rectangle (112, 3) node[midway] {Windows};
+        \draw[fill=blue!50] (81, 2) rectangle (85, 3) node[midway] {DOS};
+        \draw[fill=green!50] (83, 3) rectangle (112, 4) node[midway] {GNU Project};
+        \draw[fill=green!50] (91, 4) rectangle (112, 5) node[midway] {Linux Kernel}; \pause
+        \draw[fill=green!50] (78, 5) rectangle (112, 6) node[midway] {\TeX};
+        \draw[fill=green!50] (85, 6) rectangle (112, 7) node[midway] {\LaTeX};
+        \draw[fill=orange!50] (84, 7) rectangle (100, 8) node[midway] {StarOffice};
+        \draw[fill=orange!50] (100, 7) rectangle (112, 8) node[midway] {OpenOffice};
+        \draw[fill=blue!50] (83, 8) rectangle (89, 9) node[midway] {Word};
+        \draw[fill=blue!50] (89, 8) rectangle (112, 9) node[midway] {Microsoft Office};
+    \end{tikzpicture}
+\end{frame}
+\end{document}

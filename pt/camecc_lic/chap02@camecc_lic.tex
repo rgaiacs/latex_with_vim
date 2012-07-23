@@ -1,0 +1,145 @@
+% Filename: chap02@camecc_lic.tex
+% This code is part of 'Cursos CAMECC: Introducao ao LaTeX para o Curso 29 - Licenciatura em Matematica'
+% 
+% Description: This file correspond to the chapter 01 of the textbook using in the course.
+% 
+% Created: 07.06.12 11:30:49 AM
+% Last Change: 07.06.12 11:30:53 AM
+% 
+% Authors:
+% - Raniere Silva, r.gaia.cs@gmail.com
+% 
+% Organization: CAMECC - Centro Academico dos Estudantes do IMECC
+% 
+% Copyright (c) 2012, Raniere Silva. All rights reserved.
+% 
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+%
+% This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+%
+\chapter{Aproveitando ao m\'{a}ximo o \LaTeX}
+Neste capítulo apresentado ferramentas mais avan\c{c}adas do LaTeX  como listas, refer\^{e}ncias cruzadas, tabelas, figuras, bibliografia e outras.
+
+\section{Endere\c{c}os da internet}
+Nos endere\c{c}os da internet \'{e} muito comum a presen\c{c}a de caracteres especiais para o LaTeX. Para inserir um endere\c{c}o da internet facilmente pode-se utilizar o comando \lstinline!\verb!\index{comando!verb@\lstinline+\verb+} que foi apresentado no cap\'{i}tulo anterior ou utilizar o comando \lstinline!\url!\index{comando!url@\lstinline+\url+} dispon\'{i}vel no pacote \pkgname{url}\index{pacote!url@\pkgname{url}}.
+
+\section{Nota de rodapé}
+Para produzir notas de rodapé\index{nota de rodape@nota de rodap\'{e}} deve-se utilizar o comando \lstinline!\footnote!\index{comando!footnote@\lstinline+\footnote+} que deve ocorrer imediatamente depois da palavra ou texto a que se refere a nota de rodapé e como parâmetro do comando o texto a ser inserido na nota de rodapé.
+
+\section{Referência cruzada} \label{sse:cross_reference}
+Existem dois tipos de referência cruzada\index{referencia cruzada@refer\^{e}ncia cruzada}, a primeira para alguma parte do documento e a segunda para um outro documento. Nesta seção abordaremos o primeiro tipo e o segundo n\~{a}o ser\'{a} tratado neste curso\footnote{Os interessados podem dar uma olhada em \url{ttp://en.wikibooks.org/wiki/LaTeX/Bibliography_Management}}.
+
+Para alguns comandos e ambientes o LaTeX atribui um número, ou conjunto de caracteres, que pode ser vinculado a um nome pelo comando \lstinline!\label!\index{comando!label@\lstinline+\label+} e referenciado pelo comando \lstinline!\ref!\index{comando!ref@\lstinline+\ref+} e \lstinline!\pageref!, este \'{u}ltimo quando deseja-se o n\'{u}mero da página onde encontra-se o item referenciado.
+
+O argumento do comando \lstinline!\label! é uma sequencia de caracteres\footnote{Recomenda-se escolher uma sequencia ``amigável''.}, \flang{case sensitive}, que será utilizada como argumento do comando \lstinline!\ref! ao efetuar a referência.
+
+Ao utilizar os comandos \lstinline!\ref! ou \lstinline!\pageref! é aconselhavel precedé-los por um \lstinline!~! para evitar uma quebra de linha antes da refer\^{e}ncia.
+
+\section{Listas}
+Para a construção de listas\index{lista} podemos utilizar um dos quatro ambientes: \envname{itemize}, \envname{enumerate}, \envname{description}\footnote{N\~{a}o ser\'{a} tratado neste curso} ou \envname{list}\footnote{N\~{a}o ser\'{a} tratado neste curso}. E para a criação de sublistas basta adicionar um dos ambientes dentro de um já existente.
+
+Cada item de uma lista é identificado, no LaTeX, pelo comando \lstinline!\item!\index{comando!item@\lstinline+\item+} que deve preceder o texto.
+
+\subsection{\envname{itemize}}
+O ambiente \envname{itemize}\index{ambiente!itemize@\envname{itemize}} utiliza um símbolo para indicar cada item da lista. \\
+\example{codes/itemize@latex_with_vim.tex}
+
+\subsection{\envname{enumerate}}
+O ambiente \envname{enumerate}\index{ambiente!enumerate@\envname{enumerate}} numera cada um dos itens da lista. \\
+\example{codes/enumerate@latex_with_vim.tex}
+
+Ao utilizar o ambiente \envname{enumerate} \'{e} permitido para cada item adicionar um comando \lstinline!\label! e posteriormente fazer refer\^{e}ncia a este pelo comando \lstinline!\ref!.
+
+\section{Figuras}
+No LaTeX é possível inserir figuras\index{figura} contidas em um arquivo de imagem ou desenhar uma\footnote{Ver a Se\c{c}\~{a}o~\ref{sse:tikz}}. Também podemos adicionar uma legenda para a figura.
+
+\subsection{Arquivos de imagem}
+Para inserir arquivos de imagem é necessário o pacote \pkgname{graphicx}\index{pacote!graphicx@\pkgname{graphicx}}. A imagem a ser inserida pode encontrar-se em um dos seguintes formatos: \lcode{jpg}, \lcode{png}, \lcode{pdf} ou \lcode{eps}\footnote{Este formato requer instalada o TeX Live 2011 ou superior.}.
+
+O comando \lstinline!\includegraphics!\index{comando!includegraphics@\lstinline+\includegraphics+} é o responsável por indicar a figura que será inserida, sendo a figura inserida ao longo do texto. A síntaxe deste comando é
+\begin{code}
+\includegraphics[parameter=length]{file}
+\end{code}
+em que \lcode{parameter} é um comando disponíveis (algumas opções disponíveis são apresentadas na Tabela \ref{tab:figure_size}), \lcode{length} é uma medida para \lcode{parameter} e \lcode{file} é o nome do arquivo que contem a imagem.
+\begin{table}[!htb]
+    \centering
+    \caption{Opções disponíveis para \envname{parameter}.}
+    \label{tab:figure_size}
+    \input{tables/figure_size@latex_with_vim.tex}
+\end{table}
+
+Uma dica é que para \lcode{length} podemos utilizar medidas correspondente a folha escolhida como por exemplo \lstinline!\textwidth! ou \lstinline!\textheight!.\\
+\example{codes/includegraphics@latex_with_vim.tex}
+
+Maiores informações podem ser encontradas em \url{http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics}.
+
+\subsection{\envname{figure}}
+O ambiente \envname{figure}\index{ambiente!figure@\envname{figure}} possibilita a inclusão de uma legenda para a figura e trabalha a mesma como um objeto flutuante. A síntaxe deste ambiente é
+\begin{code}
+\begin{figure}[place]
+    imagem
+    \caption{legend}
+    \label{P:imagem}
+\end{figure}
+\end{code}
+onde \lcode{place} é o parâmetro que indica onde a figura deve ser preferencialmente inserida (as opções disponíveis são apresentadas na Tabela \ref{tab:figure_place} e a opção padrão é \lcode{tbp}), \lcode{imagem} corresponde ao código da figura a ser inserida, \lstinline!\caption!\index{comando!caption@\lstinline+\caption+} é o comando correspondente a legenda e \lcode{legend} é o texto a ser apresentado como legenda, \lstinline!\label! é o comando para referência cruzada como já apresentado. \\
+\example{codes/figure_centering@latex_with_vim.tex}
+\begin{table}[!htb]
+    \centering
+    \caption{Opções disponíveis para \envname{place}.}
+    \label{tab:figure_place}
+    \input{tables/figure_place@latex_with_vim.tex}
+\end{table}
+
+Uma dica útil é que o comando \lstinline!\clearpage!\index{comando!clearpage@\lstinline+\clearpage+} que força as figuras pendentes a serem inseridas.
+
+Outras informações podem ser encontradas em \url{http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}.
+
+\section{Tabelas}
+Assim com as figuras, o LaTeX permite construir tabelas\index{tabela} e adicionar legendas \`{a} estas.
+
+\subsection{\envname{tabular}}
+O ambiente \envname{tabular}\index{ambiente!tabular@\envname{tabular}} é utilizado para a construção de tabelas no LaTeX e sua síntaxe é
+\begin{code}
+\begin{tabular}[colunas]
+    informacao
+\end{tabular}
+\end{code}
+onde \lcode{colunas} é uma sequência de caracteres, onde cada caractere corresponde a uma coluna e o respectivo alinhamento que são apresentados na Tabela~\ref{tab:par_colunas}, e \lcode{informacao} é o conteudo de cada célula da tabela.
+\begin{table}[h!tb]
+    \centering
+    \caption{Opções disponíveis para \envname{colunas}.}
+    \label{tab:par_colunas}
+    \input{tables/tabular_halign@latex_with_vim.tex}
+\end{table}
+
+Cada célula da tabela deve ser separadas pelo comando \lstinline!&!\index{comando! @\lstinline+&+} e a mudança de linha ocorre pelo comando \lstinline!\\!\index{comando! @\lstinline+\\+} ou \lstinline!\tabularnewline!\index{comando!tabularnewline@\lstinline+\tabularnewline+}. Para imprimir uma linha horizontal separando duas linhas da tabela deve-se utilizar o comando \lstinline!\hline!.\\
+\example{codes/tabular@latex_with_vim.tex}
+
+Outros comandos também são importantes para a construção mas não trataremos deles aqui, para conhec\^{e}-los visitar \url{http://en.wikibooks.org/wiki/LaTeX/Tables}.
+
+\subsection{\envname{table}}
+O ambiente \envname{table}\index{ambiente!table@\envname{table}} possibilita a inclusão de uma legenda para a tabela e trabalha a mesma como um objeto flutuante. A síntaxe deste ambiente, muito semelhante com a do ambiente \envname{figure}, é
+\begin{code}
+\begin{table}[place]
+    tabela
+    \caption{legend}
+    \label{P:tebela}
+\end{table}
+\end{code}
+onde \lcode{place} é o parâmetro que indica onde a tabela deve ser preferencialmente inserida (as opções disponíveis são apresentadas na Tabela \ref{tab:par_place_tab} e a opção padrão é \lcode{tbp}), \lcode{tabela} corresponde ao código da tabela a ser inserida, \lstinline!\caption!\index{comando!caption@\lstinline+\caption+} é o comando correspondente a legenda e \lcode{legend} é o texto a ser apresentado como legenda, \lstinline!\label! é o comando para referência cruzada como já apresentado. \\
+\example{codes/table@latex_with_vim.tex}
+\begin{table}[!htb]
+    \centering
+    \caption{Opções disponíveis para \envname{place}.}
+    \label{tab:par_place_tab}
+    \input{tables/table_place@latex_with_vim.tex}
+\end{table}
+
+Uma dica útil é que o comando \lstinline!\clearpage!\index{comando!clearpage@\lstinline+\clearpage+} força as tabelas pendentes a serem inseridas.
+
+\subsection{Extens\~{a}o Calc2LaTeX}
+Muitas vezes temos uma tabela no Calc\footnote{O Calc é um dos aplicativos do pacote Openoffice e corresponde ao popular Excel do pacote Microsoft Office.} e desejamos transportá-la para o LaTeX. Para essa tarefa a extens\~{a}o/macro Calc2LaTeX, disponível gratuitamente em \url{http://extensions.services.openoffice.org/en/project/Calc2LaTeX}, é bastante eficiente.
+
+\section{Citações}
+No LaTeX encontramos dois ambientes dedicados a citações. O primeiro deles é o \envname{quote}\index{ambiente!quote@\envname{quote}} próprío para citações de uma única linha e o segundo é o \envname{quotation}\index{ambiente!quotation@\envname{quotation}} adequado para citações de vários parágrafos.

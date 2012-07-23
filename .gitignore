@@ -11,3 +11,6 @@
 *.lot
 *.out
 *.toc
+*.nav
+*.snm
+*.vrb

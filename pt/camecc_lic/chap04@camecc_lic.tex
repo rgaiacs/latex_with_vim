@@ -1,0 +1,256 @@
+% Filename: chap04@camecc_lic.tex
+% This code is part of 'Cursos CAMECC: Introducao ao LaTeX para o Curso 29 - Licenciatura em Matematica'
+% 
+% Description: This file correspond to the chapter 01 of the textbook using in the course.
+% 
+% Created: 07.06.12 11:30:49 AM
+% Last Change: 07.06.12 11:30:53 AM
+% 
+% Authors:
+% - Raniere Silva, r.gaia.cs@gmail.com
+% 
+% Organization: CAMECC - Centro Academico dos Estudantes do IMECC
+% 
+% Copyright (c) 2012, Raniere Silva. All rights reserved.
+% 
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+%
+% This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+%
+\chapter{Apresenta\c{c}\~{o}es e desenhos utilizando o \LaTeX}
+Neste cap\'{i}tulo abordaremos brevemente o pacote \pkgname{tikz}\nocite{Tantau:2010:Tikz-and-PGF} utilizado para desenhar e a classe beamer\nocite{Tantau:2010:Beamer} utilizada para produzir apresenta\c{c}\~{o}es. Este pacote e essa classe s\~{a}o bastante complexas de modo que abordaremos apenas uma min\'{u}scula parcela destes e para maiores informa\c{c}\~{o}es, recomenda-se os respectivos manuais.
+
+\section{TikZ} \label{sse:tikz}
+O pacote \pkgname{tikz}\index{pacote!tikz@\pkgname{tikz}} permite produzir desenhos vetoriais ao informar as linhas que devem ser produzidas. Os comandos definidos por este pacote tevem ser delimitados pelo ambiente \envname{tikzpicture}\index{ambiente!tikzpicture@\envname{tikzpicture}} que pode ser incluido no ambiente \envname{figure} apresentado anteriormente.
+
+\subsection{Ambiente \envname{tikzpicture}}
+Ao utilizar o TikZ para desenhar uma figura voc\^{e} precisa informar ao LaTeX que deseja-se iniciar uma figura. Para isso utiliza-se o ambiente \envname{tikzpicture}\index{ambiente!tikzpicture@\envname{tikzpicture}}. A seguir encontra-se um pequeno exemplo do ambiente \envname{tikzpicture}. 
+Ao utilizar TikZ para desenhar uma figura voc\^{e} precisa informar ao LaTeX que deseja-se iniciar uma figura. Para isso utiliza-se o ambiente \envname{tikzpicture}\index{ambiente!tikzpicture@\envname{tikzpicture}}. A seguir encontra-se um pequeno exemplo do ambiente \envname{tikzpicture}. \\
+\example{codes/line01@tikz_for_teachers}
+
+No exemplo acima podemos notar que, dentro do ambiente \envname{tikzpicture}, os comandos devem terminar com um ponto e v\'{i}rgula.
+
+Tamb\'{e}m no exemplo acima, observamos que o ambiente \envname{tikzpicture} n\~{a}o \'{e} flutuante. Uma maneira de torn\'{a}-lo flutuante \'{e} envolvendo-o pelo ambiente \envname{figure}\index{ambiente!figure@\envname{figure}}.
+
+Uma outra caracter\'{i}stica do ambiente \lcode{tikzpicture} \'{e} que comandos recentes s\~{a}o sobrepostos aos comandos antigos. No exemplo a seguir observamos essa caracter\'{i}stica. \\
+\example{codes/overwrite@tikz_for_teachers}
+
+\subsection{Sistema de coordenadas}
+A constru\c{c}\~{a}o de qualquer figura usando o TikZ requer que seja informado coordenadas de acordo com algum sistema. O TikZ aceita o sistema de coordenadas cartesianas\index{TikZ!sistema de coordenadas cartesianas}, que corresponde a forma \lstinline!(x, y)!, onde \lstinline!x! corresponde a coordenada horizontal e \lstinline!y! a vertical, e o sistema de coordenadas polares\index{TikZ!sistema de coordenadas polares}, que corresponde a forma \lstinline!(a: r)!, onde \lstinline!a! a dire\c{c}\~{a}o em graus e \lstinline!r! corresponde ao comprimento do raio. \\
+\example{codes/coordinate_system@tikz_for_teachers}
+
+Al\'{e}m de coordenadas absolutas, o TikZ tamb\'{e}m aceita coordenadas relativas\index{TikZ!coordenadas relaticas}. Coordenadas relativas devem ser precedidas por \lstinline!+!, que significa ``adicionar as seguintes coordenadas \`{a} coordenada absoluta previamente informada'', ou \lstinline!++!, que significa ``adicionar as seguintes coordenadas \`{a} coordenada absoluta previamente informada e tornar esta a nova coordenada absoluta previamente informada''. \\
+\example{codes/relative_coordinates@tikz_for_teachers}
+
+O TikZ aceita uma vasta variedade de unidades de medida para as coordendas, por exemplo: \lcode{pt}, \lcode{cm}, \lcode{mm} \ldots \\
+\example{codes/measure_units@tikz_for_teachers}
+
+Pelo exemplo acima verifica-se que caso nenhuma unidade seja especificada \'{e} utilizada \lcode{cm}.
+
+Outra caracter\'{i}stica do TikZ \'{e} que ele ajusta a figura criada para ocupar o espa\c{c}o m\'{i}nimo necess\'{a}rio. Essa caracter\'{i}stica \'{e} observada no exemplo a seguir que corresponde ao primeiro exemplo com um deslocamento de $5$ unidades horizontais e o resultado produzido \'{e} id\^{e}ntico ao do primeiro exemplo. \\
+\example{codes/line03@tikz_for_teachers}
+
+\subsection{Linhas}
+Nesta se\c{c}\~{a}o iremos tratar da constru\c{c}\~{a}o de linhas com o TikZ. Pelos exemplos anteriores o leitor j\'{a} deve ter inferido que o comando \lstinline!\draw! \'{e} respons\'{a}vel pela constru\c{c}\~{a}o de linhas.
+
+No primeiro exemplo, o comando \lstinline!\draw!\index{comando!draw@\lstinline+\draw+} \'{e} seguido por um conjunto de op\c{c}\~{o}es envolvidas em colchetes, pelas coordenadas do ponto inicial, um operador (no caso \lstinline!--!) e pelas coordenadas do ponto final.
+
+\'{E} poss\'{i}vel utilizar o mesmo comando \lstinline!\draw! com pontos intermedi\'{a}rios, a seguir apresentamos um exemplo desste uso. \\
+\example{codes/line04@tikz_for_teachers}
+
+Al\'{e}m da op\c{c}\~{a}o \lcode{color} que corresponde a cor da linha e do operador \lstinline!--! que corresponde a uma linha entre dois pontos existem muitos outros. A seguir apresentamos algumas op\c{c}\~{o}es e depois alguns operadores.
+
+\subsubsection{Escala}
+Uma das grandes vantagens do TikZ \'{e} a capacidade de reescalar uma figura sem perder qualidade no processo.
+
+A op\c{c}\~{a}o \lcode{scale}\index{TikZ!escala} \'{e} respons\'{a}vel por escalar a linha a ser desenhada e deve receber o fator de escala a ser utilizado. \\
+\example{codes/scale@tikz_for_teachers}
+
+\subsubsection{Rota\c{c}\~{a}o}
+A op\c{c}\~{a}o \lcode{rotate}\index{TikZ!rota\c{c}\~{a}o} \'{e} respons\'{a}vel por rotacionar a linha a ser desenhada e deve receber a medida em grau a ser utilizada. \\
+\example{codes/rotate@tikz_for_teachers}
+
+Como podemos observar pelo exemplo acima, o ponto fixo da rota\c{c}\~{a}o corresponde ao primeiro ponto do comando.
+
+\subsubsection{Cores}
+A op\c{c}\~{a}o \lcode{color}\index{TikZ!cor} \'{e} respons\'{a}vel pela cor da linha a ser desenhada e deve receber o nome de uma cor previamente definida. No \LaTeX \, o nome das cores previamente definidas encontram-se dispon\'{i}veis no pacote \lcode{color} e a cria\c{c}\~{a}o de novas cores pode ser feita utilizando o pacote \lcode{xcolor} (um resumo deste pacote \'{e} encontrado em \url{http://en.wikibooks.org/wiki/LaTeX/Colors}). \\
+\example{codes/color01@tikz_for_teachers}
+
+\subsubsection{Padr\~{a}o}
+Encontram-se predefinidos alguns padr\~{o}es de linha, alguns deles s\~{a}o: \lcode{solid} (cont\'{i}nuo), \lcode{dotted} (pontilhado), \lcode{dashed} (tracejado), \ldots \\
+\example{codes/line_pattern02@tikz_for_teachers}
+
+\subsubsection{Setas}
+Para a constru\c{c}\~{a}o de setas\index{TikZ!seta} pode-se utilizar uma dentre as seguintes op\c{c}\~{o}es: \lstinline!->!, \lstinline!<-! e \lstinline!<->!. \\
+\example{codes/arrow01@tikz_for_teachers}
+
+Tamb\'{e}m \'{e} poss\'{i}vel duplicar o indicador da seta utilizando uma dentre as seguintes op\c{c}\~{o}es: \lstinline!->>!, \lstinline!<<-! e \lstinline!<<->>!. \\
+\example{codes/arrow02@tikz_for_teachers}
+
+\subsubsection{Espessura}
+A op\c{c}\~{a}o \lcode{line width}\index{TikZ!espessura} \'{e} respons\'{a}vel pela espessura da linha a ser desenhada e deve receber uma medida para a espessura da linha.
+
+Encontram-se predefinidos alguns estilos que fornecem uma maneira mais ``natural'' de informar a espessura da linha, alguns deles s\~{a}o: \lcode{ultra thin}, \lcode{thin}, \lcode{thick} \lcode{ultra thick}, \ldots \\
+\example{codes/line_width01@tikz_for_teachers}
+
+\subsection{Operadores}
+\subsubsection{Ret\^{a}ngulos}
+Para a constru\c{c}\~{a}o de ret\^{a}ngulos pode-se utilizar o operador \lcode{retangle}\index{TikZ!retangulo@ret\^{a}ngulo} sendo que as coordenadas correspondem dois v\'{e}rtices n\~{a}o adjacentes do ret\^{a}ngulo. \\
+\example{codes/rectangle01@tikz_for_teachers}
+
+No exemplo acima observamos a ocorr\^{e}ncia de um ret\^{a}ngulo degenerado em uma linha.
+
+\subsubsection{Malha retangular}
+Algumas vezes deseja-se incluir na figura uma malha retangular. Para isso pode-se utilizar o operador \lcode{grid} sendo que, de maneira an\'{a}loga ao operador \lcode{rectangle}, as coordenads correspondem a dois v\'{e}rtices n\~{a}o adjacentes do ret\^{a}ngulo maior. \\
+\example{codes/grid01@tikz_for_teachers}
+
+Para o operador \lcode{grid} est\~{a}o dispon\'{i}veis as tr\^{e}s op\c{c}\~{o}es a seguir:
+\begin{enumerate}
+    \item \lcode{step}: especifica a dist\^{a}ncia horizontal e vertical dos elementos da malha ret\^{a}ngular;
+    \item \lcode{xstep}: especifica a dist\^{a}ncia horizontal dos elementos da malha ret\^{a}ngular;
+    \item \lcode{ystep}: especifica a dist\^{a}ncia vertical dos elementos da malha ret\^{a}ngular.
+\end{enumerate}
+\example{codes/grid02@tikz_for_teachers}
+
+\subsubsection{Circunfer\^{e}ncias}
+Para a constru\c{c}\~{a}o de circunfer\^{e}ncias pode-se utilizar o operador \lcode{circle}\index{TikZ!circunferencia@circunfer\^{e}ncia} sendo que o operador \'{e} seguido pela medida do raio. \\
+\example{codes/circle@tikz_for_teachers}
+
+\subsubsection{Elipse}
+Para a constru\c{c}\~{a}o de uma elipse pode-se utilizar o operador \lcode{ellipse}\index{TikZ!elipse} sendo que o operador \'{e} seguido pela medida dos raios horizontais e verticais. \\
+\example{codes/ellipse@tikz_for_teachers}
+
+\subsubsection{Arcos}
+Para a constru\c{c}\~{a}o de parte de circunfer\^{e}ncia ou de elipse, i.e., um arco pode-se utilizar o operador \lcode{arc}\index{TikZ!arco} que sendo que o operador \'{e} seguido por uma tripla separada por dois pontos referentes ao grau inicial, grau final e o raio. \\
+\example{codes/arc01@tikz_for_teachers}
+
+Para o caso de elipses deve-se especificar o raio horizontal e vertical. \\
+\example{codes/arc02@tikz_for_teachers}
+
+\subsection{N\'{o} e texto}
+Na se\c{c}\~{a}o anterior apresentamos como construir linhas e algumas figuras geom\'{e}tricas como ret\^{a}ngulos e circunfer\^{e}ncias. Nesta se\c{c}\~{a}o iremos apresentar como adicionar um pequeno texto pr\'{o}ximo a uma linha.
+
+No \TikZ o comando \lstinline!\node!\index{TikZ!texto|see{n\'{o}}}\index{TikZ!no@n\'{o}} \'{e} respons\'{a}vel por inserir um pequeno texto em uma posi\c{c}\~{a}o espec\'{i}fica. A seguir encontra-se um exemplo bastante simples. \\
+\example{codes/node01@tikz_for_teachers}
+
+Al\'{e}m do uso apresentado no exemplo acima, o comando \lstinline!\node! tamb\'{e}m pode ser utilizado em conjunto com o comando \lstinline!\draw! como apresentado a seguir. \\
+\example{codes/node02@tikz_for_teachers}
+
+Assim como o comando \lstinline!\draw!, o comando \lstinline!\node! permite algumas op\c{c}\~{o}es que possibilitam aprimorar o exemplo acima. Tais op\c{c}\~{o}es ser\~{a}o descritas a seguir.
+
+\subsubsection{Cores}
+A cor do texto de um n\'{o} \'{e} definido pela op\c{c}\~{a}o \lcode{text} que recebe o nome de uma cor. \\
+\example{codes/node_color@tikz_for_teachers}
+
+Pelo exemplo acima verificamos que a op\c{c}\~{a}o \lcode{text} pode ser utilizada tanto como op\c{c}\~{a}o do comando \lstinline!\node! como do comando \lstinline!draw!.
+
+\subsubsection{Ancoras}
+Muitas vezes n\~{a}o deseja-se colocar o n\'{o} nas coordenadas indicada mas pr\'{o}ximo dela. Nestes casos deve-se utilizar a op\c{c}\~{a}o \lcode{anchor}\index{TikZ!ancora} que recebe uma das seguintes orienta\c{c}\~{o}es:
+\begin{enumerate}
+    \item \lcode{north},
+    \item \lcode{south},
+    \item \lcode{east},
+    \item \lcode{west}.
+\end{enumerate}
+
+\'{E} poss\'{i}vel combinar as orienta\c{c}\~{o}es tomando o cuidado da primeira orienta\c{c}\~{a}o sempre corresponder ao eixo vertical, e.g., \lcode{north east}. \\
+\example{codes/node_anchor01@tikz_for_teachers}
+
+Como o uso de \^{a}ncoras costuma ser pouco intuitivo existem algumas op\c{c}\~{o}es que s\~{a}o equivalente:
+\begin{enumerate}
+    \item \lcode{below} \'{e} equivalente a \lcode{anchor=north},
+    \item \lcode{above} \'{e} equivalente a \lcode{anchor=south},
+    \item \lcode{right} \'{e} equivalente a \lcode{anchor=east},
+    \item \lcode{left} \'{e} equivalente a \lcode{anchor=west}.
+\end{enumerate}
+
+Tamb\'{e}m \'{e} poss\'{i}vel combinar as op\c{c}\~{o}es enumeradas acima seguindo o mesmo cuidado do uso de \^{a}ncoras, i.e., a primeira orienta\c{c}\~{a}o sempre corresponde ao eixo vertical. Al\'{e}m disso, essas op\c{c}\~{o}es permitem atribuir uma medida para o deslocamento em cada uma das dire\c{c}\~{o}es. \\
+\example{codes/node_anchor02@tikz_for_teachers}
+
+\subsubsection{Nomea\c{c}\~{a}o}
+Os n\'{o}s possuem uma caracter\'{i}stica muito \'{u}til que \'{e} a possibilidade de nome\'{a}-los. Para atribuir um nome a um n\'{o} utiliza-se par\^{e}nteses logo em seguida do comando \lstinline!\node!. \\
+\example{codes/node_name01@tikz_for_teachers}
+
+Ap\'{o}s nomear um n\'{o} podemos utilizar sua posi\c{c}\~{a}o a partir de seu nome. \\
+\example{codes/node_name02@tikz_for_teachers}
+
+No exemplo acima nota-se que a linha desenhada n\~{a}o inicia exatamente nas coordenadas correspondentes aos n\'{o}s mas na fronteira do n\'{o}, i.e., a linha inicia-se no contorno do n\'{o}. \\
+\example{codes/node_name03@tikz_for_teachers}
+
+\subsection{Preenchimento}
+At\'{e} o momento apenas contruimos linhas e algumas figuras geom\'{e}tricas. Como devemos proceder para preencher uma figura? Para preencher uma figura utiliza-se a op\c{c}\~{a}o \lcode{fill}\index{TikZ!preenchimento}. \\
+\example{codes/path_fill@tikz_for_teachers}
+
+Pelo exemplo acima verifica-se que a op\c{c}\~{a}o \lcode{fill} apenas preenche a figura sem tratar o contorno. Isso ocorre pois o contorno \'{e} determinado pela op\c{c}\~{a}o \lcode{draw} vista anteriormente. No exemplo a seguir utilizamos as op\c{c}\~{o}es \lcode{fill} e \lcode{draw} em conjunto. \\
+\example{codes/path_filldraw@tikz_for_teachers}
+
+Ao inv\'{e}s de utilizar o comando \lstinline!\path! com a op\c{c}\~{a}o \lcode{fill} \'{e} poss\'{i}vel utilizar o comando \lstinline!\fill! e o comando \lstinline!\filldraw! no lugar do comando \lstinline!\path! com as op\c{c}\~{o}es \lcode{fill} e \lcode{draw}.
+
+De maneira geral, \'{e} permitido utilizar qualquer op\c{c}\~{a}o do comando \lstinline!\path! como um comando correspondente a uma op\c{c}\~{a}o do comando \lstinline!\path!, portanto as seguintes constru\c{c}\~{o}es s\~{a}o v\'{a}lidas:
+\begin{code}
+\fill[draw=red] (0,-1) rectangle (1,-3);
+\end{code}
+e
+\begin{code}
+\draw[fill=blue] (2,-1) rectangle (3,-3);
+\end{code}
+e equivalentes a constru\c{c}\~{a}o utilizada no exemplo anterior.
+
+\subsubsection{Padr\~{a}o}
+No cap\'{i}tulo anterior foi apresentado alguns padr\~{o}es para linhas como pontilhado e tracejado. Agora vamos paresentar alguns padr\~{o}es de preenchimento que s\~{a}o definidos pela op\c{c}\~{a}o \lcode{pattern}.
+
+Para utilizar os padr\~{o}es predefinidos \'{e} necess\'{a}rio carregar a biblioteca \lcode{patterns}, i.e, adicionar a seguinte linha.
+\begin{code}
+\usetikzlibrary{patterns}
+\end{code}
+no pre\^{a}mbulo do documento. \\
+\example{codes/path_pattern@tikz_for_teachers}
+
+Para atribuir um cor ao padr\~{a}o a ser utilizado deve-se utilizar a op\c{c}\~{a}o \lcode{pattern color}. \\
+\example{codes/path_pattern_color@tikz_for_teachers}
+
+\section{Classe Beamer}
+As apresenta\c{c}\~{o}es criadas com a classe beamer\lstinline{beamer} s\~{a}o organizadas pelo ambiente \envname{frame}\index{ambiente!frame@\envname{frame}} que delimita onde come\c{c}a e termina cada um dos \flang{slides} da apresenta\c{c}\~{a}o. A seguir apresentamos uma apresenta\c{c}\~{a}o bem simples para exemplificar a utiliza\c{c}\~{a}o do ambiente \envname{frame}. \\
+\examplebeamer{codes/beamer_minimal@latex_with_vim}
+
+\subsection{Primeiro \flang{slide}}
+Para a cria\c{c}\~{a}o do primeiro \flang{slide} com o t\'{i}tulo e autor pode utilizar os comandos \lstinline!\title! e \lstinline!\author! e, delimitado pelo ambiente \envname{frame}, o comando \lstinline!\titlepage!.
+
+Al\'{e}m dos comandos \lstinline!\title! e \lstinline!\author! est\~{a}o dispon\'{i}veis os comandos \lstinline!\subtitle!, \lstinline!\date! e \lstinline!\institute! que correspondem, respectivamente, ao subt\'{i}tulo, data e local em que a apresenta\c{c}\~{a}o ir\'{a} ocorrer. Exceto pelo comando \lstinline!\date! todos os demais comandos aceitam como op\c{c}\~{a}o uma abrevia\c{c}\~{a}o do par\^{a}metro. \\
+\examplebeamer{codes/beamer_first_page@latex_with_vim}
+
+\subsection{T\'{i}tulo do \flang{slide}}
+Para cada \flang{slide} \'{e} poss\'{i}vel atribuir um t\'{i}tulo com o comando \lstinline!\frametitle! que normalmente ser\'{a} apresentado no topo do \flang{slide}. \\
+\examplebeamer{codes/beamer_title@latex_with_vim}
+
+\subsection{Comandos e ambientes do LaTeX}
+A classe beamer \'{e} compat\'{i}vel com grande parte dos comandos e ambientes do LaTeX sejam estes nativos ou presentes em algum pacote, i.e., para incluir listas, figuras, tabelas, express\~{o}es matem\'{a}ticas, \ldots utiliza-se os mesmos comandos e ambientes apresentados anteriormentes. \\
+\examplebeamer{codes/beamer_enumerate@latex_with_vim} \\
+\examplebeamer{codes/beamer_math@latex_with_vim}
+\subsection{\flang{Overlays}}\index{beamer!overlay@\flang{overlay}}
+At\'{e} o momento todos os \flang{slides} que construimos tinha sua informa\c{c}\~{a}o apresentada em um \'{u}nico momento. Infelizmente n\~{a}o \'{e} isso que deseja-se na grande maioria da apresenta\c{c}\~{o}es, i.e., deseja-se que fragmentos dos \flang{slides} sejam apresentados em momentos distintos para que seja poss\'{i}vel construir a informa\c{c}\~{a}o desejada.
+
+Para fragmentar o conte\'{u}do dos \flang{slides} podemos utilizar o comando \lstinline!\pause!\index{comando!pause@\lstinline+\pause+} na posi\c{c}\~{a}o que deseja-se fragmentar os \flang{slides}. \\
+\begin{minipage}[c]{0.5\textwidth}
+    \fcode{codes/beamer_overlays01@latex_with_vim.tex}
+\end{minipage} \quad \vrule \quad
+\begin{minipage}[c]{0.35\textwidth}
+    \fbox{\includegraphics[width=\textwidth, page=1]{codes/beamer_overlays01@latex_with_vim.pdf}}
+    \fbox{\includegraphics[width=\textwidth, page=2]{codes/beamer_overlays01@latex_with_vim.pdf}}
+\end{minipage}
+
+O comando \lstinline!\pause! funciona dentro de v\'{a}rios ambientes do LaTeX sejam estes nativos ou presentes em algum pacote. No exemplo a seguir utilizamos o comando \lstinline!\pause! dentro do ambiente \envname{tikzpicture}. \\
+\begin{minipage}[c]{0.5\textwidth}
+    \fcode{codes/beamer_overlays02@latex_with_vim.tex}
+\end{minipage} \quad \vrule \quad
+\begin{minipage}[c]{0.35\textwidth}
+    \fbox{\includegraphics[width=\textwidth, page=1]{codes/beamer_overlays02@latex_with_vim.pdf}}
+    \fbox{\includegraphics[width=\textwidth, page=2]{codes/beamer_overlays02@latex_with_vim.pdf}}
+\end{minipage}
+
+\subsection{Temas}\index{beamer!tema}
+At\'{e} o momento, os \flang{slides} apresentados possuiam fundo e bordas muito simples. \'{E} poss\'{i}vel mudar isso utilizando os comandos \lstinline!\usecolortheme!, muda apenas o esquema de cores, e \lstinline!\usetheme!, mais gen\'{e}rico. \\
+\examplebeamer{codes/beamer_usetheme01@latex_with_vim} \\
+\examplebeamer{codes/beamer_usetheme02@latex_with_vim}
+
+Para conhecer algumas dos par\^{a}metros dispon\'{i}veis para os comandos \lstinline!usecolortheme! e \lstinline!\usetheme! sugere-se \url{http://www.hartwork.org/beamer-theme-matrix/}. Outros temas est\~{a}o dispon\'{i}veis na internet e alguns deles reunidos em \url{http://latex.simon04.net/}.

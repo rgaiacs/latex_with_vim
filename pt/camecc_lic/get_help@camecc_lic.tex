@@ -1,0 +1,41 @@
+% Filename: get_help@camecc_lic.tex
+% This code is part of 'Cursos CAMECC: Introducao ao LaTeX para o Curso 29 - Licenciatura em Matematica'
+% 
+% Description: This file correspond to the short explain of texdoc.
+% 
+% Created: 07.06.12 11:30:49 AM
+% Last Change: 24.06.12 05:45:56 PM
+% 
+% Authors:
+% - Raniere Silva, r.gaia.cs@gmail.com
+% 
+% Organization: CAMECC - Centro Academico dos Estudantes do IMECC
+% 
+% Copyright (c) 2012, Raniere Silva. All rights reserved.
+% 
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+%
+% This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+%
+\chapter{Obtendo ajuda} \label{sch:get_help}
+Antes de mais nada \'{e} importante saber com que parte do LaTeX voc\^{e} precisa de ajuda pois as palavras com ``TeX'' s\~{a}o utilizada, muitas vezes, de maneira inadequada. A seguir segue uma explica\c{c}\~{a}o das partes do TeX apresentadas em ``LaTeX vs. MiKTeX: The levels of TeX''\nocite{TUG:Levels}:
+\begin{description}
+    \item[Distribui\c{c}\~{o}es] S\~{a}o grandes cole\c{c}\~{o}es de softwares relacionados ao TeX para serem baixados e instalados, e.g., MiKTeX, TeX Live, \ldots 
+    \item[Front ends] S\~{a}o editores utilizados para criar de um documento/arquivo \lcode{.tex}, e.g., Emacs, TeXworks, TeXShop, TeXnicCenter, WinEdt, \ldots Os documentos/arquivos \lcode{.tex} s\~{a}o totalmente independentes de qualquer editor.
+    \item[Engines] S\~{a}o execut\'{a}veis bin\'{a}rios que implementam diferentes dialetros TeX, e.g., TeX, pdfTeX, XeTeX, LuaTeX, \ldots
+    \item[Formatos] S\~{a}o os dialetros TeX utilizados quando cria-se um documento/arquivo \lcode{.tex}, e.g., LaTeX, plain TeX, \ldots
+    \item[Pacotes] S\~{a}o \textit{add-ons} para o sistema TeX b\'{a}sico, desenvolvidos independentemente, que fornecem funcionalidades adicionais, e.g., geometry, lm, \ldots O site CTAN \'{e} um reposit\'{o}rio com a vasta maioria dos pacotes existentes.
+\end{description}
+
+Para d\'{u}vidas gerais recomenda-se o FAQ dispon\'{i}vel em \url{http://www.tex.ac.uk/cgi-bin/texfaq2html} que \'{e} mantido pelos usu\'{a}rios TeX do Reino Unido.
+
+Para d\'{u}vidas rotineiras ou iniciais uma \'{o}tima fonte \'{e} o Wikibook em ingl\^{e}s sobre LaTeX dispon\'{i}vel em \url{http://en.wikibooks.org/wiki/LaTeX}. Tamb\'{e}m existem v\'{a}rios outros manuais dispon\'{i}veis gratuitamente na internet (ver \url{http://www.latex-project.org/guides/} e alguns livros publicados sobre o assunto (ver \url{http://www.tug.org/interest.html}). Destaca-se tamb\'{e}m a exist\^{e}ncia de uma enciclop\'{e}dia dedicada ao TeX (\url{http://tex.loria.fr/}).
+
+Mesmo o melhor manual sobre LaTeX ainda pode deixar o usu\'{a}rio com algum ``problema'' a ser resolvido. Nestes casos dois \'{o}timos lugares para procurar uma solu\c{c}\~{a}o \'{e} o ``TeX Stack Exchange'' (\url{http://tex.stackexchange.com/}) e o ``LaTeX Community'' (\url{http://www.latex-community.org/}). Tamb\'{e}m \'{e} poss\'{i}vel perguntar em alguma lista de emails sobre o tema (ver algumas em \url{http://www.tug.org/mailman/listinfo}).
+
+Por \'{u}ltimo, quando tratar-se de algum pacote recomenda-se dar uma olhada no manual. Os manuais dos pacotes presentes na sua distribui\c{c}\~{a}o s\~{a}o facilmente acessados utilizando o Texdoc (\url{http://tug.org/texdoc/}), para isso execute no terminal o comando abaixo
+\begin{code}
+texdoc <nome_pacote>
+\end{code}
+onde \lcode{<nome\_pacote>} \'{e} o nome completo ou parcial do pacote desejado.
+
