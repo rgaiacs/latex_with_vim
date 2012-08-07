@@ -18,37 +18,146 @@
 % This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 %
 \documentclass[12pt]{beamer}
-\usepackage[utf8]{inputenc} %Ser\'{a} utilizado a codifica\c{c}ao UTF8
+\usetheme{CambridgeUS}
 \let\Tiny=\tiny  % Redefine at least \Tiny for avoid warning
-%\usepackage[latin1]{inputenc} % Ser\'{a} utilizado a codifica\c{c}ao latin1
-\usepackage[brazil]{babel} %Ser\'{a} utilizado o idioma portugu\^{e}s
-\usepackage{indentfirst} %Identa\c{c}\~{a}o de linha
-\usepackage{amsmath, amsfonts, amssymb, amsthm} % Pacote matem\'{a}tico
-\usepackage{tikz} %Pacote para desenho de figuras
+\input{use_pack.tex}
 
 \begin{document}
+\title[Introdu\c{c}\~{a}o ao LaTeX - 01/04]{Cursos CAMECC \\ Introdu\c{c}\~{a}o ao LaTeX para o Curso 29 \\ Licenciatura em Matem\'{a}tica \\ Aula 01}
+\author{Raniere Silva}
+\institute[CAMECC]{Centro Acad\^{e}mico dos Estudantes do IMECC}
 \begin{frame}
-    \frametitle{Hist\'{o}ria}
-    \begin{tikzpicture}[xscale=0.15, yscale=0.7]
-        \draw[gray!70] (46, 0) grid (116, 9);
-        \foreach \y in {46, 56, ..., 96}{
-            \node[below] at (\y, 0) {\y};
-        }
-        \node[below] at (106, 0) {06};
-        \node[below] at (116, 0) {16};
+    \titlepage
+\end{frame}
 
-        \draw[fill=red!50] (46, 0) rectangle (55, 1) node[midway] {ENIAC}; \pause
-        \draw[fill=yellow] (84, 1) rectangle (112, 2) node[midway] {Mac OS};
-        \draw[fill=blue!50] (85, 2) rectangle (112, 3) node[midway] {Windows};
-        \draw[fill=blue!50] (81, 2) rectangle (85, 3) node[midway] {DOS};
-        \draw[fill=green!50] (83, 3) rectangle (112, 4) node[midway] {GNU Project};
-        \draw[fill=green!50] (91, 4) rectangle (112, 5) node[midway] {Linux Kernel}; \pause
-        \draw[fill=green!50] (78, 5) rectangle (112, 6) node[midway] {\TeX};
-        \draw[fill=green!50] (85, 6) rectangle (112, 7) node[midway] {\LaTeX};
-        \draw[fill=orange!50] (84, 7) rectangle (100, 8) node[midway] {StarOffice};
-        \draw[fill=orange!50] (100, 7) rectangle (112, 8) node[midway] {OpenOffice};
-        \draw[fill=blue!50] (83, 8) rectangle (89, 9) node[midway] {Word};
-        \draw[fill=blue!50] (89, 8) rectangle (112, 9) node[midway] {Microsoft Office};
-    \end{tikzpicture}
+\begin{frame}
+    \frametitle{Licen\c{c}a}
+    Este trabalho foi licenciado com a Licen\c{c}a Creative Commons Atribui\c{c}\~{a}o - CompartilhaIgual 3.0 N\~{a}o Adaptada. Para ver uma c\'{o}pia desta licen\c{c}a, visite \url{http://creativecommons.org/licenses/by-sa/3.0/} ou envie um pedido por carta para Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+    %
+    %Com base na obra dispon\'{i}vel em \url{https://github.com/r-gaia-cs/latex_with_vim/}. 
+    %
+    %Podem estar dispon\'{i}veis permiss\~{o}es adicionais ao \^{a}mbito desta licen\c{c}a em \url{https://github.com/r-gaia-cs/latex_with_vim/}.
+    %
+    \begin{center}
+        \includegraphics[keepaspectratio=true]{../../figures/cc-by-sa.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sum\'{a}rio}
+    \tableofcontents
+\end{frame}
+
+\section{Listas}
+\begin{frame}[fragile]
+    \frametitle{Listas (1)}
+    \begin{code}
+\documentclass{article}
+\begin{document}
+\begin{itemize}
+    \item Peixes
+    \item Aves
+\end{itemize}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Listas (2)}
+    \begin{code}
+\documentclass{article}
+\begin{document}
+\begin{enumerate}
+    \item Museu do Louvre
+    \item Metropolitan Museum of Art
+    \item Museu Exploratorio de Ciencias
+\end{enumerate}
+\end{document}
+    \end{code}
+\end{frame}
+
+\section{Refer\^{e}ncia Cruzada}
+\begin{frame}[fragile]
+    \frametitle{Refer\^{e}ncia Cruzada} 
+    \begin{code}
+\documentclass{article}
+\begin{document}
+\begin{enumerate}
+    \item Museu do Louvre \label{louvre}
+    \item Museu Exploratorio de Ciencias
+\end{enumerate}
+O museu~\ref{louvre} eh muito famoso.
+\end{document}
+    \end{code}
+\end{frame}
+
+\section{Figuras}
+\begin{frame}[fragile]
+    \frametitle{Figuras (1)} 
+    \begin{code}
+\documentclass{article}
+\usepackage{graphicx}
+\begin{document}
+% Use figuras de http://openclipart.org/
+\includegraphics{file}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Figuras (2)} 
+    \begin{code}
+\documentclass{article}
+\usepackage{graphicx}
+\begin{document}
+\begin{figure}
+\includegraphics{file}
+\caption{Legenda}
+\label{file}
+\end{figure}
+Na Figura~\ref{file} \ldots
+\end{document}
+    \end{code}
+\end{frame}
+
+\section{Tabelas}
+\begin{frame}[fragile]
+    \frametitle{Tabelas (1)} 
+    \begin{code}
+\documentclass{article}
+\begin{document}
+\begin{tabular}{|l|cr}
+    \hline
+    esq01 & cen01 & dir01 \\
+    esq02 & cen02 & dir02 \\ \hline
+\end{tabular}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Tabelas (2)} 
+    \begin{code}
+\documentclass{article}
+\begin{document}
+\begin{table}
+    \caption{Titulo}
+    \label{tab}
+    \begin{tabular}{|l|cr}
+        \hline
+        esq01 & cen01 & dir01 \\
+        esq02 & cen02 & dir02 \\ \hline
+    \end{tabular}
+\end{table}
+Na Tabela~\ref{tab} \ldots
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Fim}
+    \begin{center}
+        Perguntas.
+    \end{center}
 \end{frame}
 \end{document}
