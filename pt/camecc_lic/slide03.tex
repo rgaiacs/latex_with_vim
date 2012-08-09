@@ -104,7 +104,6 @@ $1^0 = 1$
     \frametitle{Delimitadores} 
     \begin{code}
 \documentclass{article}
-\usepackage{graphicx}
 \begin{document}
 $$\left( \frac{1}{1} \right) = 1$$
 \end{document}
@@ -115,6 +114,7 @@ $$\left( \frac{1}{1} \right) = 1$$
     \frametitle{Matrizes} 
     \begin{code}
 \documentclass{article}
+\usepackage{amsmath}
 \begin{document}
 $$\begin{matrix}
     a_{11} & a_{12} \\
@@ -129,6 +129,7 @@ $$\begin{matrix}
     \frametitle{Equa\c{c}\~{o}es numeradas (1)}
     \begin{code}
 \documentclass{article}
+\usepackage{amsmath}
 \begin{document}
 \begin{align}
     1 + 1 &= 2
@@ -143,6 +144,7 @@ Na equa\c{c}\~{a}o \eqref{eq:test} \ldots
     \frametitle{Equa\c{c}\~{o}es numeradas (2)}
     \begin{code}
 \documentclass{article}
+\usepackage{amsmath}
 \begin{document}
 \begin{align}
     1 + 1 &= 2 \tag{CAMECC}
@@ -157,12 +159,14 @@ Na equa\c{c}\~{a}o \eqref{eq:test} \ldots
     \frametitle{Alinhamento de equa\c{c}\~{o}es}
     \begin{code}
 \documentclass{article}
+\usepackage{amsmath}
 \begin{document}
 \begin{align*}
     x + 1 &= 2 \\
     x + 1 - 1 &= 2 - 1 \\
     x &= 1
 \end{align*}
+% No lugar de \eqref{eq:test} ir\'{a} aparecer (??).
 Na equa\c{c}\~{a}o \eqref{eq:test} \ldots
 \end{document}
     \end{code}

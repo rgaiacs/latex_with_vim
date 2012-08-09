@@ -18,37 +18,184 @@
 % This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 %
 \documentclass[12pt]{beamer}
-\usepackage[utf8]{inputenc} %Ser\'{a} utilizado a codifica\c{c}ao UTF8
+\usetheme{CambridgeUS}
 \let\Tiny=\tiny  % Redefine at least \Tiny for avoid warning
-%\usepackage[latin1]{inputenc} % Ser\'{a} utilizado a codifica\c{c}ao latin1
-\usepackage[brazil]{babel} %Ser\'{a} utilizado o idioma portugu\^{e}s
-\usepackage{indentfirst} %Identa\c{c}\~{a}o de linha
-\usepackage{amsmath, amsfonts, amssymb, amsthm} % Pacote matem\'{a}tico
-\usepackage{tikz} %Pacote para desenho de figuras
+\input{use_pack.tex}
+
+% Para os slides com codigos do Beamer.
+\newenvironment{slide}[1]
+{\begin{frame}[fragile,environment=slide]
+    #1}
+{\end{frame}}
 
 \begin{document}
+\title[Introdu\c{c}\~{a}o ao LaTeX - 04/04]{Cursos CAMECC \\ Introdu\c{c}\~{a}o ao LaTeX para o Curso 29 \\ Licenciatura em Matem\'{a}tica \\ Aula 04}
+\author{Raniere Silva}
+\institute[CAMECC]{Centro Acad\^{e}mico dos Estudantes do IMECC}
 \begin{frame}
-    \frametitle{Hist\'{o}ria}
-    \begin{tikzpicture}[xscale=0.15, yscale=0.7]
-        \draw[gray!70] (46, 0) grid (116, 9);
-        \foreach \y in {46, 56, ..., 96}{
-            \node[below] at (\y, 0) {\y};
-        }
-        \node[below] at (106, 0) {06};
-        \node[below] at (116, 0) {16};
+    \titlepage
+\end{frame}
 
-        \draw[fill=red!50] (46, 0) rectangle (55, 1) node[midway] {ENIAC}; \pause
-        \draw[fill=yellow] (84, 1) rectangle (112, 2) node[midway] {Mac OS};
-        \draw[fill=blue!50] (85, 2) rectangle (112, 3) node[midway] {Windows};
-        \draw[fill=blue!50] (81, 2) rectangle (85, 3) node[midway] {DOS};
-        \draw[fill=green!50] (83, 3) rectangle (112, 4) node[midway] {GNU Project};
-        \draw[fill=green!50] (91, 4) rectangle (112, 5) node[midway] {Linux Kernel}; \pause
-        \draw[fill=green!50] (78, 5) rectangle (112, 6) node[midway] {\TeX};
-        \draw[fill=green!50] (85, 6) rectangle (112, 7) node[midway] {\LaTeX};
-        \draw[fill=orange!50] (84, 7) rectangle (100, 8) node[midway] {StarOffice};
-        \draw[fill=orange!50] (100, 7) rectangle (112, 8) node[midway] {OpenOffice};
-        \draw[fill=blue!50] (83, 8) rectangle (89, 9) node[midway] {Word};
-        \draw[fill=blue!50] (89, 8) rectangle (112, 9) node[midway] {Microsoft Office};
-    \end{tikzpicture}
+\begin{frame}
+    \frametitle{Licen\c{c}a}
+    Este trabalho foi licenciado com a Licen\c{c}a Creative Commons Atribui\c{c}\~{a}o - CompartilhaIgual 3.0 N\~{a}o Adaptada. Para ver uma c\'{o}pia desta licen\c{c}a, visite \url{http://creativecommons.org/licenses/by-sa/3.0/} ou envie um pedido por carta para Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+    %
+    %Com base na obra dispon\'{i}vel em \url{https://github.com/r-gaia-cs/latex_with_vim/}. 
+    %
+    %Podem estar dispon\'{i}veis permiss\~{o}es adicionais ao \^{a}mbito desta licen\c{c}a em \url{https://github.com/r-gaia-cs/latex_with_vim/}.
+    %
+    \begin{center}
+        \includegraphics[keepaspectratio=true]{../../figures/cc-by-sa.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sum\'{a}rio}
+    \tableofcontents
+\end{frame}
+
+\section{Obtendo Ajuda}
+\begin{frame}[fragile]
+    \frametitle{RFM!!!}
+    No terminal, utilize
+    \begin{code}
+texdoc tikz
+    \end{code}
+    para o manual do TikZ e
+    \begin{code}
+texdoc beamer
+    \end{code}
+    para o manual do Beamer.
+\end{frame}
+
+\section{TikZ}
+\begin{frame}[fragile]
+    \frametitle{Algumas formas}
+    \begin{code}
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+    \draw (0,0) -- (1,0);
+    \draw (0,-1) -- (1,0) -- (2,-1);
+    \draw (-2,-2) rectangle (0,-3);
+    \fill (2,-2) circle (1);
+\end{tikzpicture}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Sorvete} 
+    \begin{code}
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+    \draw[fill=orange, rotate=45] (0,1) rectangle (4,1.5);
+    \draw[fill=red!70] (0,1) circle (2);
+    \draw[fill=brown] (-2,0) -- (0,-4) -- (2,0);
+\end{tikzpicture}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{\^{A}ngulos} 
+    \begin{code}
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+    \draw[->] (0,0) -- (1,0) node[below right]{A} -- (2.5,0);
+    \draw[->] (0,0) -- (0,2.5);
+    \draw[dotted] (-2,-2) grid (2,2);
+    \draw[blue] (0,0) circle (1);
+    % (60:1) significa 60 graus e raio 1.
+    \draw (0,0) node[below left]{O} -- (60:1) node[above right]{B};
+    \draw[red] (.2,0) arc (0:60:0.2);
+\end{tikzpicture}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Gr\'{a}ficos de Fun\c{c}\~{o}es} 
+    \begin{code}
+\begin{tikzpicture}[domain=0:4]
+    \draw[very thin,color=gray] (-0.1,-1.1) grid (3.9,3.9);
+    \draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
+    \draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
+    \draw[color=red] plot (\x,\x) node[right] {$f(x) =x$};
+    \draw[color=blue] plot (\x,{sin(\x r)}) node[right] {$f(x) = \sin x$};
+    \draw[color=orange] plot (\x,{0.05*exp(\x)}) node[right] {$f(x) = \frac{1}{20} e^x$};
+\end{tikzpicture}
+    \end{code}
+    O exemplo acima foi retirado de ``The TikZ and PGF Packages - Manual for version 2.10'' de Till Tantau.
+\end{frame}
+
+\section{Beamer}
+\begin{slide}
+    \frametitle{Hello} 
+    \begin{code}
+\documentclass{beamer}
+\begin{document}
+\begin{frame}
+    Hello.
+\end{frame}
+\end{document}
+    \end{code}
+\end{slide}
+
+\begin{slide}
+    \frametitle{T\'{i}tulo} 
+    \begin{code}
+\documentclass{beamer}
+\begin{document}
+\begin{frame}
+    \frametitle{Hello}
+    Me chamo \ldots
+\end{frame}
+\end{document}
+    \end{code}
+\end{slide}
+
+\begin{slide}
+    \frametitle{Tema} 
+    \begin{code}
+\documentclass{beamer}
+% Mais temas em http://www.hartwork.org/beamer-theme-matrix/
+\usetheme{CambridgeUS}
+\begin{document}
+\begin{frame}
+    \frametitle{Hello}
+    Me chamo \ldots
+\end{frame}
+\end{document}
+    \end{code}
+\end{slide}
+
+\begin{slide}
+    \frametitle{``Anima\c{c}\~{o}es''} 
+    \begin{code}
+\documentclass{beamer}
+\usepackage{tikz}
+\begin{document}
+\begin{frame}
+\begin{tikzpicture}
+    \draw[fill=orange, rotate=45] (0,1) rectangle (4,1.5); \pause
+    \draw[fill=red!70] (0,1) circle (2); \pause
+    \draw[fill=brown] (-2,0) -- (0,-4) -- (2,0);
+\end{tikzpicture}
+\end{frame}
+\end{document}
+    \end{code}
+\end{slide}
+
+\begin{frame}
+    \frametitle{Fim}
+    \begin{center}
+        Perguntas.
+    \end{center}
 \end{frame}
 \end{document}
