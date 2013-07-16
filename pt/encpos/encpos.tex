@@ -1,0 +1,51 @@
+\documentclass[10pt,a4paper,openright,twoside]{book}
+\usepackage[top=3cm,left=2cm,right=2cm,bottom=3cm]{geometry}
+\input{../../package.tex}
+\usepackage[portuguese]{babel}
+\usepackage{csquotes}
+\usepackage{indentfirst}
+\usepackage{biblatex}
+\addbibresource{references.bib}
+\begin{document}
+\input{cover@encpos.tex}
+
+\frontmatter 
+
+% Preface
+\input{preface@encpos.tex} 
+
+\tableofcontents 
+\listoftables
+
+\mainmatter 
+
+% Aula 01 - Programas e primeiros exemplos
+\input{intro@encpos.tex}
+\input{friends@encpos.tex}
+\input{basic01@encpos.tex}
+\input{basic02@encpos.tex}
+\input{basic03@encpos.tex}
+% Aula 02 - Preâmbulo e pacotes
+\input{pream01@encpos.tex}
+\input{pream02@encpos.tex}
+% Aula 03 - AMSMATH, TikZ e BibTeX
+\input{amsmath@encpos.tex}
+\input{tikz@encpos.tex}
+\input{bibtex@encpos.tex}
+\appendix
+%\input{get_help@encpos.tex}
+%\input{exercises@encpos.tex}
+%\input{licence@encpos.tex}
+%
+%\backmatter 
+%
+% References
+\nocite{Lamport:1994:LaTeX, Graetzer:2007:MoreMath, Santos:2009:IntroducaoLaTeX, Souto:CursoLaTeX}
+\addcontentsline{toc}{chapter}{Referência Bibliográfica}
+\printbibliography
+
+% Show index.
+\phantomsection
+\addcontentsline{toc}{chapter}{Índice Remissivo}
+\printindex
+\end{document}

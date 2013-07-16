@@ -1,0 +1,407 @@
+\chapter{Matemática no \LaTeX, amsmath} \label{sch:math}
+Neste capítulo abordaremos o modo matemático do LaTeX, com uma ênfase nos
+pacotes amsmath\index{pacote!amsmath@\pkgname{amsmath}}, amsfonts, amssymb e
+amsthm.
+
+\section{Modo matemático}
+Para que expressões matemáticas seja processadas corretamente, deve-se mudar do
+modo texto para o modo matemático, o que pode ser feito de várias maneiras.
+
+A apresentação de expressões matemáticas pode ocorrer de duas maneiras:
+\flang{inline}\index{modo matematico@modo matemático!inline@\flang{inline}},
+quando aparecem na mesma linha do texto, e \flang{displayed}\index{modo
+matematico@modo matemático!displayed@\flang{displayed}}, quando aparecem em uma
+linha própria e centralizada (podendo ou não ser numerada\footnote{Deve-se
+numerar apenas equações as quais serão feita referências posteriormente.}).
+
+A seguir, informaremos como proceder para produzir expressões matemáticas
+\flang{inline} ou \flang{displayed}. Ao final, apresentaremos algumas dicas
+sobre o uso de expressões \flang{inline} e \flang{displayed}.
+
+\subsection{\flang{Inline}}
+Expressões matemáticas \flang{inline}\index{modo matematico@modo
+matemático!inline@\flang{inline}} devem ser iniciadas por \lstinline!$! e
+fechadas por \lstinline!$! ou iniciadas por \lstinline!\)! e fechadas por
+\lstinline!\)!. \\
+\example{codes/math_inline@latex_with_vim.tex}
+
+\subsection{\flang{Displayed}}
+Expressões matemáticas \flang{displayed}\index{modo matematico@modo
+matemático!displayed@\flang{displayed}} devem ser iniciadas por \lstinline!$$! e
+fechadas por \lstinline!$$! ou iniciadas por \lstinline!\[! e fechadas por
+\lstinline!\]!. \\
+\example{codes/math_display@latex_with_vim.tex}
+
+Alguns ambientes, como \envname{equation}, \envname{eqnarray} e \envname{align},
+também produzem expressões matemáticas \flang{displayed}.
+
+\subsection{Uso de \flang{inline} e \flang{displayed}}
+Um ótimo resumo sobre quando usar expressões \flang{inline} e \flang{displayed}
+encontra-se em
+\url{http://www.math.uiuc.edu/~hildebr/tex/displays.html}\nocite{Hildebrand:TeX_Resoures}
+e a seguir apresentaremos tradução de alguns trechos. Para maiores detalhes
+recomenda-se uma leitura na obra ``Mathematics Into
+Type''\nocite{Swanson:1999:Mathematics}.
+
+Expressões \flang{inline} são ``feias'' quando apresentam frações, somatórios,
+integrais, \ldots e algumas vezes precisam de um cuidado especial para
+respeitarem as margens. Entretanto, deve-se preferir utilizar expressões
+\flang{displayed} apenas nas seguintes ocasiões:
+\begin{itemize}
+  \item a expressão é longa (ocupa mais da metade de uma linha);
+  \item a expressão requer bastante espaço vertical, i.e., possui várias
+    frações, somatórios, integrais, \ldots;
+  \item a equação será numerada;
+  \item a expressão que você deseja destacar/enfatizar.
+\end{itemize}
+
+\section{Primeiros comandos no modo matemático}
+A seguir enunciaremos como proceder para produzir as primeiras equações, mas
+antes é importante saber que o modo matemático ignora qualquer espaço (para
+inserir um espaço em branco no modo matemático veja a seção
+\ref{sss:math:textos_e_espacamentos}).
+
+\subsection{Operações aritméticas básicas}
+As operações aritméticas básicas\index{modo matematico@modo matemático!operacoes
+aritmeticas basicas@operações aritméticas básicas} são escritas normalmente,
+exceto pela multiplicação que utiliza-se dos comandos \lstinline!\times! ou
+\lstinline!\cdot!\footnote{O uso do comando mais adequado depende muito do campo
+de estudo.} e das frações representada pelo comando
+\lstinline!\frac!\footnote{Deve-se ponderar o uso deste comando por questão de
+legibilidade.}. \\
+\example{codes/math_powers_indices@latex_with_vim.tex}
+
+\subsection{Índices e expoentes}
+Índices\index{modo matematico@modo matemático!indice@índice} e
+expoentes\index{modo matematico@modo matemático!expoente} são indicados pelos
+respectivos comandos: \flang{underscore}, \lcode{_}, e \flang{caret}, \lcode{^}.
+Por padrão apenas o primeiro símbolo depois do comando é alterado, quando for
+necessário mais de um símbolo deve-se utilizar chaves.
+
+O símbolo \flang{prime}, muito utilizado para derivadas, já vem posicionado
+corretamente.\footnote{Algumas vezes deve-se preferir utilizar o comando
+\lcode{prime} em conjunto com \flang{underscore} e/ou \flang{caret}.} \\
+\example{codes/math_powers_indices@latex_with_vim.tex}
+
+\subsection{Acentos}
+Os acentos\index{modo matematico@modo matemático!acento} disponíveis no modo
+matemático são apresentados na Tabela~\ref{tab:math_accents}.
+\begin{table}[h!tb]
+  \centering
+  \caption{Acentos disponíveis no modo matemático.}
+  \label{tab:math_accents}
+  \input{tables/math_accents@latex_with_vim.tex}
+\end{table}
+
+\subsection{Delimitadores}
+Parênteses\index{modo matematico@modo
+matemático!parenteses@parênteses|see{delimitadores}}, colchetes\index{modo
+matematico@modo matemático!colchetes|see{delimitadores}} e chaves\index{modo
+matematico@modo matemático!chaves|see{delimitadores}} são exemplos de
+delimitadores\index{modo matematico@modo matemático!delimitadores}. Uma lista
+completa dos delimitadores disponíveis no LaTeX encontra-se na
+Tabela~\ref{tab:math_delimiter}.
+\begin{table}[h!tb]
+  \centering
+  \caption{Delimitadores disponíveis no LaTeX.}
+  \label{tab:math_delimiter}
+  \input{tables/math_delimiter@latex_with_vim.tex}
+\end{table}
+
+Para expressões matemáticas no modo \flang{displayed} ou longas é aconselhável
+utilizar os comandos \lstinline!\left! e \lstinline!\right! anteriormente ao
+limitador para ajustá-lo verticalmente. \\
+\example{codes/math_delimiters_sizes@latex_with_vim.tex}
+
+\subsection{Textos e espaçamentos} \label{sss:math:textos_e_espacamentos}
+Existem três ocasiões em que é preciso inserir um texto\index{modo
+matematico@modo matemático!texto} dentro de uma expressão matemática:
+\begin{itemize}
+  \item um operador matemático é representado pelas primeiras letras de seu nome, e.g., $\max$, $\min$, $\lim$, \ldots;
+  \item uma variável é representada por mais de uma letra;
+  \item incluir uma explicação/justificativa.
+\end{itemize}
+
+O LaTeX já possui vários operadores matemáticos definidos (são apresentados mais
+a frente) e quando o operador desejado não estiver definido deve-se utilizar o
+comando \lstinline!\operatorname!\index{modo matematico@modo matemático!novos
+operadores} ou \lstinline!\DeclareMathOperator!, este último quando o operador
+for ser utilizado várias vezes no documento. 
+
+Em relação ao nome de variáveis\index{modo matematico@modo matemático!nomes
+longos para variaveis@nomes longos para variáveis}, deve-se evitar ao máximo
+nomeá-las com mais de uma letra (utilizar o alfabeto grego para isso). Quando
+não for possível evitar, deve-se utilizar o comando \lstinline!\mathrm! para
+evitar confusões. \\
+\example{codes/math_var_names@latex_with_vim.tex}
+
+Já para a inclusão de textos explicativos deve-se utilizar o comando
+\lstinline!\text!\index{comando!text@\lstinline+\text+} e
+\lstinline!\intertext!, este último reservado apenas para expressões
+\flang{displayed}. \\
+\example{codes/math_text@latex_with_vim.tex}
+
+Quanto ao espaçamento\index{modo matematico@modo
+matemático!espacamento@espaçamento}, normalmente não é preciso se preocupar com
+este pois o LaTeX inclui o espaçamento adequado. Em raras ocasiões deve-se
+incluir algum espaço apresentado na Tabela~\ref{tab:math_spacing}.
+\begin{table}[!htb]
+  \centering
+  \caption{Espaçamento no modo matemático.}
+  \input{tables/math_spacing@latex_with_vim.tex}
+  \label{tab:math_spacing}
+\end{table}
+Uma dessas ocasiões é em integrais. \\
+\example{codes/math_space_integral@latex_with_vim.tex}
+
+\subsection{Matrizes}
+Para a construção de matrizes\index{modo matematico@modo matemático!matrizes} (e
+vetores\index{modo matematico@modo matemático!vetores|see{matrizes}}) utiliza-se
+o ambiente \envname{matrix} onde as colunas são separadas por \lstinline!&! e as
+linhas por \lstinline!\\!. \\
+\example{codes/math_matrix@latex_with_vim.tex}
+
+Destaca-se que o ambiente \envname{matrix} só pode ser utilizado dentro do
+ambiente matemático e que na última linha não utiliza-se o comando
+\lstinline!\\!\index{comando! @\lstinline+\\+}.
+
+Pode-se utilizar limitadores envolvendo o ambiente \envname{matrix} ou utilizar
+uma variante: \envname{pmatrix}, \envname{bmatrix}, \envname{Bmatrix},
+\envname{vmatrix} ou \envname{Vmatrix} que corresponde, respectivamente, aos
+delimitadores $( )$, $[ ]$, $\{ \}$, $| |$ e $\| \|$. \\
+
+\section{Comandos avançados no modo matemático}
+\subsection{Equações, numeração e referenciação} \label{sse:latex:equation}
+Para o uso de expressões matemáticas a serem referenciadas\index{modo
+matematico@modo matemático!numeracao@numeração} posteriormente, recomenda-se o
+ambiente \envname{equation}\index{ambiente!equation@\envname{equation}} em
+conjunto com o comando
+\lstinline!\label!\index{comando!label@\lstinline+\label+}. \\
+\example{codes/math_equation@latex_with_vim.tex}
+
+No exemplo acima, \lcode{E:TeoPit} correspondente ao parâmetro do comando
+\lstinline!\label!, como apresentado na Seção~\ref{sse:cross_reference}. A
+referência a equação ocorre pelo comando \lstinline!\eqref!. \\
+\example{codes/math_equation_eqref@latex_with_vim.tex}
+
+\subsection{\flang{Tags}}
+O comando \lstinline!\tag!\index{comando!tag@\lstinline+\tag+} do LaTeX nomeia
+uma equação\index{modo matematico@modo matemático!tag@\flang{tag}} e a
+referência passa a ser feito por este. \\
+\example{codes/math_equation_tag@latex_with_vim.tex}
+
+Vale destacar que podemos utilizar o comando \lstinline!\label! como parâmetro
+do comando \lstinline!\tag!.
+
+\subsection{Teorema}
+O comando \lstinline{\newtheorem}\index{modo matematico@modo matemático!teorema}
+deve ser inserido no \textit{preâmbulo} e é responsável por criar um ambiente
+numerado para informações. Sua sintaxe é
+\begin{code}
+  \newtheorem{nome}{texto}
+\end{code}
+onde \lcode{nome} é o nome do ambiente a ser criado e \lcode{texto} é a
+sequência de caracteres que precede a numeração. Caso deseje-se não numerar
+deve-se utilizar a sintaxe
+\begin{code}
+  \newtheorem*{nome}{texto}
+\end{code}
+
+Para fazer uso do novo ambiente deve-se utilizar a sintaxe padrão para um
+ambiente
+\begin{code}
+  \begin{nome}
+    ...
+  \end{nome}
+\end{code}
+ou ainda
+\begin{code}
+  \begin{nome}[XXX]
+    ...
+  \end{nome}
+\end{code}
+onde \lcode{XXX} é uma sequência de caracteres que aparece entre parênteses logo
+após a numeração.
+
+\subsection{Demonstração}
+O ambiente \envname{proof} é destinada a demonstrações\index{modo
+matematico@modo matemático!demonstracao@demonstração} e caracterizado por
+terminar com o comando \lstinline!\qed!. \\
+\example{codes/math_proof@latex_with_vim.tex}
+
+O ambiente \envname{proof}, como podemos observar no exemplo abaixo, não
+trabalha adequadamente quando é finalizado com uma expressão matemática
+\flang{displayed} e para corrigir isso devemos informar onde onde será inserido
+o símbolo \flang{qed}. \\
+\example{codes/math_proof_set_qed@latex_with_vim.tex}
+
+\subsection{Alinhamento}
+O ambiente \envname{equation} foi projetado para trabalhar apenas com equações
+de uma única linha, nesta seção vamos apresentar algumas formas de trabalhar com
+equações com várias linhas\index{modo matematico@modo matemático!multiplas
+equacoes@múltiplas equações}.
+
+Para múltiplas equações alinhadas utilizamos o ambiente
+\envname{align}\index{ambiente!align@\envname{align}}, sendo cada linha separada
+pelo comando \lstinline!\\!\index{comando! @\lstinline+\\+} e o alinhamento por
+\lstinline!&!\index{comando! @\lstinline+&+}. \\
+\example{codes/math_align@latex_with_vim.tex}
+
+Quando o alinhamento ocorrer adjacente a um sinal de \lstinline!=!,
+\lstinline!+!, \dots devemos utilizar o comando \lstinline!&! antes do sinal.
+
+O ambiente \envname{align} numera todas as equações. Caso não queira numerar uma
+ou mais equações deve-se utilizar o comando \lstinline!\notag! em cada linha
+correspondente.
+
+O comando \lstinline!\label! deve estar presente em cada linha.
+
+Quando desejar adicionar a alguma linha alguma anotação utiliza-se o comando
+\lstinline!&&! entre a equação e a anotação. \\
+\example{codes/math_align_annotation@latex_with_vim.tex}
+
+\subsection{Fórmulas longas}
+Fórmulas muito longas é fonte de vários problemas ao utilizar o LaTeX. Se
+existir fórmulas muito longas na obra que estiver trabalhando sugere-se inserir
+o pacote \pkgname{breqn} por este quebrá-las automaticamente ao utilizar o
+ambiente \envname{dmath} no lugar de \envname{equation}.
+
+Infelizmente o pacote \pkgname{breqn} nem sempre funciona como desejado e nesses
+casos a solução é fazer a quebra da equação manualmente. Para isso, deve-se
+utilizar o ambiente \envname{multline}, para uma única equação, ou
+\envname{split}, este último deve ser utilizado dentro de um outro ambiente
+matemático. Se for quebrar as equações manualmente, recomenda-se ler a seção
+``Split equations without alignment'' de ``User’s Guide for the amsmath Package''.
+
+\subsection{Ocultando termos}
+Ao trabalhar com fórmulas muito longas tenta-se diminuir o tamanho utilizando
+sequências e muitas vezes é aconselhável indicar o número de termos. Para isso
+podemos utilizar os comandos \lstinline!\overbrace! ou \lstinline!\underbrace!.
+\\
+\example{codes/math_underbrace@latex_with_vim.tex}
+
+\subsection{Funções definidas por partes}
+É relativamente comum definirmos uma equações por partes e o ambiente adequado
+para representar esta construção é o \envname{cases}\index{modo matematico@modo
+matemático!funcoes definidas por partes@funções definidas por partes}. \\
+\example{codes/math_cases@latex_with_vim.tex}
+
+O ambiente \envname{cases}\index{modo matematico@modo matemático!sistemas de
+equacoes@sistemas de equações} também pode ser utilizado para sistemas de
+equações.
+
+\subsection{Fonte e Símbolos}
+No modo matemático, o LaTeX classifica os caracteres em alfabeto matemático e
+símbolos matemáticos. Baseado nessa classificação escolhe uma fonte a ser usada.
+
+Para alterar a fonte de caracteres do alfabeto matemático utiliza-se o comando
+\lstinline!\mathXX! sendo que \lcode{XX} corresponde ao código da fonte a ser
+utilizada. A Tabela~\ref{tab:op_amfonte} apresenta alguns das opções
+disponíveis.
+\begin{table}[h!tb]
+  \centering
+  \caption{Opções disponíveis para \lcode{XX} da fonte para o alfabeto matemático.}
+  \label{tab:op_amfonte}
+  \input{tables/math_op_amfonte@latex_with_vim.tex}
+\end{table}
+
+A seguir é ilustrado as opções apresentadas na Tabela \ref{tab:op_amfonte}. \\
+\example{codes/math_op_amfonte@latex_with_vim.tex}
+
+Para símbolos matemáticos apenas é possível apresentá-los em negrito e, para
+isso, utiliza-se o comando \lstinline!\boldsymbol!. \\
+\example{codes/math_boldsymbol@latex_with_vim.tex}
+
+No LaTeX também existe quatro alfabetos que são interpretados como símbolos. Um
+deles é o alfabeto grego, apresentado no capítulo anterior e os outros três são
+acessados com o comando \lstinline!\mathXX!, sendo que \lcode{XX} corresponde ao
+código da fonte a ser utilizada. A Tabela~\ref{tab:op_asfonte} apresenta as
+opções disponíveis.
+\begin{table}[h!tb]
+  \centering
+  \caption{Opções disponíveis para \lcode{XX} da fonte para o alfabeto matemático interpretado como símbolo.}
+  \label{tab:op_asfonte}
+  \input{tables/math_op_asfonte@latex_with_vim.tex}
+\end{table}
+
+A seguir é ilustrado as opções apresentadas na Tabela~\ref{tab:op_asfonte}. \\
+\example{codes/math_op_asfonte@latex_with_vim.tex}
+
+Destaca-se que a fonte blackboard bold é normalmente utilizada para representar
+os conjuntos dos números naturais ($\mathbb{N}$), inteiros ($\mathbb{Z}$), reais
+($\mathbb{R}$) e complexos ($\mathbb{C}$).
+
+\section{Símbolos e operadores}
+A seguir apresentaremos vários dos símbolos e operadores disponíveis no LaTeX.
+Para uma lista completa recomenda-se ``The Comprehensive LaTeX Symbol
+List''\nocite{Pakin:2009:Symbol}. Ao final, abordamos os comandos para raiz
+quadrada, binomial e congruências.
+\begin{table}[h!tb]
+  \centering
+  \caption{Setas}
+  \label{tab:math_arrows}
+  \input{tables/math_arrows@latex_with_vim.tex}
+\end{table}
+\begin{table}[!htbp]
+  \caption{Relações binárias} \centering
+  \label{tab:math_binary_relations}
+  \input{tables/math_binary_relations@latex_with_vim.tex}
+\end{table}
+\begin{table}[!htb]
+  \centering
+  \caption{Operadores binários}
+  \label{tab:math_binary_operations}
+  \input{tables/math_binary_operations@latex_with_vim.tex}
+\end{table}
+\begin{table}[!htb]
+  \centering
+  \caption{Operadores puros.}
+  \label{tab:math_functions1}
+  \input{tables/math_functions1@latex_with_vim.tex}
+\end{table}
+\begin{table}[!htb]
+  \centering
+  \caption{Operadores com intervalos.}
+  \label{tab:math_functions2}
+  \input{tables/math_functions2@latex_with_vim.tex}
+\end{table}
+\begin{table}[!htb]
+  \centering
+  \caption{Operadores similares ao limites.}
+  \label{tab:math_functions3}
+  \input{tables/math_functions3@latex_with_vim.tex}
+\end{table}
+\begin{table}[!htb]
+  \centering
+  \caption{Outros símbolos matemáticos}
+  \label{tab:math_others}
+  \input{tables/math_others@latex_with_vim.tex}
+\end{table}
+\begin{table}[h!tb]
+  \centering
+  \caption{Alfabeto Grego, letras minúsculas}
+  \label{tab:math_greek}
+  \input{tables/math_greek@latex_with_vim.tex}
+\end{table}
+\begin{table}[!tb]
+  \centering
+  \caption{Alfabeto Grego, letras maiúsculo}
+  \label{tab:math_greek_capital}
+  \input{tables/math_greek_capital@latex_with_vim.tex}
+\end{table}
+
+\subsection{Raiz quadrada}
+Utiliza-se o comando \lstinline!\sqrt! para raiz quadrada\index{modo
+matematico@modo matemático!raiz quadrada}. \\
+\example{codes/math_sqrt@latex_with_vim.tex}
+
+\subsection{Binomial}
+Utiliza-se o comando \lstinline!\binom! para os binômios\index{modo
+matematico@modo matemático!binomio@binômio}. \\
+\example{codes/math_binom@latex_with_vim.tex}
+
+\subsection{Congruências}
+A forma mais comum para congruências\index{modo matematico@modo
+matemático!congruencia@congruência} corresponde ao uso dos comandos
+\lstinline!\equiv! e \lstinline!\pmod!. \\
+\example{codes/math_mod@latex_with_vim.tex}

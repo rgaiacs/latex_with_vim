@@ -1,0 +1,215 @@
+% Filename: slide01.tex
+% This code is part of 'Cursos CAMECC: Introducao ao LaTeX para o Curso 29 - Licenciatura em Matematica'
+% 
+% Description: This file correspond to the slides of using for cap01@camecc_lic.tex of the course.
+% 
+% Created: 07.06.12 11:30:10 AM
+% Last Change: 07.06.12 11:30:30 AM
+% 
+% Authors:
+% - Raniere Silva, r.gaia.cs@gmail.com
+% 
+% Organization: CAMECC - Centro Academico dos Estudantes do IMECC
+% 
+% Copyright (c) 2012, Raniere Silva. All rights reserved.
+% 
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+%
+% This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+%
+\documentclass[12pt]{beamer}
+\usetheme{CambridgeUS}
+\let\Tiny=\tiny  % Redefine at least \Tiny for avoid warning
+\input{use_pack.tex}
+
+\begin{document}
+\title[Introdução ao LaTeX - 01/04]{Cursos CAMECC \\ Introdução ao LaTeX para o Curso 29 \\ Licenciatura em Matemática \\ Aula 01}
+\author{Raniere Silva}
+\institute[CAMECC]{Centro Acadêmico dos Estudantes do IMECC}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Licença}
+    Este trabalho foi licenciado com a Licença Creative Commons Atribuição - CompartilhaIgual 3.0 Não Adaptada. Para ver uma cópia desta licença, visite \url{http://creativecommons.org/licenses/by-sa/3.0/} ou envie um pedido por carta para Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+    %
+    %Com base na obra disponível em \url{https://github.com/r-gaia-cs/latex_with_vim/}. 
+    %
+    %Podem estar disponíveis permissões adicionais ao âmbito desta licença em \url{https://github.com/r-gaia-cs/latex_with_vim/}.
+    %
+    \begin{center}
+        \includegraphics[keepaspectratio=true]{../../figures/cc-by-sa.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sumário}
+    \tableofcontents
+\end{frame}
+
+\section{Informações}
+\begin{frame}
+    \frametitle{Sobre o curso}
+    \begin{enumerate}
+        \item Introdução.
+        \item Figuras e Tabelas.
+        \item Expressões Matemáticas.
+        \item Desenhos e Apresentações.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\flang{Learning Pyramid}}
+    \begin{center}
+        \includegraphics[height=0.6\textheight]{figures/learning_pyramid.jpg}
+    \end{center}
+    Imagem de Anna T. e disponível em \url{http://3.bp.blogspot.com/_RC_EAn5VwgY/TS-tVyIU8yI/AAAAAAAAACU/o7szcDYN_FM/s1600/The-Learning-Pyramid.jpg}
+\end{frame}
+\begin{frame}
+    \frametitle{História}
+    % Codificado de codes/history_timeline@latex_with_vim.tex
+    \begin{tikzpicture}[xscale=0.15, yscale=0.4]
+        \draw[gray!60] (46,0) grid (116,12);
+        \foreach \y in {46, 56, ..., 96}{
+            \node[below] at (\y, 0) {\y};
+        }
+        \node[below] at (106,0) {06};
+        \node[below] at (116,0) {16};
+
+        \draw[fill=red!60] (50,-1) rectangle ++(1,-1) ++(1,.5) node[right]{Hardware};
+        \draw[fill=blue!60] (70,-1) rectangle ++(1,-1) ++(1,.5) node[right]{Sistema operacional};
+        \draw[fill=green!60] (100,-1) rectangle ++(1,-1) ++(1,.5) node[right]{Software};
+
+        \draw[fill=red!60] (46,0) rectangle (55,1) node[midway]{ENIAC};
+        \draw[fill=blue!60] (69,1) rectangle (112,2) node[midway]{UNIX};
+        \draw[fill=green!60] (83,2) rectangle (112,3) node[midway]{GNU Project};
+        \draw[fill=blue!60] (91,3) rectangle (112,4) node[midway]{Linux Kernel};
+        \draw[fill=green!60] (78,4) rectangle (112,5) node[midway]{\TeX};
+        \draw[fill=green!60] (85,5) rectangle (112,6) node[midway]{\LaTeX};
+        \draw[fill=red!60] (76,6) rectangle (78,7) node[midway]{Apple I};
+        \draw[fill=red!60] (83,7) rectangle (85,8) node[midway]{Lisa};
+        \draw[fill=blue!60] (84,8) rectangle (112,9) node[midway]{Mac OS};
+        \draw[fill=blue!60] (81,9) rectangle (85,10) node[midway]{DOS};
+        \draw[fill=blue!60] (85,9) rectangle (112,10) node[midway]{Windows};
+        \draw[fill=green!60] (85,10) rectangle (112,11) node[midway]{Word};
+        \draw[fill=green!60] (84,11) rectangle (100,12) node[midway]{StarOffice};
+        \draw[fill=green!60] (100,11) rectangle (112,12) node[midway]{OpenOffice};
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Nomenclatura (1)}
+    Comandos são da forma
+    \begin{code}
+\nome[opcoes]{parametro1}{parametro2}{...}
+    \end{code}
+    e alguns exemplos são \lstinline!\documentclass!, \lstinline!\usepackage! e \ldots
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Nomenclatura (2)}
+    Ambientes são da forma
+    \begin{code}
+\begin{nome}[opcoes]
+    parametro
+\end{nome}
+    \end{code}
+    e alguns exemplos são \envname{document}, \envname{table}, e \ldots
+\end{frame}
+
+\begin{frame}
+    \frametitle{TeXworks}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{figures/texworks.png}
+    \end{center}
+\end{frame}
+
+\section{Hello world}
+\begin{frame}[fragile]
+    \frametitle{Hello world}
+    \begin{code}
+\documentclass[10pt,a4paper]{article}
+\begin{document}
+Hello world.
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Hello world}
+    \begin{code}
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\begin{document}
+Hello world.
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Hello world}
+    \begin{code}
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\begin{document}
+Hello world.
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Hello world}
+    \begin{code}
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\begin{document}
+Hello world.      Hello world.
+
+Hello world. [2]
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Hello world}
+    \begin{code}
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\begin{document}
+``Hello world.'' \ldots
+\end{document}
+    \end{code}
+\end{frame}
+
+\section{Formatação}
+\begin{frame}[fragile]
+    \frametitle{Hello world}
+    \begin{code}
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\begin{document}
+\textit{Hello world}.
+
+\begin{LARGE}
+    Hello world.
+\end{LARGE}
+
+\begin{center}
+    Hello world.
+\end{center}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Fim}
+    \begin{center}
+        Perguntas.
+    \end{center}
+\end{frame}
+\end{document}

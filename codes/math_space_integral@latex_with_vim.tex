@@ -1,4 +1,4 @@
-%% Filename: hello_newlines@latex_with_vim.tex
+%% Filename: math_space_integral@latex_with_vim.tex
 %% This code is part of 'LaTeX with Vim'.
 %% 
 %% Description: This file correspond to a example of LaTeX producing newlines.
@@ -14,5 +14,7 @@
 %% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 %%
 
-\textsc{texto~interpretado.} \\
-\verb+Texto~nao~interpretado.+
+$\int_0^1 x \, \mathrm{d}x$ (correto) \\
+$\int_0^1 x dx$ (errado) \\
+$\int_0^1 \int_0^1 x y \, \mathrm{d} y \, \mathrm{d}x$ (correto) \\
+$\int_0^1 \int_0^1 x y dy dx$ (errado)

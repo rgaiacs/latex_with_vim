@@ -1,0 +1,155 @@
+\chapter{Além do texto puro}
+No capítulo anterior introduzimos os comandos mais básicos do LaTeX que
+possibilitam o usuário escrever um texto simples. Neste capítulo apresentamos
+alguns comandos do LaTeX que são seu diferencial ao escrever textos longos.
+
+\section{Citações}
+No LaTeX encontramos dois ambientes dedicados a citações. O primeiro deles é o
+\envname{quote}\index{ambiente!quote@\envname{quote}} próprio para citações de
+uma única linha e o segundo é o
+\envname{quotation}\index{ambiente!quotation@\envname{quotation}} adequado para
+citações de vários parágrafos.
+
+\section{Edição direta}
+Algumas vezes deseja-se inserir um texto que não deve ser interpretado. Isso é
+possível pelo ambiente
+\envname{verbatim}\index{ambiente!verbatim@\envname{verbatim}}, coloca o texto
+em uma nova linha, e pelo comando
+\lstinline!\verb!\index{comando!verb@\lstinline+\verb+}, coloca o texto na mesma
+linha.
+
+Tanto o ambiente \lcode{verbatim} como o comando \lstinline!\verb! apresentam
+uma fonte própria. \\
+\example{codes/hello_verb@latex_with_vim.tex}
+
+Vale destacar que o comando \textbackslash\lcode{verb} é ``flexível'' quando ao
+delimitador, os caracteres \lstinline+!+, \lstinline!+! e \lstinline!:!
+normalmente exercem satisfatoriamente esta função.
+
+\section{Nota de rodapé}
+Para produzir notas de rodapé\index{nota de rodape@nota de rodapé} deve-se
+utilizar o comando
+\lstinline!\footnote!\index{comando!footnote@\lstinline+\footnote+} que deve
+ocorrer imediatamente depois da palavra ou texto a que se refere a nota de
+rodapé e como parâmetro do comando o texto a ser inserido na nota de rodapé.
+
+\section{Listas}
+Para a construção de listas\index{lista} podemos utilizar um dos quatro
+ambientes: \envname{itemize}, \envname{enumerate},
+\envname{description}\footnote{Não será tratado neste curso} ou
+\envname{list}\footnote{Não será tratado neste curso}. E para a criação de
+sublistas basta adicionar um dos ambientes dentro de um já existente.
+
+Cada item de uma lista é identificado, no LaTeX, pelo comando
+\lstinline!\item!\index{comando!item@\lstinline+\item+} que deve preceder o
+texto.
+
+\subsection{\envname{itemize}}
+O ambiente \envname{itemize}\index{ambiente!itemize@\envname{itemize}} utiliza
+um símbolo para indicar cada item da lista. \\
+\example{codes/itemize@latex_with_vim.tex}
+
+\subsection{\envname{enumerate}}
+O ambiente \envname{enumerate}\index{ambiente!enumerate@\envname{enumerate}}
+numera cada um dos itens da lista. \\
+\example{codes/enumerate@latex_with_vim.tex}
+
+Ao utilizar o ambiente \envname{enumerate} é permitido para cada item adicionar
+um comando \lstinline!\label! e posteriormente fazer referência a este pelo
+comando \lstinline!\ref!.
+
+\section{Tabelas}
+O LaTeX permite construir tabelas\index{tabela} e
+adicionar legendas \`{a} estas.
+
+\subsection{\envname{tabular}}
+O ambiente \envname{tabular}\index{ambiente!tabular@\envname{tabular}} é
+utilizado para a construção de tabelas no LaTeX e sua sintaxe é
+\begin{code}
+  \begin{tabular}[colunas]
+    informacao
+  \end{tabular}
+\end{code}
+onde \lcode{colunas} é uma sequência de caracteres, onde cada caractere
+corresponde a uma coluna e o respectivo alinhamento que são apresentados na
+Tabela~\ref{tab:par_colunas}, e \lcode{informacao} é o conteúdo de cada célula
+da tabela.
+\begin{table}[h!tb]
+  \centering
+  \caption{Opções disponíveis para \envname{colunas}.}
+  \label{tab:par_colunas}
+  \input{tables/tabular_halign@latex_with_vim.tex}
+\end{table}
+
+Cada célula da tabela deve ser separadas pelo comando
+\lstinline!&!\index{comando! @\lstinline+&+} e a mudança de linha ocorre pelo
+comando \lstinline!\\!\index{comando! @\lstinline+\\+} ou
+\lstinline!\tabularnewline!\index{comando!tabularnewline@\lstinline+\tabularnewline+}.
+Para imprimir uma linha horizontal separando duas linhas da tabela deve-se
+utilizar o comando \lstinline!\hline!.\\
+\example{codes/tabular@latex_with_vim.tex}
+
+Outros comandos também são importantes para a construção mas não trataremos
+deles aqui, para conhecê-los visitar
+\url{http://en.wikibooks.org/wiki/LaTeX/Tables}.
+
+\subsection{\envname{table}}
+O ambiente \envname{table}\index{ambiente!table@\envname{table}} possibilita a
+inclusão de uma legenda para a tabela e trabalha a mesma como um objeto
+flutuante. A sintaxe deste ambiente é
+\begin{code}
+  \begin{table}[posicao]
+    tabela
+    \caption{legenda}
+    \label{P:tebela}
+  \end{table}
+\end{code}
+onde \lcode{posicao} é o parâmetro que indica onde a tabela deve ser
+preferencialmente inserida (as opções disponíveis são apresentadas na Tabela
+\ref{tab:par_place_tab} e a opção padrão é \lcode{tbp}), \lcode{tabela}
+corresponde ao código da tabela a ser inserida,
+\lstinline!\caption!\index{comando!caption@\lstinline+\caption+} é o comando
+correspondente a legenda e \lcode{legenda} é o texto a ser apresentado como
+legenda, \lstinline!\label! é o comando para referência cruzada como já
+apresentado. \\
+\example{codes/table@latex_with_vim.tex}
+\begin{table}[!htb]
+  \centering
+  \caption{Opções disponíveis para \envname{posicao}.}
+  \label{tab:par_place_tab}
+  \input{tables/table_place@latex_with_vim.tex}
+\end{table}
+
+Uma dica útil é que o comando
+\lstinline!\clearpage!\index{comando!clearpage@\lstinline+\clearpage+} força as
+tabelas pendentes a serem inseridas.
+
+\subsection{Extensão Calc2LaTeX}
+Muitas vezes temos uma tabela no Calc\footnote{O Calc é um dos aplicativos do
+pacote LibreOffice e corresponde ao popular Excel do pacote Microsoft Office.} e
+desejamos transportá-la para o LaTeX. Para essa tarefa a extensão/macro
+Calc2LaTeX, disponível gratuitamente em
+\url{http://extensions.services.openoffice.org/en/project/Calc2LaTeX}, é
+bastante eficiente.
+
+\section{Referência cruzada} \label{sse:cross_reference}
+Existem dois tipos de referência cruzada\index{referencia cruzada@referência
+cruzada}, a primeira para alguma parte do documento e a segunda para um outro
+documento. Nesta seção abordaremos o primeiro tipo e o segundo será tratado
+quando formos falar sobre o BibTeX.
+
+Para alguns comandos e ambientes o LaTeX atribui um número, ou conjunto de
+caracteres, que pode ser vinculado a um nome pelo comando
+\lstinline!\label!\index{comando!label@\lstinline+\label+} e referenciado pelo
+comando \lstinline!\ref!\index{comando!ref@\lstinline+\ref+} e
+\lstinline!\pageref!, este último quando deseja-se o número da página onde
+encontra-se o item referenciado.
+
+O argumento do comando \lstinline!\label! é uma sequencia de
+caracteres\footnote{Recomenda-se escolher uma sequencia ``amigável''.},
+\flang{case sensitive}, que será utilizada como argumento do comando
+\lstinline!\ref! ao efetuar a referência.
+
+Ao utilizar os comandos \lstinline!\ref! ou \lstinline!\pageref! é aconselhável
+precedê-los por um \lstinline!~! para evitar uma quebra de linha antes da
+referência.

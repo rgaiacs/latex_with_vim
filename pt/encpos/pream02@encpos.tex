@@ -1,0 +1,115 @@
+\chapter{Alguns pacotes úteis}
+No capítulo anterior foi apresentado três pacotes (\pkgname{inputenc},
+\pkgname{babel} e \pkgname{geometry}) que costuma estar presentes em
+todo documente LaTeX. Nesse capítulo vamos apresentar alguns outros pacotes mais
+alguns pacotes.
+
+\section{Cor}
+Para alterar a cor\index{fonte!cor} do texto é necessário os pacotes
+\pkgname{graphicx}\index{pacote!graphicx@\pkgname{graphicx}} e
+\pkgname{color}\index{pacote!color@\pkgname{color}} e pode-se utilizar um dos
+comandos: \lstinline!\textcolor!\index{comando!textcolor@\lstinline+\textcolor+}
+ou \lstinline!\color!\index{comando!color@\lstinline+\color+}.
+
+A seguir apresentamos um exemplo. \\
+\example{codes/hello_color@latex_with_vim.tex}
+
+\section{Endereços da internet}
+Nos endereços da internet é muito comum a presença de caracteres especiais para
+o LaTeX. Para inserir um endereço da internet facilmente pode-se utilizar o
+comando \lstinline!\verb!\index{comando!verb@\lstinline+\verb+} que foi
+apresentado anteriormente ou utilizar o comando
+\lstinline!\url!\index{comando!url@\lstinline+\url+} disponível no pacote
+\pkgname{url}\index{pacote!url@\pkgname{url}}.
+
+\section{Hiperligação e metadados}
+Uma das capacidades do \lcode{pdf} é possuir metadados (informações para serem lidas por
+máquinas) e hiperligação internos e/ou externos (marcações ao longo do texto que
+possibilita ao usuário uma leitura não linear do documento).
+
+Hiperligações são muito úteis ao leitor para que esse localize facilmente o
+texto a que uma referência cruzada refere-se. A criação das hiperligações é
+feita ao incluir o pacote \pkgname{hyperref}.
+
+A inclusão de alguns metadados também é feita pelo pacote \pkgname{hyperref}.
+Para a inclusão nos metadados do \lcode{pdf} do título e autor da obra pode-se utilizar
+\begin{code}
+\hypersetup{
+  pdfinfo={
+    Title={Titulo da obra},
+    Author={Nome do autor},
+  }
+}
+\end{code}
+
+\section{Figuras}
+No LaTeX é possível inserir figuras\index{figura} contidas em um arquivo de
+imagem ou desenhar uma\footnote{Ver a Seção~\ref{sse:tikz}}. Também podemos
+adicionar uma legenda para a figura.
+
+\subsection{Arquivos de imagem}
+Para inserir arquivos de imagem é necessário o pacote
+\pkgname{graphicx}\index{pacote!graphicx@\pkgname{graphicx}}. A imagem a ser
+inserida pode encontrar-se em um dos seguintes formatos: \lcode{jpg},
+\lcode{png}, \lcode{pdf} ou \lcode{eps}\footnote{Este formato requer instalada o
+TeX Live 2011 ou superior pois a partir dessa versão o pacote para conversão do
+arquivo \lcode{eps} para um formato suportado é nativa.}.
+
+O comando
+\lstinline!\includegraphics!\index{comando!includegraphics@\lstinline+\includegraphics+}
+é o responsável por indicar a figura que será inserida, sendo a figura inserida
+ao longo do texto. A síntaxe deste comando é
+\begin{code}
+  \includegraphics[parametro=comprimento]{arquivo}
+\end{code}
+em que \lcode{parametro} é um comando disponíveis (algumas opções disponíveis
+são apresentadas na Tabela \ref{tab:figure_size}), \lcode{comprimento} é uma medida
+para \lcode{parametro} e \lcode{arquivo} é o nome do arquivo que contem a imagem.
+\begin{table}[!htb]
+  \centering
+  \caption{Opções disponíveis para \envname{parametro}.}
+  \label{tab:figure_size}
+  \input{tables/figure_size@latex_with_vim.tex}
+\end{table}
+
+Uma dica é que para \lcode{comprimento} podemos utilizar medidas correspondente a
+folha escolhida como por exemplo \lstinline!\textwidth! ou
+\lstinline!\textheight!.\\
+\example{codes/includegraphics@latex_with_vim.tex}
+
+Maiores informações podem ser encontradas em
+\url{http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics}.
+
+\subsection{\envname{figure}}
+O ambiente \envname{figure}\index{ambiente!figure@\envname{figure}} possibilita
+a inclusão de uma legenda para a figura e trabalha a mesma como um objeto
+flutuante. A síntaxe deste ambiente é
+\begin{code}
+  \begin{figure}[place]
+    imagem
+    \caption{legenda}
+    \label{P:imagem}
+  \end{figure}
+\end{code}
+onde \lcode{place} é o parâmetro que indica onde a figura deve ser
+preferencialmente inserida (as opções disponíveis são apresentadas na Tabela
+\ref{tab:figure_place} e a opção padrão é \lcode{tbp}), \lcode{imagem}
+corresponde ao código da figura a ser inserida,
+\lstinline!\caption!\index{comando!caption@\lstinline+\caption+} é o comando
+correspondente a legenda e \lcode{legenda} é o texto a ser apresentado como
+legenda, \lstinline!\label! é o comando para referência cruzada como já
+apresentado. \\
+\example{codes/figure_centering@latex_with_vim.tex}
+\begin{table}[!htb]
+  \centering
+  \caption{Opções disponíveis para \envname{place}.}
+  \label{tab:figure_place}
+  \input{tables/figure_place@latex_with_vim.tex}
+\end{table}
+
+Uma dica útil é que o comando
+\lstinline!\clearpage!\index{comando!clearpage@\lstinline+\clearpage+} que força
+as figuras pendentes a serem inseridas.
+
+Outras informações podem ser encontradas em
+\url{http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}.

@@ -1,0 +1,157 @@
+\chapter{Referência bibliográfica}
+O ambiente \envname{thebibliography} é utilizado para a inclusão da referência
+bibliográfica. Como ele exige um grande trabalho para ser utilizado e é difícil
+reutilizá-lo foi desenvolvido o BibTeX (um banco de dados plano para referências
+bibliográfica e um executável para construção do ambiente
+\envname{thebibliography}). Posteriormente foi criado o pacote
+\pkgname{biblatex} que extende o BibTeX. A seguir será apresentado um pouco do
+BibTeX e do \envname{biblatex}.
+
+\section{BibTeX}
+O ``banco de dados'' corresponde a um arquivo de texto com a extensão
+\lstinline+.bib+. Cada referência no BibTeX segue a seguinte estrutura:
+\begin{lstlisting}
+@tipo{identificador,
+campo1 = {valor do campo 1},
+campo2 = {valor do campo 2},
+campo3 = {valor do campo 3},
+...
+}
+\end{lstlisting}
+
+Uma lista com alguns dos \lstinline+tipo+'s permitido pelo BibTeX é
+apresentada na Tabela~\ref{tab:bibtex_entry_type}.
+\begin{table}[h!tb]
+  \centering
+  \caption{\textsf{tipo}'s disponíveis no BibTeX padrão.}
+  \label{tab:bibtex_entry_type}
+  \input{tables/bibtex_entry_type@latex_with_vim.tex}
+\end{table}
+
+Uma lista com alguns dos \lcode{campo}'s permitido pelo BibTeX é apresentada na
+Tabela~\ref{tab:bibtex_entry_field}.
+\begin{table}[h!tb]
+    \centering
+    \caption{\textsf{campo}'s disponíveis no BibTeX padrão.}
+    \label{tab:bibtex_entry_field}
+    \input{tables/bibtex_entry_field@latex_with_vim.tex}
+\end{table}
+
+Uma das grandes vantagens de se utilizar o BibTeX é que as chances de encontrar
+o BibTeX de algum material na internet é extremamente alta. Tanto o Google
+Scholar como o Google Books disponibilizam o BibTeX para todos os materiais
+indexados em suas respectivas bases de dados.
+
+\section{\lstinline+biblatex+}
+O pacote \pkgname{biblatex} define o comando
+\lstinline+\addbibresource{referencias.bib}+ que é inserido no \emph{preâmbulo}
+e especifica o arquivo que armazena as referências bibliográficas, nesse caso
+\lstinline+referencias.bib+ e o comando \lstinline+\printbibliography+ que é
+inserido na posição onde deseja-se incluir as referências.
+
+O estilo a ser utilizado nas referências bibliográficas é informado como uma
+opção do pacote \pkgname{biblatex} como indicado a seguir:
+\begin{code}
+\usepackage[style=estilo]{biblatex}
+\end{code}
+Alguns dos estilos existentes são:
+\begin{itemize}
+  \item \lstinline+numeric+,
+  \item \lstinline+alphabetic+,
+  \item \lstinline+authoryear+, \dots
+\end{itemize}
+
+Para que uma entrada do bando de dados seja incluído na referência bibliográfica
+ele precisa ser mencionada em algum dos arquivos \lstinline+.tex+ que compõe a
+obra. Para mencionar uma referência utiliza-se uma das variantes do comando
+\lstinline+\cite{id}+, onde \lstinline+id+ corresponde ao
+\lstinline+identificador+ utilizado na entrada do BibTeX para a referência
+desejada.
+
+O comando \lstinline+\cite{id}+ insere o número da referência entre colchetes,
+como mostrado abaixo:
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{lc}
+    \hline
+    Comando & Resultado \\ \hline
+    \lstinline+\cite{Sauer:2004:Parcolumns}+ & \cite{Sauer:2004:Parcolumns} \\
+    \lstinline+\cite{Neves:AprendendoLaTeX}+ & \cite{Neves:AprendendoLaTeX} \\
+    \lstinline+\cite{Pakin:2009:Symbol}+ & \cite{Pakin:2009:Symbol} \\
+    \lstinline+\cite{Moses:2007:Listings}+ & \cite{Moses:2007:Listings} \\ \hline
+  \end{tabular}
+\end{table}
+
+Para inserir o nome dos autores e o número da referência entre colchetes,
+utiliza-se o comando \lstinline+\textcite{id}+, como mostrado abaixo:
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{ll}
+    \hline
+    Comando & Resultado \\ \hline
+    \lstinline+\textcite{Sauer:2004:Parcolumns}+ & \textcite{Sauer:2004:Parcolumns} \\
+    \lstinline+\textcite{Neves:AprendendoLaTeX}+ & \textcite{Neves:AprendendoLaTeX} \\
+    \lstinline+\textcite{Pakin:2009:Symbol}+ & \textcite{Pakin:2009:Symbol} \\
+    \lstinline+\textcite{Moses:2007:Listings}+ & \textcite{Moses:2007:Listings} \\ \hline
+  \end{tabular}
+\end{table}
+
+Para inserir apenas o nome dos autores utiliza-se o comando
+\lstinline+\citeauthor{id}+, como mostrado abaixo:
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{ll}
+    \hline
+    Comando & Resultado \\ \hline
+    \lstinline+\citeauthor{Sauer:2004:Parcolumns}+ & \citeauthor{Sauer:2004:Parcolumns} \\
+    \lstinline+\citeauthor{Neves:AprendendoLaTeX}+ & \citeauthor{Neves:AprendendoLaTeX} \\
+    \lstinline+\citeauthor{Pakin:2009:Symbol}+ & \citeauthor{Pakin:2009:Symbol} \\
+    \lstinline+\citeauthor{Moses:2007:Listings}+ & \citeauthor{Moses:2007:Listings} \\ \hline
+  \end{tabular}
+\end{table}
+
+Para inserir apenas o título da referência utiliza-se o comando
+\lstinline+\citetitle{id}+, como mostrado abaixo:
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{ll}
+    \hline
+    Comando & Resultado \\ \hline
+    \lstinline+\citetitle{Sauer:2004:Parcolumns}+ & \citetitle{Sauer:2004:Parcolumns} \\
+    \lstinline+\citetitle{Neves:AprendendoLaTeX}+ & \citetitle{Neves:AprendendoLaTeX} \\
+    \lstinline+\citetitle{Pakin:2009:Symbol}+ & \citetitle{Pakin:2009:Symbol} \\
+    \lstinline+\citetitle{Moses:2007:Listings}+ & \citetitle{Moses:2007:Listings} \\ \hline
+  \end{tabular}
+\end{table}
+
+Para inserir apenas o ano de publicação da referência utiliza-se o comando
+\lstinline+\citeyear{id}+, como mostrado abaixo:
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{lc}
+    \hline
+    Comando & Resultado \\ \hline
+    \lstinline+\citeyear{Sauer:2004:Parcolumns}+ & \citeyear{Sauer:2004:Parcolumns} \\
+    \lstinline+\citeyear{Neves:AprendendoLaTeX}+ & \citeyear{Neves:AprendendoLaTeX} \\
+    \lstinline+\citeyear{Pakin:2009:Symbol}+ & \citeyear{Pakin:2009:Symbol} \\
+    \lstinline+\citeyear{Moses:2007:Listings}+ & \citeyear{Moses:2007:Listings} \\ \hline
+  \end{tabular}
+\end{table}
+
+Para citações múltiplas, utiliza-se os comandos \lstinline+\cites{id1,id2,id3}+
+ou \lstinline+\textcites{id1,id2,id3}+, como mostrado abaixo:
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{lc}
+    \hline
+    Comando & Resultado \\ \hline
+    \lstinline+\cites{Neves:AprendendoLaTeX,Sauer:2004:Parcolumns}+ & \cites{Neves:AprendendoLaTeX,Sauer:2004:Parcolumns} \\
+    \lstinline+\cites{Moses:2007:Listings,Pakin:2009:Symbol}+ & \cites{Moses:2007:Listings,Pakin:2009:Symbol} \\
+    \lstinline+\textcites{Neves:AprendendoLaTeX,Sauer:2004:Parcolumns}+ & \textcites{Neves:AprendendoLaTeX,Sauer:2004:Parcolumns} \\
+    \lstinline+\textcites{Moses:2007:Listings,Pakin:2009:Symbol}+ & \textcites{Moses:2007:Listings,Pakin:2009:Symbol} \\ \hline
+  \end{tabular}
+\end{table}
+
+Por último, caso deseje incluir uma referência na referência bibliográfica mas
+suprimi-la ao longo do texto você deve utilizar o comando
+\lstinline+\nocite{id}+.

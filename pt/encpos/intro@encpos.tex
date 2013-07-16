@@ -1,0 +1,83 @@
+\chapter{Introdução} \label{sch:intro}
+Nesse capítulo será apresentado uma pouco da história a computação moderna e do
+contexto histórico no qual o TeX e o LaTeX surgiram. Posteriormente encontra-se
+um glossário de termos relacionados com o LaTeX.
+
+\section{História}
+Podemos dizer que a história da computação moderna tem início com a criação do
+ENIAC (Electronic Numerical Integrator and Computer), o primeiro computador
+digital eletrônico de grande escala, criado em fevereiro de 1946 pelos
+cientistas norte-americanos John Eckert e John Mauchly, da Electronic Control
+Company.\nocite{Wikipedia:PT:ENIAC}
+
+Por muitos anos o uso de computadores ficou restrito a grandes empresas e
+universidades como AT\&T Bell Labs, General Electric, Massachusetts Institute of
+Technology entre outros. Em 1969 foi lançado o sistema operacional UNIX que
+rapidamente passou a ser utilizado pela maioria dos usuários da
+época.\nocite{Wikipedia:EN:UNIX}
+
+Nos anos 70 ocorreu uma grande mudança nas técnicas de produção de livros e
+similares. Em 1977, Donald Knuth lançou a segunda edição do segundo volume de
+sua obra ``The Art of Computer Programming'' e não gostou do resultado (na
+primeira edição havia sido utilizada uma técnica de impressão diferente). Por
+volta desse ano, Knuth viu pela primeira vez o resultado de um sistema
+tipográfico digital de alta qualidade e ficou interessado pelo mesmo. Motivado
+pelo ``problema'' com o seu livro ele acabou desenvolvendo o seu próprio sistema
+tipográfico, o TeX\footnote{A pronúncia correta é semelhante a da palavra
+inglesa ``tech''. Maiores informações em
+\url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=TeXpronounce}}, que foi
+lançado em 1978.\nocite{Wikipedia:EN:TeX}
+
+Usar o TeX não era fácil. Em 1985, Leslie Lamport lança o LaTeX, uma linguagem
+de marcação e preparativo do sistema para o TeX, facilitando a utilização do
+TeX.\nocite{Wikipedia:EN:LaTeX}
+
+Os primeiros computadores pessoais, como o Apple I, surgem nos anos 70. E nos
+anos 80 os computadores começam a invadir escritórios e depois lares, sendo que
+nessa década são lançados o IBM Personal Computer (IBM PC), Lisa, Macintosh e
+vários clones (principalmente do IBM PC).
+
+Em 1985, uma pequena \textit{start-up} chamada Microsoft lança seu sistema
+operacional, Windows, e seu processador de texto, Word, que possuia uma versão
+para Macintosh e foi um dos primeiros a possuir funcionalidades verdadeiramente
+WYSIWYG\footnote{Acrônimo da expressão em inglês ``What You See Is What You
+Get'', cuja tradução remete a algo como ``O que você vê é o que você obtem''.}.
+Por ser WYSIWYG,  utilizar o Word ou algum de seus concorrentes não exigia
+nenhum conhecimento prévio e isso acabou ofuscando o LaTeX.\footnote{É
+importante destacar que, tipicamente, os usuários do LaTeX (ou TeX) e do Word
+(ou concorrêntes) possuem necessidades bastante diferentes.}
+
+Com os computadores pessoais a Microsoft acabou adquirindo grande parte do
+mercado de sistemas operacionais para o seu produto, o Windows, por este ser
+compatível com os clones do IBM PC e possuir interface gráfica.\footnote{Nessa
+época a Apple ainda era uma \textit{start-up} quando comparada a seus
+concorrentes como, por exemplo, a IBM e ocorria a \textit{UNIX wars} (ver
+detalhes em \url{http://en.wikipedia.org/wiki/Unix_wars}).} Desde que o Windows
+passou a ser o sistema operacional dominante\footnote{Ao menos no ramo de
+computadores pessoais.} a Microsoft violou várias leis antitruste para promover
+outros de seus produtos como seu pacote de escritório, Microsoft Office, que
+inclue o Word, seu navegador de internet, Internet Explorer, e outros.
+
+\begin{figure}[htb]
+  \begin{center}
+    \input{codes/history_timeline@latex_with_vim.tex}
+  \end{center}
+  \caption{Linha do tempo de alguns softwares.}
+  \label{fig:history_timeline}
+\end{figure}
+
+\section{Glossário}
+Ao procurar ajuda é fundamental utilizar a palavra correta para o que deseja-se
+e como existem várias palavras que incluem TeX espera-se ajudar o leitor com
+algumas explicações (em ordem alfabética):
+\begin{description}
+  \item[compilador] é o arquivo binário responsável por ler o arquivo
+    \lstinline+.tex+ e criar o arquivo para impressão.
+  \item[distribuição] uma coleção estruturada de software relacionados.
+    Alguns exemplos de destribuições (La)TeX são: TeX Live e MiKTeX.
+  \item[dvi] acrônimo para DeVice-Independent.
+  \item[LaTeX] é o conjunto de macros escrita por Lamport para o TeX.
+  \item[pdf] acrônimo para Portable Document Format.
+  \item[ps] ou PostScript é linguagem para criação de desenhos vetoriais.
+  \item[TeX] é o sistema tipográfico criado por Knuth.
+\end{description}

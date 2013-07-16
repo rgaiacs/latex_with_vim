@@ -1,0 +1,87 @@
+% Filename: use_pack.tex
+% This code is part of 'Cursos CAMECC: Introducao ao LaTeX para o Curso 29 - Licenciatura em Matematica'
+% 
+% Description: This file is only a list of the packages used in the course.
+% 
+% Created: 07.06.12 11:30:10 AM
+% Last Change: 07.06.12 11:30:30 AM
+% 
+% Authors:
+% - Raniere Silva, r.gaia.cs@gmail.com
+% 
+% Organization: CAMECC - Centro Academico dos Estudantes do IMECC
+% 
+% Copyright (c) 2012, Raniere Silva. All rights reserved.
+% 
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+%
+% This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+%
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage{pb-diagram}
+\usepackage{graphicx, color}
+% \usepackage[top=3cm,left=2cm,right=2cm,bottom=3cm]{geometry} % Must be repeat in the file.
+\usepackage{subfig}
+\usepackage{enumerate}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{indentfirst}
+\usepackage{multirow}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}  % For index.
+\makeindex  % For index.
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{epsfig}
+\usepackage{latexsym}
+\usepackage{makeidx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{breakurl}
+\usepackage{multicol}
+\usepackage{parcolumns}
+\usepackage[official]{eurosym}
+\lstset{
+breaklines=true,
+literate={é}{{\'e}}1 {á}{{\'a}}1 {ã}{{\~a}}1,
+}
+
+\renewcommand{\lstlistingname}{Código}
+\lstset{
+language=TeX,                   % the language of the code
+basicstyle=\ttfamily\footnotesize,     % the size of the fonts that are used for the code
+%numbers=left,                   % where to put the line-numbers
+%numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+%stepnumber=5,                   % the step between two line-numbers. If it's 1, each line 
+%numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+tabsize=2,                      % sets default tabsize to 2 spaces
+%captionpos=t,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+%caption={\texttt{\lstname}},    % show the filename of files included with \lstinputlisting;
+}
+
+% New commands and enviromments
+\newcommand{\TikZ}{Ti\emph{k}Z }
+\newcommand{\PGF}{\textsc{PGF} }
+\newcommand{\lcode}[1]{\texttt{#1}}  % Code in the same line.
+\lstnewenvironment{code}{}{}  % Code in new line.
+\newcommand{\fcode}[1]{\lstinputlisting[firstline=18]{#1}}  % Code in a file.
+\newcommand{\example}[1]{  % For examples.
+\begin{minipage}[htb]{0.55\textwidth}
+    \fcode{#1}
+\end{minipage} \hfill \vrule \hfill
+\begin{minipage}[htb]{0.35\textwidth}
+    \include{#1}
+\end{minipage}
+}

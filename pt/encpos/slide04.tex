@@ -1,0 +1,201 @@
+% Filename: slide04.tex
+% This code is part of 'Cursos CAMECC: Introducao ao LaTeX para o Curso 29 - Licenciatura em Matematica'
+% 
+% Description: This file correspond to the slides of using for cap04@camecc_lic.tex of the course.
+% 
+% Created: 07.06.12 11:30:10 AM
+% Last Change: 07.06.12 11:30:30 AM
+% 
+% Authors:
+% - Raniere Silva, r.gaia.cs@gmail.com
+% 
+% Organization: CAMECC - Centro Academico dos Estudantes do IMECC
+% 
+% Copyright (c) 2012, Raniere Silva. All rights reserved.
+% 
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+%
+% This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+%
+\documentclass[12pt]{beamer}
+\usetheme{CambridgeUS}
+\let\Tiny=\tiny  % Redefine at least \Tiny for avoid warning
+\input{use_pack.tex}
+
+% Para os slides com codigos do Beamer.
+\newenvironment{slide}[1]
+{\begin{frame}[fragile,environment=slide]
+    #1}
+{\end{frame}}
+
+\begin{document}
+\title[Introdução ao LaTeX - 04/04]{Cursos CAMECC \\ Introdução ao LaTeX para o Curso 29 \\ Licenciatura em Matemática \\ Aula 04}
+\author{Raniere Silva}
+\institute[CAMECC]{Centro Acadêmico dos Estudantes do IMECC}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Licença}
+    Este trabalho foi licenciado com a Licença Creative Commons Atribuição - CompartilhaIgual 3.0 Não Adaptada. Para ver uma cópia desta licença, visite \url{http://creativecommons.org/licenses/by-sa/3.0/} ou envie um pedido por carta para Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+    %
+    %Com base na obra disponível em \url{https://github.com/r-gaia-cs/latex_with_vim/}. 
+    %
+    %Podem estar disponíveis permissões adicionais ao âmbito desta licença em \url{https://github.com/r-gaia-cs/latex_with_vim/}.
+    %
+    \begin{center}
+        \includegraphics[keepaspectratio=true]{../../figures/cc-by-sa.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sumário}
+    \tableofcontents
+\end{frame}
+
+\section{Obtendo Ajuda}
+\begin{frame}[fragile]
+    \frametitle{RFM!!!}
+    No terminal, utilize
+    \begin{code}
+texdoc tikz
+    \end{code}
+    para o manual do TikZ e
+    \begin{code}
+texdoc beamer
+    \end{code}
+    para o manual do Beamer.
+\end{frame}
+
+\section{TikZ}
+\begin{frame}[fragile]
+    \frametitle{Algumas formas}
+    \begin{code}
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+    \draw (0,0) -- (1,0);
+    \draw (0,-1) -- (1,0) -- (2,-1);
+    \draw (-2,-2) rectangle (0,-3);
+    \fill (2,-2) circle (1);
+\end{tikzpicture}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Sorvete} 
+    \begin{code}
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+    \draw[fill=orange, rotate=45] (0,1) rectangle (4,1.5);
+    \draw[fill=red!70] (0,1) circle (2);
+    \draw[fill=brown] (-2,0) -- (0,-4) -- (2,0);
+\end{tikzpicture}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{\^{A}ngulos} 
+    \begin{code}
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+    \draw[->] (0,0) -- (1,0) node[below right]{A} -- (2.5,0);
+    \draw[->] (0,0) -- (0,2.5);
+    \draw[dotted] (-2,-2) grid (2,2);
+    \draw[blue] (0,0) circle (1);
+    % (60:1) significa 60 graus e raio 1.
+    \draw (0,0) node[below left]{O} -- (60:1) node[above right]{B};
+    \draw[red] (.2,0) arc (0:60:0.2);
+\end{tikzpicture}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Gráficos de Funções} 
+    \begin{code}
+\begin{tikzpicture}[domain=0:4]
+    \draw[very thin,color=gray] (-0.1,-1.1) grid (3.9,3.9);
+    \draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
+    \draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
+    \draw[color=red] plot (\x,\x) node[right] {$f(x) =x$};
+    \draw[color=blue] plot (\x,{sin(\x r)}) node[right] {$f(x) = \sin x$};
+    \draw[color=orange] plot (\x,{0.05*exp(\x)}) node[right] {$f(x) = \frac{1}{20} e^x$};
+\end{tikzpicture}
+    \end{code}
+    O exemplo acima foi retirado de ``The TikZ and PGF Packages - Manual for version 2.10'' de Till Tantau.
+\end{frame}
+
+\section{Beamer}
+\begin{slide}
+    \frametitle{Hello} 
+    \begin{code}
+\documentclass{beamer}
+\begin{document}
+\begin{frame}
+    Hello.
+\end{frame}
+\end{document}
+    \end{code}
+\end{slide}
+
+\begin{slide}
+    \frametitle{Título} 
+    \begin{code}
+\documentclass{beamer}
+\begin{document}
+\begin{frame}
+    \frametitle{Hello}
+    Me chamo \ldots
+\end{frame}
+\end{document}
+    \end{code}
+\end{slide}
+
+\begin{slide}
+    \frametitle{Tema} 
+    \begin{code}
+\documentclass{beamer}
+% Mais temas em http://www.hartwork.org/beamer-theme-matrix/
+\usetheme{CambridgeUS}
+\begin{document}
+\begin{frame}
+    \frametitle{Hello}
+    Me chamo \ldots
+\end{frame}
+\end{document}
+    \end{code}
+\end{slide}
+
+\begin{slide}
+    \frametitle{``Animações''} 
+    \begin{code}
+\documentclass{beamer}
+\usepackage{tikz}
+\begin{document}
+\begin{frame}
+\begin{tikzpicture}
+    \draw[fill=orange, rotate=45] (0,1) rectangle (4,1.5); \pause
+    \draw[fill=red!70] (0,1) circle (2); \pause
+    \draw[fill=brown] (-2,0) -- (0,-4) -- (2,0);
+\end{tikzpicture}
+\end{frame}
+\end{document}
+    \end{code}
+\end{slide}
+
+\begin{frame}
+    \frametitle{Fim}
+    \begin{center}
+        Perguntas.
+    \end{center}
+\end{frame}
+\end{document}

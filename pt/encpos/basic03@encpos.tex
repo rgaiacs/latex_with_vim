@@ -1,0 +1,93 @@
+\chapter{Um pouco de layout}
+Enquanto que no capítulo anterior foi apresentado algumas ferramentas para
+escrever textos mais complexos, por exemplo, contendo listas e tabelas, nesse
+capítulo iremos tratar um pouco do layout do texto.
+
+\section{Fonte}
+No LaTeX estão disponíveis algumas fontes\index{fonte} opcionais. Comandos da
+forma \lstinline!\textXX! são responsáveis por alterar a fonte sendo que
+\lcode{XX} corresponde ao código da fonte a serem utilizados. A
+Tabela~\ref{tab:text} apresenta alguns das opções disponíveis.
+\begin{table}[!htb]
+  \centering
+  \caption{Opções disponíveis para \lcode{XX} da fonte.} \label{tab:text}
+  \input{tables/text@latex_with_vim.tex}
+\end{table}
+
+A seguir é ilustrado as opções apresentadas na Tabela~\ref{tab:text}. \\
+\example{codes/hello_fonte@latex_with_vim.tex}
+
+\subsection{Tamanho}
+Uma das maneiras de mudar o tamanho da fonte\index{fonte!tamanho} em uma parte
+do texto é utilizando um dos ambiente  ou comando de tamanho (a Tabela
+\ref{tab:op_tamanho_fonte} apresenta algumas opções disponíveis).
+\begin{table}[h!tb]
+  \centering
+  \caption{Opções disponíveis para o tamanho da fonte, em ordem crescente.}
+  \label{tab:op_tamanho_fonte}
+  \input{tables/font_size@latex_with_vim.tex}
+\end{table}
+
+Destaca-se que os tamanhos são baseados no tamanho padrão. A seguir um exemplo.
+\\
+\example{codes/hello_size@latex_with_vim.tex}
+
+\section{Espaçamento}
+Nesta seção abordaremos como inserir espaços\index{espaços em branco} ao longo
+do texto no LaTeX, mas antes é importante destacar que podemos suprimir espaços
+ao utilizar medidas negativas.
+
+\subsection{Espaçamento horizontal}
+Para produzir um espaço horizontal utiliza-se o comando
+\lstinline!\hspace!\index{comando!hspace@\lstinline+\hspace+} que tem como
+parâmetro o tamanho do espaço a ser inserido. Se o comando ocorrer entre duas
+linhas ou no início de uma linha o LaTeX não produz o espaço e para este caso
+devemos utilizar  \lstinline!\hspace*!.
+
+Para modificar a indentação característica de um novo parágrafo deve-se utilizar
+o comando
+\begin{code}
+  \setlength{\parident}{tam}
+\end{code} 
+onde \lcode{tam} é o novo tamanho para a indentação dos parágrafos. No caso de
+desejar-se suprimir a indentação deve-se utilizar o comando
+\lstinline!\noindent!.
+
+O comando \lstinline!\hfill! cria um espaço suficiente para dividir o texto de
+modo que o que estiver antes do comando é alinhado a esquerda e o que estiver
+depois é alinhado a direita. É permitido utilizar o comando mais de uma vez em
+uma linha. O comando é ignorado quando ocorrer entre duas linhas ou no início de
+uma linha, neste caso devemos utilizar \lstinline!\hfill*!.
+
+\subsection{Linha horizontal}
+Os comandos \lstinline!\dotfill! e \lstinline!\hrulefill! funcionam de maneira
+semelhante ao comando \lstinline!\hfill!, mas ao invés de inserir um espaço em
+branco é introduzido, respectivamente uma linha pontilhada e uma linha contínua.
+
+\subsection{Espaçamento vertical}
+O comando \lstinline!\baselineskip[tam]! estabelece o tamanho do espaçamento
+entre linhas para o texto posterior ao comando. Para modificar o tamanho entre
+duas linhas específicas pode-se utilizar o comando \lstinline!\\[tam]! inicia
+uma nova linha de maneira que \lcode{tam} é o espaçamento entre as linhas.
+
+Para aumentar o espaço entre parágrafos pode-se utilizar um dos comandos
+\lstinline!\smallskip!, \lstinline!\medskip! ou \lstinline!\bigskip!, sendo que
+o tamanho do espaço está relacionado com o tamanho da fonte padrão do documento.
+
+Os comandos \lstinline!\vspace!\index{comando!vspace@\lstinline+\vspace+} e
+\lstinline!\vfill! funcionam, respectivamente, de modo muito semelhante aos
+comandos \lstinline!\hspace! e \lstinline!\hfill! só que na vertical.
+
+\subsection{Linha verticais}
+O comando \lstinline!\vrule! produz uma linha vertical.
+
+\section{Alinhamento}
+Por padrão, o alinhamento\index{alinhamento} ocorre com a margem esquerda e para
+alterá-lo pode-se utilizar um dos seguintes ambientes: \envname{center} (para
+texto centralizado), \envname{flushleft} (alinhamento a esquerda) e
+\envname{flushright} (alinhamento a direita). \\
+\example{codes/align@latex_with_vim.tex}
+
+Também é permitido utilizar os comandos: \lstinline!\centering! (para texto
+centralizado), \lstinline!\raggedleft! (alinhamento a esquerda) e
+\lstinline!\raggedright! (alinhamento a direita).

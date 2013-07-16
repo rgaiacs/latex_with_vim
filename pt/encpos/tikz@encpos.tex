@@ -1,0 +1,195 @@
+\chapter{Desenhos utilizando o \LaTeX}
+Neste capítulo abordaremos brevemente o pacote
+\pkgname{tikz}\nocite{Tantau:2010:Tikz-and-PGF} utilizado para desenhar.
+Este pacote é bastante complexo de modo que abordaremos apenas
+uma minúscula parcela deste e para maiores informações, recomenda-se o
+respectivo manual.
+
+\section{TikZ} \label{sse:tikz}
+O pacote \pkgname{tikz}\index{pacote!tikz@\pkgname{tikz}} permite produzir desenhos vetoriais ao informar as linhas que devem ser produzidas. Os comandos definidos por este pacote tevem ser delimitados pelo ambiente \envname{tikzpicture}\index{ambiente!tikzpicture@\envname{tikzpicture}} que pode ser incluido no ambiente \envname{figure} apresentado anteriormente.
+
+\subsection{Ambiente \envname{tikzpicture}}
+Ao utilizar o TikZ para desenhar uma figura você precisa informar ao LaTeX que deseja-se iniciar uma figura. Para isso utiliza-se o ambiente \envname{tikzpicture}\index{ambiente!tikzpicture@\envname{tikzpicture}}. A seguir encontra-se um pequeno exemplo do ambiente \envname{tikzpicture}. 
+Ao utilizar TikZ para desenhar uma figura você precisa informar ao LaTeX que deseja-se iniciar uma figura. Para isso utiliza-se o ambiente \envname{tikzpicture}\index{ambiente!tikzpicture@\envname{tikzpicture}}. A seguir encontra-se um pequeno exemplo do ambiente \envname{tikzpicture}. \\
+\example{codes/line01@tikz_for_teachers}
+
+No exemplo acima podemos notar que, dentro do ambiente \envname{tikzpicture}, os comandos devem terminar com um ponto e vírgula.
+
+Também no exemplo acima, observamos que o ambiente \envname{tikzpicture} não é flutuante. Uma maneira de torná-lo flutuante é envolvendo-o pelo ambiente \envname{figure}\index{ambiente!figure@\envname{figure}}.
+
+Uma outra característica do ambiente \lcode{tikzpicture} é que comandos recentes são sobrepostos aos comandos antigos. No exemplo a seguir observamos essa característica. \\
+\example{codes/overwrite@tikz_for_teachers}
+
+\subsection{Sistema de coordenadas}
+A construção de qualquer figura usando o TikZ requer que seja informado coordenadas de acordo com algum sistema. O TikZ aceita o sistema de coordenadas cartesianas\index{TikZ!sistema de coordenadas cartesianas}, que corresponde a forma \lstinline!(x, y)!, onde \lstinline!x! corresponde a coordenada horizontal e \lstinline!y! a vertical, e o sistema de coordenadas polares\index{TikZ!sistema de coordenadas polares}, que corresponde a forma \lstinline!(a: r)!, onde \lstinline!a! a direção em graus e \lstinline!r! corresponde ao comprimento do raio. \\
+\example{codes/coordinate_system@tikz_for_teachers}
+
+Além de coordenadas absolutas, o TikZ também aceita coordenadas relativas\index{TikZ!coordenadas relaticas}. Coordenadas relativas devem ser precedidas por \lstinline!+!, que significa ``adicionar as seguintes coordenadas \`{a} coordenada absoluta previamente informada'', ou \lstinline!++!, que significa ``adicionar as seguintes coordenadas \`{a} coordenada absoluta previamente informada e tornar esta a nova coordenada absoluta previamente informada''. \\
+\example{codes/relative_coordinates@tikz_for_teachers}
+
+O TikZ aceita uma vasta variedade de unidades de medida para as coordendas, por exemplo: \lcode{pt}, \lcode{cm}, \lcode{mm} \ldots \\
+\example{codes/measure_units@tikz_for_teachers}
+
+Pelo exemplo acima verifica-se que caso nenhuma unidade seja especificada é utilizada \lcode{cm}.
+
+Outra característica do TikZ é que ele ajusta a figura criada para ocupar o espaço mínimo necessário. Essa característica é observada no exemplo a seguir que corresponde ao primeiro exemplo com um deslocamento de $5$ unidades horizontais e o resultado produzido é idêntico ao do primeiro exemplo. \\
+\example{codes/line03@tikz_for_teachers}
+
+\subsection{Linhas}
+Nesta seção iremos tratar da construção de linhas com o TikZ. Pelos exemplos anteriores o leitor já deve ter inferido que o comando \lstinline!\draw! é responsável pela construção de linhas.
+
+No primeiro exemplo, o comando \lstinline!\draw!\index{comando!draw@\lstinline+\draw+} é seguido por um conjunto de opções envolvidas em colchetes, pelas coordenadas do ponto inicial, um operador (no caso \lstinline!--!) e pelas coordenadas do ponto final.
+
+É possível utilizar o mesmo comando \lstinline!\draw! com pontos intermediários, a seguir apresentamos um exemplo desste uso. \\
+\example{codes/line04@tikz_for_teachers}
+
+Além da opção \lcode{color} que corresponde a cor da linha e do operador \lstinline!--! que corresponde a uma linha entre dois pontos existem muitos outros. A seguir apresentamos algumas opções e depois alguns operadores.
+
+\subsubsection{Escala}
+Uma das grandes vantagens do TikZ é a capacidade de reescalar uma figura sem perder qualidade no processo.
+
+A opção \lcode{scale}\index{TikZ!escala} é responsável por escalar a linha a ser desenhada e deve receber o fator de escala a ser utilizado. \\
+\example{codes/scale@tikz_for_teachers}
+
+\subsubsection{Rotação}
+A opção \lcode{rotate}\index{TikZ!rotação} é responsável por rotacionar a linha a ser desenhada e deve receber a medida em grau a ser utilizada. \\
+\example{codes/rotate@tikz_for_teachers}
+
+Como podemos observar pelo exemplo acima, o ponto fixo da rotação corresponde ao primeiro ponto do comando.
+
+\subsubsection{Cores}
+A opção \lcode{color}\index{TikZ!cor} é responsável pela cor da linha a ser desenhada e deve receber o nome de uma cor previamente definida. No \LaTeX \, o nome das cores previamente definidas encontram-se disponíveis no pacote \lcode{color} e a criação de novas cores pode ser feita utilizando o pacote \lcode{xcolor} (um resumo deste pacote é encontrado em \url{http://en.wikibooks.org/wiki/LaTeX/Colors}). \\
+\example{codes/color01@tikz_for_teachers}
+
+\subsubsection{Padrão}
+Encontram-se predefinidos alguns padrões de linha, alguns deles são: \lcode{solid} (contínuo), \lcode{dotted} (pontilhado), \lcode{dashed} (tracejado), \ldots \\
+\example{codes/line_pattern02@tikz_for_teachers}
+
+\subsubsection{Setas}
+Para a construção de setas\index{TikZ!seta} pode-se utilizar uma dentre as seguintes opções: \lstinline!->!, \lstinline!<-! e \lstinline!<->!. \\
+\example{codes/arrow01@tikz_for_teachers}
+
+Também é possível duplicar o indicador da seta utilizando uma dentre as seguintes opções: \lstinline!->>!, \lstinline!<<-! e \lstinline!<<->>!. \\
+\example{codes/arrow02@tikz_for_teachers}
+
+\subsubsection{Espessura}
+A opção \lcode{line width}\index{TikZ!espessura} é responsável pela espessura da linha a ser desenhada e deve receber uma medida para a espessura da linha.
+
+Encontram-se predefinidos alguns estilos que fornecem uma maneira mais ``natural'' de informar a espessura da linha, alguns deles são: \lcode{ultra thin}, \lcode{thin}, \lcode{thick} \lcode{ultra thick}, \ldots \\
+\example{codes/line_width01@tikz_for_teachers}
+
+\subsection{Operadores}
+\subsubsection{Retângulos}
+Para a construção de retângulos pode-se utilizar o operador \lcode{retangle}\index{TikZ!retangulo@retângulo} sendo que as coordenadas correspondem dois vértices não adjacentes do retângulo. \\
+\example{codes/rectangle01@tikz_for_teachers}
+
+No exemplo acima observamos a ocorrência de um retângulo degenerado em uma linha.
+
+\subsubsection{Malha retangular}
+Algumas vezes deseja-se incluir na figura uma malha retangular. Para isso pode-se utilizar o operador \lcode{grid} sendo que, de maneira análoga ao operador \lcode{rectangle}, as coordenads correspondem a dois vértices não adjacentes do retângulo maior. \\
+\example{codes/grid01@tikz_for_teachers}
+
+Para o operador \lcode{grid} estão disponíveis as três opções a seguir:
+\begin{enumerate}
+    \item \lcode{step}: especifica a distância horizontal e vertical dos elementos da malha retângular;
+    \item \lcode{xstep}: especifica a distância horizontal dos elementos da malha retângular;
+    \item \lcode{ystep}: especifica a distância vertical dos elementos da malha retângular.
+\end{enumerate}
+\example{codes/grid02@tikz_for_teachers}
+
+\subsubsection{Circunferências}
+Para a construção de circunferências pode-se utilizar o operador \lcode{circle}\index{TikZ!circunferencia@circunferência} sendo que o operador é seguido pela medida do raio. \\
+\example{codes/circle@tikz_for_teachers}
+
+\subsubsection{Elipse}
+Para a construção de uma elipse pode-se utilizar o operador \lcode{ellipse}\index{TikZ!elipse} sendo que o operador é seguido pela medida dos raios horizontais e verticais. \\
+\example{codes/ellipse@tikz_for_teachers}
+
+\subsubsection{Arcos}
+Para a construção de parte de circunferência ou de elipse, i.e., um arco pode-se utilizar o operador \lcode{arc}\index{TikZ!arco} que sendo que o operador é seguido por uma tripla separada por dois pontos referentes ao grau inicial, grau final e o raio. \\
+\example{codes/arc01@tikz_for_teachers}
+
+Para o caso de elipses deve-se especificar o raio horizontal e vertical. \\
+\example{codes/arc02@tikz_for_teachers}
+
+\subsection{Nó e texto}
+Na seção anterior apresentamos como construir linhas e algumas figuras geométricas como retângulos e circunferências. Nesta seção iremos apresentar como adicionar um pequeno texto próximo a uma linha.
+
+No \TikZ o comando \lstinline!\node!\index{TikZ!texto|see{nó}}\index{TikZ!no@nó} é responsável por inserir um pequeno texto em uma posição específica. A seguir encontra-se um exemplo bastante simples. \\
+\example{codes/node01@tikz_for_teachers}
+
+Além do uso apresentado no exemplo acima, o comando \lstinline!\node! também pode ser utilizado em conjunto com o comando \lstinline!\draw! como apresentado a seguir. \\
+\example{codes/node02@tikz_for_teachers}
+
+Assim como o comando \lstinline!\draw!, o comando \lstinline!\node! permite algumas opções que possibilitam aprimorar o exemplo acima. Tais opções serão descritas a seguir.
+
+\subsubsection{Cores}
+A cor do texto de um nó é definido pela opção \lcode{text} que recebe o nome de uma cor. \\
+\example{codes/node_color@tikz_for_teachers}
+
+Pelo exemplo acima verificamos que a opção \lcode{text} pode ser utilizada tanto como opção do comando \lstinline!\node! como do comando \lstinline!draw!.
+
+\subsubsection{Ancoras}
+Muitas vezes não deseja-se colocar o nó nas coordenadas indicada mas próximo dela. Nestes casos deve-se utilizar a opção \lcode{anchor}\index{TikZ!ancora} que recebe uma das seguintes orientações:
+\begin{enumerate}
+    \item \lcode{north},
+    \item \lcode{south},
+    \item \lcode{east},
+    \item \lcode{west}.
+\end{enumerate}
+
+É possível combinar as orientações tomando o cuidado da primeira orientação sempre corresponder ao eixo vertical, e.g., \lcode{north east}. \\
+\example{codes/node_anchor01@tikz_for_teachers}
+
+Como o uso de âncoras costuma ser pouco intuitivo existem algumas opções que são equivalente:
+\begin{enumerate}
+    \item \lcode{below} é equivalente a \lcode{anchor=north},
+    \item \lcode{above} é equivalente a \lcode{anchor=south},
+    \item \lcode{right} é equivalente a \lcode{anchor=east},
+    \item \lcode{left} é equivalente a \lcode{anchor=west}.
+\end{enumerate}
+
+Também é possível combinar as opções enumeradas acima seguindo o mesmo cuidado do uso de âncoras, i.e., a primeira orientação sempre corresponde ao eixo vertical. Além disso, essas opções permitem atribuir uma medida para o deslocamento em cada uma das direções. \\
+\example{codes/node_anchor02@tikz_for_teachers}
+
+\subsubsection{Nomeação}
+Os nós possuem uma característica muito útil que é a possibilidade de nomeá-los. Para atribuir um nome a um nó utiliza-se parênteses logo em seguida do comando \lstinline!\node!. \\
+\example{codes/node_name01@tikz_for_teachers}
+
+Após nomear um nó podemos utilizar sua posição a partir de seu nome. \\
+\example{codes/node_name02@tikz_for_teachers}
+
+No exemplo acima nota-se que a linha desenhada não inicia exatamente nas coordenadas correspondentes aos nós mas na fronteira do nó, i.e., a linha inicia-se no contorno do nó. \\
+\example{codes/node_name03@tikz_for_teachers}
+
+\subsection{Preenchimento}
+Até o momento apenas contruimos linhas e algumas figuras geométricas. Como devemos proceder para preencher uma figura? Para preencher uma figura utiliza-se a opção \lcode{fill}\index{TikZ!preenchimento}. \\
+\example{codes/path_fill@tikz_for_teachers}
+
+Pelo exemplo acima verifica-se que a opção \lcode{fill} apenas preenche a figura sem tratar o contorno. Isso ocorre pois o contorno é determinado pela opção \lcode{draw} vista anteriormente. No exemplo a seguir utilizamos as opções \lcode{fill} e \lcode{draw} em conjunto. \\
+\example{codes/path_filldraw@tikz_for_teachers}
+
+Ao invés de utilizar o comando \lstinline!\path! com a opção \lcode{fill} é possível utilizar o comando \lstinline!\fill! e o comando \lstinline!\filldraw! no lugar do comando \lstinline!\path! com as opções \lcode{fill} e \lcode{draw}.
+
+De maneira geral, é permitido utilizar qualquer opção do comando \lstinline!\path! como um comando correspondente a uma opção do comando \lstinline!\path!, portanto as seguintes construções são válidas:
+\begin{code}
+\fill[draw=red] (0,-1) rectangle (1,-3);
+\end{code}
+e
+\begin{code}
+\draw[fill=blue] (2,-1) rectangle (3,-3);
+\end{code}
+e equivalentes a construção utilizada no exemplo anterior.
+
+\subsubsection{Padrão}
+No capítulo anterior foi apresentado alguns padrões para linhas como pontilhado e tracejado. Agora vamos paresentar alguns padrões de preenchimento que são definidos pela opção \lcode{pattern}.
+
+Para utilizar os padrões predefinidos é necessário carregar a biblioteca \lcode{patterns}, i.e, adicionar a seguinte linha.
+\begin{code}
+\usetikzlibrary{patterns}
+\end{code}
+no preâmbulo do documento. \\
+\example{codes/path_pattern@tikz_for_teachers}
+
+Para atribuir um cor ao padrão a ser utilizado deve-se utilizar a opção \lcode{pattern color}. \\
+\example{codes/path_pattern_color@tikz_for_teachers}

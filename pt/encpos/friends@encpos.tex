@@ -1,0 +1,116 @@
+\chapter{Utilitários}
+Devido ao LaTeX ser modular, é interessante conhecer alguns dos executáveis que
+costumam compor uma distribuição. Neste capítulo apresentaremos alguns destes
+executáveis.
+
+\section{Compilação}
+Relacionado com a compilação e manipulação do arquivo \lstinline+.tex+ temos:
+\begin{description}
+  \item[latex] gera um arquivo \lstinline+dvi+ a partir de um arquivo LaTeX.
+  \item[latexmk] automação completa do processo de compilação de documentos
+    LaTeX.
+  \item[luatex] extensão do \binname{pdftex} utilizando Lua como linguagem de
+    script.
+  \item[pdftex] gera um \lstinline+pdf+ a partir de uma arquivo TeX.
+  \item[pdflatex] versão do \binname{pdftex} para arquivo LaTeX.
+  \item[tex] gera um \lstinline+div+ a partir de um arquivo TeX.
+\end{description}
+
+Algumas das opções para alguns dos comandos anteriores são:
+\begin{description}
+  \item[-interaction mode] Configura o modo de iteração com o usuário. O modo
+    deve ser uma das opções:
+    \begin{itemize}
+      \item \lstinline+batchmode+,
+      \item \lstinline+nonstopmode+,
+      \item \lstinline+scrollmode+, e
+      \item \lstinline+errorstopmode+.
+    \end{itemize}
+  \item[-shell-escape] Habilita o uso de \lstinline+\write18{comando}+.
+    \lstinline+comando+ pode ser qualquer instrução válida para a linha de
+    comando. Esse comando é normalmente desabilitado por razões de seguranças
+    mas necessários ao utilizar alguns pacotes para criar gráficos.
+\end{description}
+
+\section{Bibliografia}
+Para o processamento de referências bibliográficas temos:
+\begin{description}
+  \item[bibtex] utiliza uma arquivo auxiliar gerado durante a compilação do
+    arquivo \lstinline+.tex+ para criar o arquivo de bibliografia
+    (\lstinline+.bbl+) que será posteriormente incorporado.
+  \item[biber] é um substituto para o \binname{bibtex} escrito para ser
+    utilizado em conjunto com o pacote \pkgname{biblatex}.
+\end{description}
+
+\section{Conversores}
+Muitas vezes é preciso converter imagens que são incluídas durante a compilação
+para outro formato. Para essa tarefa temos:
+\begin{description}
+  \item[a2ping] utilitário que converte imagens rasterizadas e vetoriais para
+    EPS e PDF.
+  \item[e2pall] procura no arquivo .tex pelo comando
+    \lstinline+\includegraphics+ para encontrar os arquivos EPS utilizados e
+    convertê-los para PDF.
+\end{description}
+
+\section{Gerenciador de pacotes}
+Para o gerenciamento da distribuição LaTeX instalada, incluindo pacotes e
+configurações, temos o \binname{tmlgt}.
+
+\section{Outras funcionalidades}
+Para remover todos os comentários e instruções do TeX e LaTeX de um arquivo
+pode-se utiliza o \binname{detex}.
+
+O índice remissivo é construído pelo comando \binname{makeindex}.
+
+Para localizar e visualizar a documentação da distribuição, de classes ou de
+pacotes temos:
+\begin{description}
+  \item[texdoc] é um utilitário de linha de comando.
+  \item[texdoctk] é uma interface gráfica.
+\end{description}
+
+Para verificar o arquivo \lstinline+.tex+ por erros temos o \lstinline{lacheck}
+lê o documento LaTeX e mostra mensagens caso encontre erros no documento.
+
+Para comparar dois arquivos \lstinline+.tex+ temos:
+\begin{description}
+  \item[latexdiff] compara dois arquivos ignorando características da sintaxe do
+    LaTeX.
+  \item[texdiff] compara dois arquivos para criar uma versão mostrando as
+    diferenças.
+\end{description}
+
+Para navegar do código (La)TeX para o resultado após a compilação e fazer o
+caminho contrário de maneira sincronizada temos o \binname{synctex}.
+
+\section{Relacionados com PDF}
+Atualmente, o formato de saída dos documentos escritos utilizando (La)TeX é o
+PDF. Poppler (ou libpoppler) é uma biblioteca para acessar arquivos no formato
+PDF que disponibiliza alguns binários enventualmente úteis:
+\begin{description}
+  \item[pdfimages] extrator de imagens.
+  \item[pdfinfo] informações do documento.
+  \item[pdfseparate] ferramenta de extração de página.
+  \item[pdftoppm] conversor de PDF para imagens PPM/PNG/JPEG.
+  \item[pdftotext] extrator de texto.
+  \item[pdfunite] ferramenta de mesclagem de documentos.
+\end{description}
+
+Além da biblioteca Poppler, outra biblioteca bastante útil é a Ghostscript que
+processa os arquivos PostScript. Para converter um arquivo \lstinline+ps+ para
+\lstinline+pdf+ pode-se utilizar o \binname{ps2pdf} presente no Ghostscript e
+para a compressão do PDF:
+\begin{lstlisting}
+$ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/resolucao \
+> -dNOPAUSE -dQUIET -dBATCH -sOutputFile=saida.pdf entrada.pdf
+\end{lstlisting}
+onde \lstinline+resolucao+ deve ser substituído por um dos valores da lista
+abaixo:
+\begin{itemize}
+  \item \lstinline+screen+: para resolução baixa,
+  \item \lstinline+ebook+: para resolução média,
+  \item \lstinline+printer+: para qualidade de impressão (alta),
+  \item \lstinline+prepress+: para qualidade de pré-impressão,
+  \item \lstinline+default+: padrão.
+\end{itemize}

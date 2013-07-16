@@ -1,0 +1,163 @@
+% Filename: slide02.tex
+% This code is part of 'Cursos CAMECC: Introducao ao LaTeX para o Curso 29 - Licenciatura em Matematica'
+% 
+% Description: This file correspond to the slides of using for cap02@camecc_lic.tex of the course.
+% 
+% Created: 07.06.12 11:30:10 AM
+% Last Change: 07.06.12 11:30:30 AM
+% 
+% Authors:
+% - Raniere Silva, r.gaia.cs@gmail.com
+% 
+% Organization: CAMECC - Centro Academico dos Estudantes do IMECC
+% 
+% Copyright (c) 2012, Raniere Silva. All rights reserved.
+% 
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+%
+% This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+%
+\documentclass[12pt]{beamer}
+\usetheme{CambridgeUS}
+\let\Tiny=\tiny  % Redefine at least \Tiny for avoid warning
+\input{use_pack.tex}
+
+\begin{document}
+\title[Introdução ao LaTeX - 02/04]{Cursos CAMECC \\ Introdução ao LaTeX para o Curso 29 \\ Licenciatura em Matemática \\ Aula 02}
+\author{Raniere Silva}
+\institute[CAMECC]{Centro Acadêmico dos Estudantes do IMECC}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Licença}
+    Este trabalho foi licenciado com a Licença Creative Commons Atribuição - CompartilhaIgual 3.0 Não Adaptada. Para ver uma cópia desta licença, visite \url{http://creativecommons.org/licenses/by-sa/3.0/} ou envie um pedido por carta para Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+    %
+    %Com base na obra disponível em \url{https://github.com/r-gaia-cs/latex_with_vim/}. 
+    %
+    %Podem estar disponíveis permissões adicionais ao âmbito desta licença em \url{https://github.com/r-gaia-cs/latex_with_vim/}.
+    %
+    \begin{center}
+        \includegraphics[keepaspectratio=true]{../../figures/cc-by-sa.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sumário}
+    \tableofcontents
+\end{frame}
+
+\section{Listas}
+\begin{frame}[fragile]
+    \frametitle{Listas (1)}
+    \begin{code}
+\documentclass{article}
+\begin{document}
+\begin{itemize}
+    \item Peixes
+    \item Aves
+\end{itemize}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Listas (2)}
+    \begin{code}
+\documentclass{article}
+\begin{document}
+\begin{enumerate}
+    \item Museu do Louvre
+    \item Metropolitan Museum of Art
+    \item Museu Exploratorio de Ciencias
+\end{enumerate}
+\end{document}
+    \end{code}
+\end{frame}
+
+\section{Referência Cruzada}
+\begin{frame}[fragile]
+    \frametitle{Referência Cruzada} 
+    \begin{code}
+\documentclass{article}
+\begin{document}
+\begin{enumerate}
+    \item Museu do Louvre \label{louvre}
+    \item Museu Exploratorio de Ciencias
+\end{enumerate}
+O museu~\ref{louvre} eh muito famoso.
+\end{document}
+    \end{code}
+\end{frame}
+
+\section{Figuras}
+\begin{frame}[fragile]
+    \frametitle{Figuras (1)} 
+    \begin{code}
+\documentclass{article}
+\usepackage{graphicx}
+\begin{document}
+% Use figuras de http://openclipart.org/
+\includegraphics{file}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Figuras (2)} 
+    \begin{code}
+\documentclass{article}
+\usepackage{graphicx}
+\begin{document}
+\begin{figure}
+\includegraphics{file}
+\caption{Legenda}
+\label{file}
+\end{figure}
+Na Figura~\ref{file} \ldots
+\end{document}
+    \end{code}
+\end{frame}
+
+\section{Tabelas}
+\begin{frame}[fragile]
+    \frametitle{Tabelas (1)} 
+    \begin{code}
+\documentclass{article}
+\begin{document}
+\begin{tabular}{|l|cr}
+    \hline
+    esq01 & cen01 & dir01 \\
+    esq02 & cen02 & dir02 \\ \hline
+\end{tabular}
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Tabelas (2)} 
+    \begin{code}
+\documentclass{article}
+\begin{document}
+\begin{table}
+    \caption{Titulo}
+    \label{tab}
+    \begin{tabular}{|l|cr}
+        \hline
+        esq01 & cen01 & dir01 \\
+        esq02 & cen02 & dir02 \\ \hline
+    \end{tabular}
+\end{table}
+Na Tabela~\ref{tab} \ldots
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Fim}
+    \begin{center}
+        Perguntas.
+    \end{center}
+\end{frame}
+\end{document}

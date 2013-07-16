@@ -1,0 +1,272 @@
+\chapter{Olá \LaTeX} \label{sch:basic}
+Neste primeiro capítulo apresentamos os conhecimentos mínimos de todo usuário
+do LaTeX.
+
+\section{Instalação}\index{instalacao@instalação}
+Para utilizar o LaTeX você precisa das macros que compõem o mesmo. A forma mais
+fácil de conseguir isso é instalando uma distribuição da lista abaixo:
+\begin{itemize}
+  \item Linux: TeX Live\index{TeX Live|see{instalação}} (\url{http://www.tug.org/texlive}),
+  \item Mac OS X: TeX Live\index{TeX Live|see{instalação}}
+    (\url{http://www.tug.org/texlive}), MacTeX\index{Mac OS X|see{instalação}}
+    (\url{http://www.tug.org/mactex/}),
+  \item Windows: TeX Live\index{TeX Live|see{instalação}}
+    (\url{http://www.tug.org/texlive}), proTeXt\index{proTeXt|see{instalação}}
+    (\url{http://www.tug.org/protext/}) ou MiKTeX\index{MikTeX|see{instalação}}
+    (\url{http://www.miktex.org/}).
+\end{itemize}
+Além das macros também é necessário um editor de texto ou uma IDE\index{IDE}
+(\flang{Integrated Development Environment}) própria para o LaTeX, como
+\begin{itemize}
+  \item GNU Emacs\index{Emacs|see{IDE}}
+    (\url{http://www.gnu.org/software/emacs/}) com o AUCTeX
+    (\url{http://www.gnu.org/software/auctex/}),
+  \item TeXworks\index{TeXworks|see{IDE}} (\url{http://www.leliseron.org/texworks/}),
+  \item Kile\index{Kile|see{IDE}} (\url{http://kile.sourceforge.net/}),
+  \item Texmaker\index{Texmaker|see{IDE}} (\url{http://www.xm1math.net/texmaker/}).
+\end{itemize}
+Uma lista com várias IDE's encontra-se disponível em
+\url{http://en.wikipedia.org/wiki/Comparison_of_TeX_editors}\nocite{Wikipedia:EN:Comparison_TeX_editors}.
+
+\section{Arquivo \lcode{.tex}} \label{sse:basic:tex}
+O LaTeX utiliza \lcode{.tex}\index{.tex@\lcode{.tex}} como extensão padrão. O
+arquivo \lcode{main.tex}, onde \lcode{main} representa o nome do arquivo
+\lcode{.tex}, é um arquivo de texto, estruturado em duas partes:
+\begin{enumerate}
+  \item \emph{preâmbulo}\index{preambulo@\emph{preâmbulo}}
+  \item \emph{informação}\index{informacao@\emph{informação}}
+\end{enumerate}
+sendo que a segunda parte deve ser delimitada pelo ambiente \envname{document},
+i.e., ser incluída no lugar de \lcode{XXX} do código abaixo:
+\begin{code}
+  \begin{document}
+  XXX
+  \end{document}
+\end{code}
+
+É permito incluir um ou mais arquivo dentro de \lcode{main.tex}, isto é,
+trabalhar com múltiplos arquivos\index{multiplos arquivos@múltiplos arquivos}.
+Os arquivos a serem incluídos também possuem a extensão \lcode{.tex} mas devem
+conter apenas a \emph{informação}.\footnote{Ao trabalhar com múltiplos arquivos
+deve-se apenas compilar o arquivo \lcode{main.tex}.}
+
+Uma das forma de incluir um arquivo é com o comando
+\lstinline!\input!\index{comando!input@\lstinline+\input+}, como ilustrado a
+seguir:
+\begin{code}
+  \input{aux.tex}
+\end{code}
+onde \lcode{aux.tex} é o nome do arquivo a ser incluído.\footnote{Caso a
+extensão do arquivo seja suprimida será utilizada \lcode{.tex}.}
+
+Quando \lcode{main.tex} for compilado o arquivo \lcode{aux.tex} será lido e
+processado exatamente como se tive-se sido inserido na posição que o comando
+\lstinline!\input! ocupa.
+
+\section{\emph{Preâmbulo}} \label{sse:basic:preamble}
+O \emph{preâmbulo}\index{preambulo@\emph{preâmbulo}} deve ser iniciado por
+\begin{code}
+  \documentclass[opcoes]{classe}
+\end{code}
+onde \lcode{classe}\index{comando!documentclass@\lstinline+\documentclass+}
+indica o tipo de documento a ser criado e \lcode{opcoes} é uma lista de
+palavras chaves separadas por vírgula que personaliza o comportamento de
+\lcode{classe} (na Tabela \ref{tab:par_options} encontra-se algumas das palavras
+chaves disponíveis).
+\begin{table}[h!tb]
+  \centering
+  \caption{Parâmetros disponíveis para \lcode{opcoes}.} \label{tab:par_options}
+  \input{tables/documentclass_par@latex_with_vim.tex}
+\end{table}
+
+\lcode{class}\index{comando!documentclass@\lstinline+\documentclass+!class@\lcode{class}}
+corresponde ao nome de um arquivo \lcode{.cls}, os principais são apresentados
+na Tabela \ref{tab:documentclass} e outros são indicados em
+\url{http://aprendolatex.wordpress.com/2007/07/15/mais-classes-de-documentos/}.
+Existe ainda alguns arquivos \lcode{.cls} personalizados disponíveis na
+internet, destacando-se o \lcode{abnt.cls}, disponível em
+\url{http://abntex.codigolivre.org.br/}, indicado para documentos que devem
+seguir as normas da ABNT e o usuário também pode escrever sua própria
+\lcode{classe}.
+\begin{table}[h!tb]
+  \centering
+  \caption{Parâmetros disponíveis para \lcode{classe}.} \label{tab:documentclass}
+  \input{tables/documentclass@latex_with_vim.tex}
+\end{table}
+
+\section{Hello world} \label{sse:basic:hello_world}
+Anteriormente foi apresentado os aplicativos necessários para trabalhar com
+LaTeX e as duas partes principais do arquivo \lcode{.tex}. A seguir
+apresentaremos como construir a
+\emph{informação}\index{informacao@\emph{informação}}.
+
+O documento mais simples que podemos criar é apresentado abaixo. \\ 
+\begin{minipage}[t]{0.5\linewidth}
+  \vspace{-8pt}
+  \begin{code}
+    \documentclass[10pt,a4paper]{article}
+    \begin{document}
+    Hello world.
+    \end{document}
+  \end{code}
+\end{minipage} \quad \vrule \quad
+\begin{minipage}[t]{0.35\linewidth} \vspace{0pt}
+  Hello world.
+\end{minipage}
+
+Os exemplos que serão apresentados aparecerão seguindo o modelo acima, isto é,
+em duas colunas sendo a coluna da esquerda contendo o código LaTeX e a coluna da
+direita contendo a saída obtida. Por simplicidade, nos demais exemplos iremos
+apresentar apenas a \emph{informação}.
+
+\subsection{Espaços, linhas, parágrafos e páginas} \label{sss:basic:space}
+No LaTeX o espaço entre palavras apresenta uma particularidade: ele é ignorado
+se houver dois ou mais espaços seguidos, como podemos observar a seguir. \\
+\example{codes/hello_spaces@latex_with_vim.tex}
+
+Quando for necessário gerar dois ou mais espaços seguidos deve-se utilizar a
+barra invertida entre os espaços como ilustrado a seguir. \\
+\example{codes/hello_spaces_backslash@latex_with_vim.tex}
+
+Nos dois exemplos anteriores é possível verificar que a mudança de linha no
+código não produz uma nova linha\index{nova linha} no documento gerado. A
+quebra de linha no LaTeX é representada por \lstinline!\\!\index{comando!
+@\lstinline+\\+} ou pelo comando
+\lstinline!\newline!\index{comando!newline@\lstinline+\newline+}, como ilustrada
+a seguir. \\
+\example{codes/hello_newlines@latex_with_vim.tex}
+
+Já a mudança de parágrafo\index{paragrafo@parágrafo} é indicada por uma linha em
+branco. 
+
+Quando for necessário forçar uma mudança de página utiliza-se o comando
+\lstinline!\newpage!\index{comando!newpage@\lstinline+\newpage+}. Assim como o
+LaTeX ignora dois ou mais espaços seguidos a mudança de linha e de página também
+é ignorada.
+
+\subsection{Hifenização}
+O LaTeX tenta balancear o tamanho das linhas a serem geradas e para isso
+utiliza-se de um banco de dados para hifenizar, quando necessário, alguma
+palavra.
+
+Algumas vezes a hifenização\index{hifenizacao@hifenização} ocorre de maneira
+inadequada e para corrigir devemos utilizar o comando
+\lstinline!\hyphenation!\index{comando!hyphenation@\lstinline+\hyphenation+}
+cujo parâmetro é uma lista de palavras, separadas por espaço, onde o comando - é
+utilizado para indicar onde a palavra pode ser separada.
+
+\subsection{Acentos}
+Para inserir os acentos deve-se utilizar a codificação presente na
+Tabela~\ref{tab:diacritic}.
+\begin{table}[!htb]
+  \centering
+  \caption{Acentuação (utilizando a vogal ``o'' para exemplo).} \label{tab:diacritic}
+  \input{../../tables/diacrict@latex_with_vim.tex}
+\end{table}
+
+\section{Caracteres especiais}
+No LaTeX alguns caracteres apresentam forma própria de representação. A seguir
+enunciaremos alguns.
+
+\subsection{Aspas}
+Para as aspas\index{aspas} não deve-se usar o caractere de aspas. Para abrir as
+aspas deve-se utilizar o acento simples e para fechar a aspa simples. \\
+\example{codes/quotation_mark@latex_with_vim.tex}
+
+\subsection{Traço}
+LaTeX admite três tipos de traço\index{traco@traço}. \\
+\example{codes/dashes@latex_with_vim.tex}
+
+\subsection{Pontos sucessivos}
+Utiliza-se o comando \lstinline!\dots! ou \lstinline!\ldots! para pontos
+sucessivos. \\
+\example{codes/dots@latex_with_vim.tex}
+
+\subsection{Pontuação e demais símbolos}
+Para pontuação\index{pontuacao@pontuação} e demais símbolos especias deve-se
+proceder como na Tabela~\ref{tab:symbols}.
+\begin{table}[h!tb]
+  \centering
+  \caption{Para pontuação e símbolos especias.}
+  \label{tab:symbols}
+  \input{../../tables/symbols@latex_with_vim.tex}
+\end{table}
+
+\subsection{Comentários}
+Também é possível inserir comentários\index{comentarios@comentários} no arquivo
+\lcode{.tex}, utilizando-se para isso do caractere \lstinline!%!\index{comando!
+@\lstinline+%+} de forma que todo o texto posterior ao mesmo e na mesma linha é
+considerado comentário e consequentemente ignorado pelo compilador.
+
+\section{Apresentações}
+Apresentações podem ser criadas com a classe \lstinline{beamer} e organizadas pelo ambiente \envname{frame}\index{ambiente!frame@\envname{frame}} que delimita onde começa e termina cada um dos \flang{slides} da apresentação. A seguir apresentamos uma apresentação bem simples para exemplificar a utilização do ambiente \envname{frame}. \\
+\examplebeamer{codes/beamer_minimal@latex_with_vim}
+
+\subsection{Primeiro \flang{slide}}
+Para a criação do primeiro \flang{slide} com o título e autor pode utilizar os
+comandos \lstinline!\title! e \lstinline!\author! e, delimitado pelo ambiente
+\envname{frame}, o comando \lstinline!\titlepage!.
+
+Além dos comandos \lstinline!\title! e \lstinline!\author! estão disponíveis os
+comandos \lstinline!\subtitle!, \lstinline!\date! e \lstinline!\institute! que
+correspondem, respectivamente, ao subtítulo, data e local em que a apresentação
+irá ocorrer. Exceto pelo comando \lstinline!\date! todos os demais comandos
+aceitam como opção uma abreviação do parâmetro. \\
+\examplebeamer{codes/beamer_first_page@latex_with_vim}
+
+\subsection{Título do \flang{slide}}
+Para cada \flang{slide} é possível atribuir um título com o comando
+\lstinline!\frametitle! que normalmente será apresentado no topo do
+\flang{slide}. \\
+\examplebeamer{codes/beamer_title@latex_with_vim}
+
+\subsection{Comandos e ambientes do LaTeX}
+A classe \pkgname{beamer} é compatível com grande parte dos comandos e ambientes
+do LaTeX sejam estes nativos ou presentes em algum pacote, i.e., para incluir
+listas, figuras, tabelas, expressões matemáticas, \ldots utiliza-se os mesmos
+comandos e ambientes. \\
+\examplebeamer{codes/beamer_enumerate@latex_with_vim} \\
+\examplebeamer{codes/beamer_math@latex_with_vim}
+
+\subsection{\flang{Overlays}}\index{beamer!overlay@\flang{overlay}}
+Até o momento todos os \flang{slides} que construímos tinha sua informação
+apresentada em um único momento. Infelizmente não é isso que deseja-se na grande
+maioria da apresentações, i.e., deseja-se que fragmentos dos \flang{slides}
+sejam apresentados em momentos distintos para que seja possível construir a
+informação desejada.
+
+Para fragmentar o conteúdo dos \flang{slides} podemos utilizar o comando
+\lstinline!\pause!\index{comando!pause@\lstinline+\pause+} na posição que
+deseja-se fragmentar os \flang{slides}. \\
+\begin{minipage}[c]{0.5\textwidth}
+    \fcode{codes/beamer_overlays01@latex_with_vim.tex}
+\end{minipage} \quad \vrule \quad
+\begin{minipage}[c]{0.35\textwidth}
+    \fbox{\includegraphics[width=\textwidth, page=1]{codes/beamer_overlays01@latex_with_vim.pdf}}
+    \fbox{\includegraphics[width=\textwidth, page=2]{codes/beamer_overlays01@latex_with_vim.pdf}}
+\end{minipage}
+
+O comando \lstinline!\pause! funciona dentro de vários ambientes do LaTeX sejam
+estes nativos ou presentes em algum pacote. No exemplo a seguir utilizamos o
+comando \lstinline!\pause! dentro do ambiente \envname{tikzpicture}. \\
+\begin{minipage}[c]{0.5\textwidth}
+    \fcode{codes/beamer_overlays02@latex_with_vim.tex}
+\end{minipage} \quad \vrule \quad
+\begin{minipage}[c]{0.35\textwidth}
+    \fbox{\includegraphics[width=\textwidth, page=1]{codes/beamer_overlays02@latex_with_vim.pdf}}
+    \fbox{\includegraphics[width=\textwidth, page=2]{codes/beamer_overlays02@latex_with_vim.pdf}}
+\end{minipage}
+
+\subsection{Temas}\index{beamer!tema}
+Até o momento, os \flang{slides} apresentados possuiam fundo e bordas muito
+simples. É possível mudar isso utilizando os comandos
+\lstinline!\usecolortheme!, muda apenas o esquema de cores, e
+\lstinline!\usetheme!, mais genérico. \\
+\examplebeamer{codes/beamer_usetheme01@latex_with_vim} \\
+\examplebeamer{codes/beamer_usetheme02@latex_with_vim}
+
+Para conhecer algumas dos parâmetros disponíveis para os comandos
+\lstinline!usecolortheme! e \lstinline!\usetheme! sugere-se
+\url{http://www.hartwork.org/beamer-theme-matrix/}. Outros temas estão
+disponíveis na internet e alguns deles reunidos em
+\url{http://latex.simon04.net/}.

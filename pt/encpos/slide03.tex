@@ -1,0 +1,181 @@
+% Filename: slide03.tex
+% This code is part of 'Cursos CAMECC: Introducao ao LaTeX para o Curso 29 - Licenciatura em Matematica'
+% 
+% Description: This file correspond to the slides of using for cap03@camecc_lic.tex of the course.
+% 
+% Created: 07.06.12 11:30:10 AM
+% Last Change: 07.06.12 11:30:30 AM
+% 
+% Authors:
+% - Raniere Silva, r.gaia.cs@gmail.com
+% 
+% Organization: CAMECC - Centro Academico dos Estudantes do IMECC
+% 
+% Copyright (c) 2012, Raniere Silva. All rights reserved.
+% 
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+%
+% This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+%
+\documentclass[12pt]{beamer}
+\usetheme{CambridgeUS}
+\let\Tiny=\tiny  % Redefine at least \Tiny for avoid warning
+\input{use_pack.tex}
+
+\begin{document}
+\title[Introdução ao LaTeX - 03/04]{Cursos CAMECC \\ Introdução ao LaTeX para o Curso 29 \\ Licenciatura em Matemática \\ Aula 03}
+\author{Raniere Silva}
+\institute[CAMECC]{Centro Acadêmico dos Estudantes do IMECC}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Licença}
+    Este trabalho foi licenciado com a Licença Creative Commons Atribuição - CompartilhaIgual 3.0 Não Adaptada. Para ver uma cópia desta licença, visite \url{http://creativecommons.org/licenses/by-sa/3.0/} ou envie um pedido por carta para Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+    %
+    %Com base na obra disponível em \url{https://github.com/r-gaia-cs/latex_with_vim/}. 
+    %
+    %Podem estar disponíveis permissões adicionais ao âmbito desta licença em \url{https://github.com/r-gaia-cs/latex_with_vim/}.
+    %
+    \begin{center}
+        \includegraphics[keepaspectratio=true]{../../figures/cc-by-sa.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sumário}
+    \tableofcontents
+\end{frame}
+
+\section{\flang{Inline}}
+\begin{frame}[fragile]
+    \frametitle{\flang{Inline}}
+    Exemplo: $1 + 1 = 2$.
+    \pause
+
+    \begin{code}
+\documentclass{article}
+\begin{document}
+Exemplo: $1 + 1 = 2$.
+\end{document}
+    \end{code}
+\end{frame}
+
+\section{\flang{Displayed}}
+\begin{frame}[fragile]
+    \frametitle{\flang{Displayed}}
+    Exemplo: $$1 + 1 = 2.$$
+    \pause
+    \begin{code}
+\documentclass{article}
+\begin{document}
+Exemplo: $$1 + 1 = 2.$$
+\end{document}
+    \end{code}
+\end{frame}
+
+\section{Operações básicas}
+\begin{frame}[fragile]
+    \frametitle{Operações básicas} 
+    \begin{code}
+\documentclass{article}
+\begin{document}
+$1 \times 1 = 1$ \\
+$1 \cdot 1 = 1$ \\
+$1 / 1 = 1$ \\
+$\frac{1}{1} = 1$
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{\'{I}ndices e expoentes} 
+    \begin{code}
+\documentclass{article}
+\begin{document}
+$a_11 \neq a_{11}$ \\
+$1^0 = 1$
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Delimitadores} 
+    \begin{code}
+\documentclass{article}
+\begin{document}
+$$\left( \frac{1}{1} \right) = 1$$
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Matrizes} 
+    \begin{code}
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+$$\begin{matrix}
+    a_{11} & a_{12} \\
+    a_{21} & a_{22}
+\end{matrix}$$
+\end{document}
+    \end{code}
+\end{frame}
+
+\section{Equações numeradas}
+\begin{frame}[fragile]
+    \frametitle{Equações numeradas (1)}
+    \begin{code}
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+\begin{align}
+    1 + 1 &= 2
+    \label{eq:test}
+\end{align}
+Na equação \eqref{eq:test} \ldots
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Equações numeradas (2)}
+    \begin{code}
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+\begin{align}
+    1 + 1 &= 2 \tag{CAMECC}
+    \label{eq:test}
+\end{align}
+Na equação \eqref{eq:test} \ldots
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Alinhamento de equações}
+    \begin{code}
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+\begin{align*}
+    x + 1 &= 2 \\
+    x + 1 - 1 &= 2 - 1 \\
+    x &= 1
+\end{align*}
+% No lugar de \eqref{eq:test} irá aparecer (??).
+Na equação \eqref{eq:test} \ldots
+\end{document}
+    \end{code}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Fim}
+    \begin{center}
+        Perguntas.
+    \end{center}
+\end{frame}
+\end{document}
